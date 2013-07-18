@@ -3,7 +3,7 @@ package com.flyfox.component.common;
 import org.apache.log4j.Logger;
 
 import com.flyfox.component.IComponent;
-import com.flyfox.component.config.Config;
+import com.jfinal.core.JFinal;
 
 public class Include implements IComponent {
 
@@ -12,8 +12,8 @@ public class Include implements IComponent {
 
 	public boolean start() {
 		if (basePath == null) {
-			logger.info("##Component Include init......\r\n " + Config.get("WEB.BASEPATH") + " basepath set init........");
-			basePath = Config.get("WEB.BASEPATH");
+			basePath = JFinal.me().getContextPath();
+			logger.info("##Component Include init......\r\n  basepath set (" + basePath + ") init........");
 		}
 		return basePath != null;
 	}

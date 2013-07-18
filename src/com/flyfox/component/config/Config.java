@@ -1,12 +1,16 @@
 package com.flyfox.component.config;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
 import com.flyfox.component.IComponent;
 import com.flyfox.component.util.NumberUtils;
+import com.jfinal.kit.PathKit;
 
 public class Config implements IComponent {
 
@@ -19,8 +23,9 @@ public class Config implements IComponent {
 
 	public boolean start() {
 		if (props == null) {
-			logger.info("##Component Config init......\r\n " + CONFIG_FILE + " Properties Object init........");
-			props = parsePropertyFile(CONFIG_FILE);
+			String configFile = PathKit.getWebRootPath() + File.separator + "WEB-INF" + File.separator + CONFIG_FILE;
+			logger.info("##Component Config init......\r\n （" + configFile + "） Properties Object init........");
+			props = parsePropertyFile(configFile);
 		}
 		return props != null;
 	}
@@ -36,7 +41,8 @@ public class Config implements IComponent {
 	private Properties parsePropertyFile(String file) {
 		Properties props = new Properties();
 		try {
-			java.io.InputStream propFile = getClass().getResourceAsStream(file);
+			// InputStream propFile = getClass().getResourceAsStream(file); // 相对路径
+			InputStream propFile = new FileInputStream(new File(file)); // 绝对路径
 			props.load(propFile);
 			return props;
 		} catch (IOException e) {
