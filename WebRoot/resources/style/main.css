@@ -1,0 +1,249 @@
+/*
+html {
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter:
+		url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale")
+		;
+	filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); 
+	-webkit-filter: grayscale(1);
+	filter: gray;
+}
+*/
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #ffffff;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-bottom: 1px;
+	margin-right: 1px;
+}
+
+/**********************************列表页面样式开始*******************************/
+	/********分页样式********/
+.tablePages {
+	background-image: url("/images/shade.gif");
+	background-color: #347C80;
+	padding-left: 6px;
+	padding-right: 6px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #000000;
+	height: 25px;
+	text-align: left;
+}
+
+/********新加的处理的列表数据区样式********/
+.tableList {
+	width: 100%;
+	border-spacing: 0px;
+	margin: 0px auto;
+	text-align: center;
+	border-collapse: collapse;
+	white-space: nowrap;
+	box-shadow:2px 2px 1px gray;
+	/**这里这个是定义表格外边框的样式*border:1px solid black; */
+}
+
+.tableList tbody tr th {
+	height: 28px;
+	font-weight: 600;
+	font-family: Tahoma;
+	text-align: center;
+	color: #444;
+	padding: 0px;
+	border: 1px solid rgb(226, 220, 220);
+	background-color: gray;
+	background-size: 100% 100%; /********chrome支持**********/
+	background-repeat: repeat-x; /********IE下这样处理**********/
+	white-space: nowrap;
+	line-height: 28px;
+}
+
+.tableList tbody tr td {
+	border: 1px solid rgb(226, 220, 220);
+	padding: 0px;
+	height: 20px;
+	color: #444;
+	line-height: 26px;
+}
+
+.tableList tbody tr td.tr-odd {
+	background-color: #FFFFFF;
+	line-height: 26px;
+}
+
+.tableList tbody tr td.tr-even {
+	background-color: #F2F2F2;
+	line-height: 26px;
+}
+
+.tableList tbody tr td.tr-hover {
+	background-color: #E6E6E6;
+	line-height: 26px;
+}
+
+.tableList tbody tr td.tr-selected {
+	background-color: #cdcdcd;
+}
+
+
+
+/********列表提醒样式**********/
+.tableList tbody tr.trRed {
+	background-color: #FF9933;
+}
+
+.tableList tbody tr.trGreen {
+	background-color: skyblue;
+}
+
+.tableList tbody tr.trYellow {
+	background-color: #FFFF99;
+}
+
+
+/**********************************列表页面样式结束*******************************/
+/**********************************编辑页面样式开始*******************************/
+.tableShow {
+	border: 1px solid #BCBFBB;
+	width: 100%;
+	margin: 0 auto;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.tableEdit {
+	border: 1px solid #BCBFBB;
+	width: 100%;
+	margin: 0 auto;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.tableEdit tr td.td-edit-odd {
+	width: 20%;
+	border: 1px solid rgb(226, 220, 220);
+	text-align: left;
+	padding-left:4px;
+	color:#444;
+	background-color: #FFFFFF;
+	line-height: 26px;
+	
+}
+
+.tableEdit tr td.td-edit-even {
+	padding-right: 10px;
+	width: 12%;
+	border: 1px solid rgb(226, 220, 220);
+	text-align: right;
+	color:#555;
+	background-color: #F2F2F2;
+	line-height: 26px;
+}
+
+/*两个一起用,就都支持了*/
+/**********************************编辑页面样式结束*******************************/
+/****************************************查询条件样式**********************************/
+.tableSearch {
+	border-collapse: collapse;
+	text-align: center;
+	margin-bottom: 5px;
+	margin-left: 2px;
+	padding-right: 10px;
+	background-color:  #e6e6e6;
+}
+
+.tableSearch tr td.td-search-odd {
+	text-align: left;
+	white-space: nowrap;
+	padding:2px 10px 2px 2px;
+}
+
+.tableSearch tr td.td-search-even {
+	padding-left: 20px;
+	padding-right: 10px;
+	white-space: nowrap;
+	text-align: right;
+	padding:2px 10px 2px 2px;
+}
+
+/***************************备注***********************/
+.remark {
+	margin-top: 5px;
+	margin-left: 5px;
+	text-align: left;
+	color: green;
+}
+
+input {
+	height: 23px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding:0px 0px 0px 4px;
+	vertical-align:middle;
+}
+
+input[type="text"] {
+	border: 1px solid #ccc;
+	text-indent: 2px;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+	border-radius:3px;
+	margin-left: 2px;
+}
+
+textarea {
+	padding:2px 2px;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -o-border-radius: 8px;
+	border-radius:3px;
+}
+
+.Wdate {
+	border: 1px solid #ccc;
+}
+
+select {
+	font-family: Arial, Helvetica, sans-serif;
+	padding:2px 2px;
+	height: 23px;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -o-border-radius: 8px;
+	border-radius:3px;
+	margin-left: 2px;
+}
+
+
+.readonly {
+	background-color: #D9D9D9
+}
+
+/*a:visited { font-size: 9pt; color: #672C3C; text-decoration: underline }*/
+a:link {
+	font: inherit;
+	color: #3366AA;
+	text-decoration: none
+}
+
+a:visited {
+	color: #2B7291;
+	text-decoration: none;
+}
+
+a:hover {
+	color: red;
+	text-decoration: underline;
+}
+
+a:active {
+	color: #ff0000;
+	text-decoration: none;
+}

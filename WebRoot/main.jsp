@@ -16,14 +16,9 @@
 		<input name="" class="yzm" type="hidden" />
 		<div id="hsptdl_register">
 			<ul>
-				<li><span>登录帐号：</span> <input name="loginid" type="text"
-					onkeypress="scheck();" maxlength="128" placeholder="请您输入用户名"
-					value="${empty loginid? '':loginid  }" /></li>
-				<li><span>密码：</span> <input name="password" type="password"
-					onkeypress="scheck();" maxlength="16" placeholder="请您输入密码" value="" /></li>
-				<li><a href="main.jsp">登陆</a></li>
+				<li><a href="dict/main">数据字典</a></li>
+				<li>下一个列表</li>
 			</ul>
-			<span class="ts">${message }</span>
 		</div>
 	</form>
 </body>

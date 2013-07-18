@@ -18,6 +18,7 @@ public class Include implements IComponent {
 		return basePath != null;
 	}
 
+	
 	/**
 	 * 所有引用
 	 * 
@@ -26,10 +27,22 @@ public class Include implements IComponent {
 	 * @return
 	 */
 	public static String index() {
-		String path = ymprompt() + jquery();
+		String path = ymprompt() + jquery()+main();
 		return path;
 	}
 
+	/**
+	 * main
+	 * 
+	 * @autor flyfox
+	 * @since Jul 14, 2013
+	 * @return
+	 */
+	public static String main() {
+		String path = getStyle("/resources/style/main.css");
+		return path;
+	}
+	
 	/**
 	 * 填出框组件
 	 * 

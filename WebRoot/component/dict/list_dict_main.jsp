@@ -1,30 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@include file="/resources/include/head.jsp"%>
-<script type="text/javascript">
-<!--
-$(function($){
-
-});
-//-->
-</script>
-<style>
-<!--
-.tableList {
-	border: 1px solid black;
-	border-spacing: 0;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-.tableList td,th {
-	border: 1px solid black;
-	text-align: center;
-}
--->
-</style>
 <h1>
-	数据字典管理&nbsp;&nbsp;
+	数据字典管理：<a href="detail" >切换</a>
+		&nbsp;&nbsp;
 	<a href="javascript:void(0);"
 		onclick="Iframe('add_main',460,340,'数据字典')">创建字典</a>
 </h1>
