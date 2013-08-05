@@ -13,12 +13,12 @@ public class Include implements IComponent {
 	public boolean start() {
 		if (basePath == null) {
 			basePath = JFinal.me().getContextPath();
-			logger.info("##Component Include init......\r\n  basepath set (" + basePath + ") init........");
+			logger.info("##Component Include init......\r\n  basepath set (" + basePath
+					+ ") init........");
 		}
 		return basePath != null;
 	}
 
-	
 	/**
 	 * 所有引用
 	 * 
@@ -27,7 +27,7 @@ public class Include implements IComponent {
 	 * @return
 	 */
 	public static String index() {
-		String path = ymprompt() + jquery()+main();
+		String path = ymprompt() + jquery() + quick() + main();
 		return path;
 	}
 
@@ -42,7 +42,7 @@ public class Include implements IComponent {
 		String path = getStyle("/resources/style/main.css");
 		return path;
 	}
-	
+
 	/**
 	 * 填出框组件
 	 * 
@@ -64,6 +64,17 @@ public class Include implements IComponent {
 	 * @since Jul 14, 2013
 	 * @return
 	 */
+	public static String quick() {
+		return getStyle("/component/extend/quick/quick.css");
+	}
+
+	/**
+	 * Jquery
+	 * 
+	 * @autor flyfox
+	 * @since Jul 14, 2013
+	 * @return
+	 */
 	public static String jquery() {
 		return getScript("/component/extend/jquery/jquery-1.8.2.min.js");
 	}
@@ -73,7 +84,8 @@ public class Include implements IComponent {
 	}
 
 	private static String getStyle(String path) {
-		return "	<link rel=\"stylesheet\" id='skin' type=\"text/css\" href=\"" + basePath + path + "\" />\n";
+		return "	<link rel=\"stylesheet\" id='skin' type=\"text/css\" href=\"" + basePath + path
+				+ "\" />\n";
 	}
 
 	public boolean stop() {

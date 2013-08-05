@@ -7,23 +7,29 @@
 	<a href="javascript:void(0);"
 		onclick="Iframe('add_main',460,340,'数据字典')">创建字典</a>
 </h1>
-<table class="tableList">
+<table class="table table-striped">
 	<tr>
-		<th width="4%">
+		<th width="5%">
+			序号
+		</th>
+		<th width="25%">
 			类型
 		</th>
-		<th width="35%">
+		<th width="25%">
 			名称
 		</th>
 		<th width="35%">
 			备注
 		</th>
-		<th width="12%">
+		<th width="10%">
 			操作
 		</th>
 	</tr>
-	<c:forEach items="${dictMainList}" var="dict">
+	<c:forEach items="${dictMainList}" var="dict" varStatus="status">
 		<tr>
+			<td>
+				${status.count}
+			</td>
 			<td>
 				${dict.dict_type}
 			</td>
@@ -34,10 +40,9 @@
 				${dict.remark}
 			</td>
 			<td>
-				&nbsp;&nbsp;
 				<a href="delete_main/${dict.dict_type}">删除</a> &nbsp;&nbsp;
-				<a
-					href="javascript:Iframe('add_main?dict_type=${dict.dict_type}',500,340,'数据字典')">修改</a>
+				<a href="javascript:Iframe('add_main?dict_type=${dict.dict_type}',500,340,'数据字典')">修改</a>
+				<a href="detail">查看</a>
 			</td>
 		</tr>
 	</c:forEach>

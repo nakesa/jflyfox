@@ -7,7 +7,7 @@
 	<a href="javascript:void(0);"
 		onclick="Iframe('add',460,340,'数据字典')">创建字典</a>
 </h1>
-<table class="tableList">
+<table class="table table-striped">
 	<tr>
 		<th width="4%">
 			ID
