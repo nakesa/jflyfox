@@ -1,1 +1,0 @@
-<script type="text/javascript" src="/component/extend/jquery/jquery-1.8.2.min.js"></script>
