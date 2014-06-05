@@ -1,0 +1,351 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #FFFFFF;
+}
+/** bar样式 **/
+.topbar {
+	background: #FE5E70;
+	height: 60px;
+	line-height: 60px;;
+	text-align: center;
+	padding: 0 20px;
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+	background: linear-gradient(to bottom, #FE5E70 0%, #7A2334 100%) repeat
+		scroll 0 0 transparent;
+	position: relative;
+}
+
+.topbar .logo {
+	float: left;
+	display: inline;
+	margin: 0 20px 0 0;
+	font-size: 24px;
+}
+
+.topbar span {
+	color: #fff !important;
+	white-space: nowrap;
+	display: inline-block;
+	color: #1570A6;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.topbar a {
+	color: #fff !important;
+	white-space: nowrap;
+	display: inline-block;
+	outline: none;
+	text-decoration: none;
+	color: #1570A6;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.topbar a:hover {
+	background: #F1606C !important;
+	background: linear-gradient(to bottom, #F1606C 0%, #7A2334 100%) repeat
+		scroll 0 0 transparent !important;
+	color: gray !important;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.topbar .topbar_left {
+	float: left;
+	height: 32px;
+	margin-right: 5px;
+}
+
+.topbar .topbar_left a:hover {
+	
+}
+
+.topbar .topbar_right {
+	float: right;
+	height: 32px;
+	margin-right: -5px;
+}
+
+.topbar .topbar_right a:hover {
+	
+}
+
+#bottom {
+	width: 100%;
+	height: 30px;
+	background: url(../images/common/bottombj.png) #E6E6E6 repeat-x;
+	text-align: center;
+	color: #77C;
+	font-size: 12px;
+	position: absolute;
+	bottom: 0px;
+	line-height: 30px;
+}
+
+#bottom span {
+	color: #666;
+}
+
+#bottom input {
+	margin-top: 3px;
+	color: #666;
+}
+
+#bottom a {
+	margin-top: 3px;
+	color: #666;
+	text-decoration: none;
+	text-shadow: none;
+}
+
+/***********************  table search ********************************/
+.tableSearch {
+	margin: 10px 15px 5px 15px;
+	padding: 5px 10px 5px 15px;
+	background-color: #E9E9E9;
+	-moz-border-radius: 15px;
+	-khtml-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+}
+
+/******************* Tools ********************/
+/** 工具栏样式 **/
+#tools {
+	position: relative;
+	width: 100%;
+	height: 32px;
+	color: #333;
+	background: url(../images/map/nav_bg.gif) repeat-x 0 0;
+	white-space: nowrap;
+	z-index: 100;
+}
+
+/***    菜单样式  ***/
+#tools div.menu_index {
+	padding: 0 5px 0 5px;
+	cursor: pointer;
+	display: inline-block;
+	height: 22px;
+	line-height: 22px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #333333;
+}
+
+/** 直接展示title的 **/
+#tools>span {
+	position: absolute;
+	left: 0px;
+	top: 0;
+	z-index: 1;
+	margin: 4px 14px 0;
+}
+
+#tools div.menu_index:hover {
+	color: #4c73c2;
+	border: none;
+	background: url(../images/map/tools_img.png) no-repeat 0 0;
+}
+
+#tools span {
+	display: inline-block;
+	height: 22px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #333333;
+	line-height: 22px;
+}
+
+/***  菜单名称  ***/
+#tools span.new_page {
+	padding: 0 5px 0 24px;
+	background: url(../images/common/new_page.png) no-repeat;
+
+}
+
+#tools .tools_l {
+	position: absolute;
+	left: 0px;
+	top: 0;
+	z-index: 1;
+	padding: 4px 14px 0;
+}
+
+#tools .tools_l > a {
+	padding: 0 5px 0 5px;
+	text-decoration: underline;
+	outline: none;
+	text-decoration: none;
+	cursor: pointer;
+	display: inline-block;
+	height: 22px;
+	line-height: 22px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #333333;
+}
+
+#tools .tools_l > a:hover {
+	color: #4c73c2;
+	border: none;
+	background: url(../images/map/tools_img.png) no-repeat 0 0;
+}
+
+#tools .tools_r {
+	position: absolute;
+	float: right;
+	right: 0;
+	z-index: 2;
+	padding: 4px 14px 0;
+}
+
+#tools .tools_r > a {
+	padding: 0 5px 0 5px;
+	text-decoration: underline;
+	outline: none;
+	text-decoration: none;
+	cursor: pointer;
+	display: inline-block;
+	height: 22px;
+	line-height: 22px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #333333;
+}
+
+#tools .tools_r > a:hover {
+	color: #4c73c2;
+	border: none;
+	background: url(../images/map/tools_img.png) no-repeat 0 0;
+}
+
+#tools .getline {
+	background: url(../images/map/tool_getline.png) no-repeat;
+	zoom: 1;
+	width: 8px;
+	height: 12px;
+	float: left;
+	margin-top: 4px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+
+#tools .print {
+	background: url(../images/map/tool_print.png) no-repeat;
+	zoom: 1;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-top: 4px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+
+#tools .getarea {
+	background: url(../images/map/tool_getarea.png) no-repeat;
+	zoom: 1;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-top: 6px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+
+#tools .area_select {
+	background: url(../images/map/tool_area_select.png) no-repeat;
+	zoom: 1;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-top: 6px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+
+#tools .area_path {
+	background: url(../images/map/tool_area_path.png) no-repeat;
+	zoom: 1;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-top: 6px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+
+#tools .center {
+	background: url(../images/map/tool_center.png) no-repeat;
+	zoom: 1;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-top: 6px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+
+#tools .move {
+	background: url(../images/map/tool_move.png) no-repeat;
+	zoom: 1;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-top: 6px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+
+#tools .zoom_in {
+	background: url(../images/map/tool_zoom_in.png) no-repeat;
+	zoom: 1;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-top: 6px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+
+#tools .zoom_out {
+	background: url(../images/map/tool_zoom_out.png) no-repeat;
+	zoom: 1;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-top: 6px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+
+#tools .index {
+	background: url(../images/map/tool_index.png) no-repeat;
+	zoom: 1;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-top: 6px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+
+#tools .collect {
+	background: url(../images/map/tool_collect.png) no-repeat;
+	zoom: 1;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-top: 6px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
