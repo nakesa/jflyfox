@@ -3,7 +3,7 @@
     <wb-module deploy-name="money">
         <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="money"/>
         <property name="java-output-path" value="/money/WebRoot/WEB-INF/classes"/>
+        <property name="context-root" value="jflyfox"/>
     </wb-module>
 </project-modules>
