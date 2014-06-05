@@ -4,11 +4,9 @@ import static conf.Config.getDbParam;
 
 import com.flyfox.component.model.AutoBindModels;
 import com.flyfox.component.route.AutoBindRoutes;
-import com.flyfox.modules.column.ColumnCache;
 import com.flyfox.modules.dict.DictCache;
 import com.flyfox.modules.user.UserCache;
 import com.flyfox.modules.user.UserInterceptor;
-import com.flyfox.util.StrUtils;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -20,9 +18,13 @@ import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.log.Log4jLoggerFactory;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
+import com.jfinal.plugin.activerecord.dialect.OracleDialect;
 import com.jfinal.plugin.activerecord.dialect.PostgreSqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
+
+import conf.Config;
 
 /**
  * API引导式配置
@@ -57,30 +59,30 @@ public class BaseConfig extends JFinalConfig {
 	public void configPlugin(Plugins me) {
 		// 配置C3p0数据库连接池插件
 		C3p0Plugin c3p0Plugin = null;
-		if (isDevMode()) {
-			c3p0Plugin = new C3p0Plugin( //
-					getDbParam("jdbcUrl"), getDbParam("user"), //
-					getDbParam("password").trim(), getDbParam("driverClass"));
-		} else {
-			c3p0Plugin = new C3p0Plugin( //
-					getDbParam("bae.jdbcUrl"), getDbParam("bae.user"), //
-					getDbParam("bae.password").trim(), getDbParam("bae.driverClass"));
-		}
+
+		String db_type = getDbParam("db_type") + ".";
+		c3p0Plugin = new C3p0Plugin( //
+				getDbParam(db_type + "jdbcUrl"), getDbParam(db_type + "user"), //
+				getDbParam(db_type + "password").trim(), getDbParam(db_type + "driverClass"));
+
 		me.add(c3p0Plugin);
+
 		// 配置ActiveRecord插件
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
 		me.add(arp);
 		if (isDevMode()) {
 			arp.setShowSql(true);
-			arp.setDialect(new PostgreSqlDialect());
 		}
+
+		// 数据库类型
+		if (db_type.startsWith("postgre")) {
+			arp.setDialect(new PostgreSqlDialect());
+		} else if (db_type.startsWith("oracle")) {
+			arp.setDialect(new OracleDialect());
+			arp.setContainerFactory(new CaseInsensitiveContainerFactory());
+		}
+
 		new AutoBindModels(arp);
-		//arp.addMapping("sys_dict", "dict_id", SysDict.class);
-		//arp.addMapping("sys_dict_detail", "detail_id", SysDictDetail.class);
-		//arp.addMapping("sys_user", "userid", SysUser.class);
-		//arp.addMapping("tb_column", "id", TbColumn.class);
-		//arp.addMapping("tb_project", "id", TbProject.class);
-		//arp.addMapping("tb_money", "id", TbMoney.class);
 	}
 
 	/**
@@ -109,11 +111,9 @@ public class BaseConfig extends JFinalConfig {
 		reset();
 	}
 
-	
 	public static void reset() {
 		DictCache.init();
 		UserCache.init();
-		ColumnCache.init();
 	}
 
 	@Override
@@ -122,11 +122,9 @@ public class BaseConfig extends JFinalConfig {
 	}
 
 	private boolean isDevMode() {
-		String osName = System.getProperty("os.name"); // 电脑系统名称
-		boolean flag = StrUtils.isNotEmpty(osName) && osName.indexOf("Windows") >= 0;
-		return flag;
+		return "true".equals(Config.getParam("CONSTANTS.DEV_MODE"));
 	}
-	
+
 	/**
 	 * 运行此 main 方法可以启动项目，此main方法可以放置在任意的Class类定义中，不一定要放于此
 	 */
