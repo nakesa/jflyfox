@@ -86,10 +86,8 @@
 		<ul>
 			<li><a href="web" target="_blank">首页</a></li>
 			<li class="menuDiv"></li>
-			<li><a href="project/list">项目管理</a></li>
-			<li><a href="money/list">金钱管理</a></li>
-			<li class="menuDiv"></li>
 			<li><a href="column">栏目定义</a></li>
+			<li class="menuDiv"></li>
 			<li><a href="dict/list">数据字典</a></li>
 			<li><a href="user/list">用户管理</a></li>
 			<li class="menuDiv"></li>

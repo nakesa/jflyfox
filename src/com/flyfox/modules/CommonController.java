@@ -48,7 +48,7 @@ public class CommonController extends BaseController {
 		} else {
 			setSessionUser(user);
 		}
-		redirect("/money/list");
+		redirect("/column");
 	}
 
 	/**

@@ -9,7 +9,7 @@
 			+ path + "/";
 %>
 <base href="<%=basePath%>">
-<title>金钱管理</title>
+<title>Jflyfox</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%-- //favicon.ico小图标名称 --%>
 <link rel="icon" href="favicon.ico"/>
@@ -17,8 +17,8 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="金钱管理">
-<meta http-equiv="description" content="金钱管理">
+<meta http-equiv="keywords" content="Jflyfox">
+<meta http-equiv="description" content="Jflyfox">
 <%-- 弹出框 --%>
 <%@include file="/static/component/include/ymprompt.jsp"%>
 <%-- jquery --%>

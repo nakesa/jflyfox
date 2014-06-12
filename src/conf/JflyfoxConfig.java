@@ -1,9 +1,10 @@
-package com.flyfox.component.config;
+package conf;
 
 import static conf.Config.getDbParam;
 
 import com.flyfox.component.model.AutoBindModels;
 import com.flyfox.component.route.AutoBindRoutes;
+import com.flyfox.modules.column.ColumnCache;
 import com.flyfox.modules.dict.DictCache;
 import com.flyfox.modules.user.UserCache;
 import com.flyfox.modules.user.UserInterceptor;
@@ -29,7 +30,7 @@ import conf.Config;
 /**
  * API引导式配置
  */
-public class BaseConfig extends JFinalConfig {
+public class JflyfoxConfig extends JFinalConfig {
 
 	/**
 	 * 配置常量
@@ -114,6 +115,7 @@ public class BaseConfig extends JFinalConfig {
 	public static void reset() {
 		DictCache.init();
 		UserCache.init();
+		ColumnCache.init();
 	}
 
 	@Override
