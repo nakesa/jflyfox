@@ -38,7 +38,10 @@
 
 					<c:forEach items="${requestScope.list}" var="item" varStatus="row">
 						<div class="mod-blogitem">
-							<div class="box-postdate">${item.publish_time}</div>
+							<div class="box-postdate">
+							${item.publish_time}
+							<%--<br >${item.publish_user} --%>
+							</div>
 							<div class="item-title">
 								<a href="">${item.title}</a>
 							</div>
