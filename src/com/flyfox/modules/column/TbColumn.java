@@ -8,5 +8,8 @@ public class TbColumn extends BaseModel<TbColumn> {
 
 	private static final long serialVersionUID = 1L;
 	public static final TbColumn dao = new TbColumn();
+	
+	public static final int ROOT = 1;
+	
 
 }

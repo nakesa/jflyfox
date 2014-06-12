@@ -13,8 +13,12 @@ public class Home extends BaseController {
 	private static final String path = "/pages/web/";
 
 	public void index() {
-		List<TbColumn> columns = ColumnSvc.getListByParentId(1);
+		// 根目录
+		setAttr("model", ColumnSvc.getColumn(TbColumn.ROOT));
+		// 数据列表
+		List<TbColumn> columns = ColumnSvc.getListByParentId(TbColumn.ROOT);
 		setAttr("list", columns);
+
 		render(path + "home.jsp");
 	}
 

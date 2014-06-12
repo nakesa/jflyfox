@@ -30,7 +30,7 @@
 				<div class="mod-diary-clip"></div>
 				<div class="mod-topspaceinfo">
 					<h1>
-						<a class="space-name" href="http://hi.baidu.com/">Fly的狐狸</a>
+						<a class="space-name" href="#">${model.title }</a>
 					</h1>
 				</div>
 
