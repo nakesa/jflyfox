@@ -49,7 +49,7 @@ public class UserInterceptor implements Interceptor {
 				&& !path_tmp.startsWith("web") // 登出
 		) {
 			if (JFinal.me().getConstants().getDevMode()) {
-				SysUser user = SysUser.dao.findFirst("select * from Sys_user where userid = 1");
+				SysUser user = SysUser.dao.findFirst("select * from sys_user where userid = 1");
 				controller.setSessionAttr(BaseController.SESSION_NAME, user);
 			} else {
 				SysUser user = controller.getSessionAttr(BaseController.SESSION_NAME);
