@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.flyfox.base.service.BaseService;
+import com.flyfox.jfinal.base.BaseService;
 
 /**
  * 栏目service

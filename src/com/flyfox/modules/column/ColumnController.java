@@ -5,10 +5,10 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.flyfox.base.controller.BaseController;
+import com.flyfox.jfinal.base.BaseController;
+import com.flyfox.jfinal.component.db.SQLUtils;
 import com.flyfox.util.DateUtils;
 import com.flyfox.util.StrUtils;
-import com.flyfox.util.db.SQLUtils;
 import com.jfinal.kit.PathKit;
 import com.jfinal.plugin.activerecord.DbKit;
 import com.jfinal.plugin.activerecord.Page;
@@ -36,7 +36,7 @@ public class ColumnController extends BaseController {
 		TbColumn model = getModel(TbColumn.class, "attr");
 		StringBuffer sql = new StringBuffer();
 		Page<TbColumn> page = null ;
-		if (DbKit.getDialect() instanceof MysqlDialect) {
+		if (DbKit.getConfig().getDialect() instanceof MysqlDialect) {
 			// mysql
 			sql.append(" from ( SELECT * FROM tb_column R where R.parent_id = ? or R.id = ? ");
 			SQLUtils sqlUtils = new SQLUtils(sql.toString(), "R");
@@ -140,8 +140,8 @@ public class ColumnController extends BaseController {
 			svc.update(model);
 		} else { // 新增
 			model.remove("id");
-			model.put("create_id", getSessionUser().getUserid());
-			model.put("create_time", DateUtils.getCreateTime());
+			model.put("create_id", getSessionUser().getUserID());
+			model.put("create_time", DateUtils.getNow());
 			svc.save(model);
 		}
 		renderMessage("保存成功");

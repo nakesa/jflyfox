@@ -1,6 +1,6 @@
 package com.flyfox.modules.column;
 
-import com.flyfox.base.controller.BaseController;
+import com.flyfox.jfinal.base.BaseController;
 
 /**
  * 首页文章展示

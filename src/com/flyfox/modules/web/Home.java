@@ -2,8 +2,8 @@ package com.flyfox.modules.web;
 
 import java.util.List;
 
-import com.flyfox.base.controller.BaseController;
-import com.flyfox.component.route.ControllerBind;
+import com.flyfox.jfinal.base.BaseController;
+import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.modules.column.ColumnSvc;
 import com.flyfox.modules.column.TbColumn;
 

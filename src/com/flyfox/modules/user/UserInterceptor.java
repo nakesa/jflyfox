@@ -2,7 +2,7 @@ package com.flyfox.modules.user;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.flyfox.base.controller.BaseController;
+import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.util.StrUtils;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;

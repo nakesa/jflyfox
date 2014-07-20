@@ -1,7 +1,7 @@
 package com.flyfox.modules;
 
-import com.flyfox.base.controller.BaseController;
-import com.flyfox.component.route.ControllerBind;
+import com.flyfox.jfinal.base.BaseController;
+import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.modules.column.ColumnCache;
 import com.flyfox.modules.dict.DictCache;
 import com.flyfox.modules.user.SysUser;

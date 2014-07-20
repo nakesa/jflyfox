@@ -1,8 +1,8 @@
 package com.flyfox.modules.user;
 
-import com.flyfox.base.controller.BaseController;
+import com.flyfox.jfinal.base.BaseController;
+import com.flyfox.jfinal.component.db.SQLUtils;
 import com.flyfox.util.DateUtils;
-import com.flyfox.util.db.SQLUtils;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
@@ -59,8 +59,8 @@ public class UserController extends BaseController {
 		} else { // 新增
 			model.remove("userid");
 			model.put("password", "123456");
-			model.put("create_id", getSessionUser().getUserid());
-			model.put("create_time", DateUtils.getCreateTime());
+			model.put("create_id", getSessionUser().getUserID());
+			model.put("create_time", DateUtils.getNow());
 			model.save();
 		}
 		UserCache.init();

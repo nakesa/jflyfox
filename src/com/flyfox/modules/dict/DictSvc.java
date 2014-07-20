@@ -3,7 +3,7 @@ package com.flyfox.modules.dict;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.flyfox.base.service.BaseService;
+import com.flyfox.jfinal.base.BaseService;
 
 /**
  * 数据字典service

@@ -1,7 +1,7 @@
 package com.flyfox.modules.column;
 
-import com.flyfox.base.model.BaseModel;
-import com.flyfox.component.model.ModelBind;
+import com.flyfox.jfinal.base.BaseModel;
+import com.flyfox.jfinal.component.annotation.ModelBind;
 
 @ModelBind(table="tb_column")
 public class TbColumn extends BaseModel<TbColumn> {
