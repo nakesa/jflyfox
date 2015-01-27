@@ -1,0 +1,49 @@
+<% 
+DIRECTIVE SAFE_OUTPUT_OPEN;
+var headContent = {
+	include("/pages/template/head.html"){}
+%>
+<script type="text/javascript">
+	var oper ;
+	jQuery(function($) {
+		oper = new flyfox("user", "用户");
+	});
+</script>
+
+<%
+};
+var bodyContent = {
+%>
+<form name="form1" action="" method="post" class="form-horizontal"
+		role="form" onsubmit="oper.save(${model.userid});">
+	<input type="hidden" name="model.userid" value="${model.userid}" />
+	<table class="table">
+		<%  // 列表头部%>
+		<tr>
+			<td>登陆名</td>
+			<td>
+			<input class="form-control" type="text" name="model.username" value="${model.username }" required='required' />
+			</td>
+		</tr>
+		<tr>
+			<td>真实姓名</td>
+			<td>
+			<input class="form-control" type="text" name="model.realname" value="${model.realname }"  />
+			</td>
+		</tr>
+ 
+		<tr>
+			<td></td>
+			<td>
+			<input type="submit" value="保 存" class="btn btn-default">
+			<button class="btn btn-default" onclick="closeIframe();">关 闭</button>
+			</td>
+		</tr>
+	</table>
+</form>
+<%}; %>
+
+<% layout("/pages/template/_layout.html",{head:headContent,body:bodyContent}){ %>
+<%} 
+DIRECTIVE SAFE_OUTPUT_CLOSE;
+%>
