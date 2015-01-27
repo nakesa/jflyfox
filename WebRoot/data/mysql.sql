@@ -79,3 +79,25 @@ CREATE TABLE tb_column
   create_id  int(11),
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/**
+ * 联系人表
+ */ 
+-- Table: tb_contact
+
+-- DROP TABLE tb_contact;
+drop table if exists tb_contact;
+
+CREATE TABLE tb_contact
+(
+  id  int(11) NOT NULL AUTO_INCREMENT,  -- 主键
+  name varchar(256) NOT NULL, -- 姓名
+  phone varchar(32), -- 手机号
+  email varchar(32), -- Email
+  addr varchar(256), -- 地址
+  birthday varchar(32), -- 生日
+  remark varchar(256), -- 说明
+  create_time varchar(32),
+  create_id      integer,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
