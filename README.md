@@ -1,6 +1,7 @@
-# **个人项目** #
+# 个人博客
+------------------------
 
-#### 本网站后台基于Jfinal开发，数据库为Mysql。 ####
+#### 本网站后台基于Jfinal开发，模板基于beelt，数据库为Mysql。 ####
 #### 演示地址：http://jflyfox.jd-app.com/ ####
 #### 管理地址：http://jflyfox.jd-app.com/admin  ####
 #### 测试账号: admin/admin123 或 test/123456  ####
@@ -13,3 +14,20 @@
 ## **2、数据库安装** ##
 #### 1）安装mysql数据库，创建用户和数据库。 ####
 #### 2）运行mysql.sql和mysql_data.sql文件####
+
+# 鸣谢
+ 1. [JFinal](http://www.oschina.net/p/jfinal)
+ 2. [beetl](http://ibeetl.com/community/)
+ 3. [oschina](http://www.oschina.net/)
+
+# 更新说明
+
+
+>## jflyfox2.0
+> 1. 模板全面更新为beelt，后台继承最新jflyfox_Jfinal.
+
+>## jflyfox1.1
+> 1. jsp最后版本
+
+>## jflyfox1.0
+> 1. 初始化版本
