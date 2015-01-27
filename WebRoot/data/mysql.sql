@@ -1,14 +1,10 @@
-/**
- * jae字符集修改
- * set names utf-8;
- */
-
  /**
  * 删除表
  */
 drop table if exists sys_dict_detail;
 drop table if exists sys_dict;
 drop table if exists sys_user;
+drop table if exists tb_column;
 
 /**
  * 数据字典主表
@@ -62,66 +58,24 @@ create table sys_user
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /**
- * 项目表
- */  
--- Table: tb_project
-
--- DROP TABLE tb_project;
-drop table if exists tb_project;
-
-CREATE TABLE tb_project
+ * 栏目表
+ */
+CREATE TABLE tb_column
 (
-  id int(11) NOT NULL AUTO_INCREMENT, -- 主键
-  name varchar(256) NOT NULL, -- 字典名称
-  type varchar(64) NOT NULL, -- 字典类型
-  remark varchar(256), -- 字典说明
-  create_time    varchar(32),
-  create_id      integer,
-  PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/**
- * 金钱表
- */ 
--- Table: tb_money
-
--- DROP TABLE tb_money;
-drop table if exists tb_money;
-
-CREATE TABLE tb_money
-(
-  id  int(11) NOT NULL AUTO_INCREMENT,  -- 主键
-  project_id  int(11) NOT NULL, -- 项目ID
-  name varchar(256) NOT NULL, -- 简单说明
-  amount numeric(8,2), -- 金额
-  type varchar(64) NOT NULL, -- 类型
-  remark varchar(256), -- 说明
-  pay_time varchar(32), -- 费用产生时间
-  create_time    varchar(32),
-  create_id      integer,
-  PRIMARY KEY (id)
-  -- ,FOREIGN KEY (project_id) REFERENCES tb_project (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-/**
- * 联系人表
- */ 
--- Table: tb_contact
-
--- DROP TABLE tb_contact;
-drop table if exists tb_contact;
-
-CREATE TABLE tb_contact
-(
-  id  int(11) NOT NULL AUTO_INCREMENT,  -- 主键
-  name varchar(256) NOT NULL, -- 姓名
-  phone varchar(32), -- 手机号
-  email varchar(32), -- Email
-  addr varchar(256), -- 地址
-  birthday varchar(32), -- 生日
-  remark varchar(256), -- 说明
-  create_time varchar(32),
-  create_id      integer,
+  id int(11) NOT NULL AUTO_INCREMENT,
+  parent_id integer DEFAULT 0,
+  title text,
+  content text, 
+  type integer,
+  level integer, 
+  sort integer,
+  image_url varchar(256),
+  publish_time varchar(64),
+  publish_user varchar(64),
+  update_time varchar(64),
+  start_time varchar(64),
+  end_time varchar(64),
+  create_time  varchar(64),
+  create_id  int(11),
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
