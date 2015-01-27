@@ -29,7 +29,7 @@ public class ColumnController extends BaseController {
 
 	public void index() {
 		getTree();
-		render(path + "index.jsp");
+		render(path + "index.html");
 	}
 
 	public void list() {
@@ -65,7 +65,7 @@ public class ColumnController extends BaseController {
 		// 下拉框
 		setAttr("page", page);
 		setAttr("attr", model);
-		render(path + "list.jsp");
+		render(path + "list.html");
 	}
 
 	public void add() {
@@ -81,13 +81,13 @@ public class ColumnController extends BaseController {
 			setAttr("model", model);
 		}
 
-		render(path + "add.jsp");
+		render(path + "add.html");
 	}
 
 	public void view() {
 		TbColumn model = ColumnSvc.getColumn(getParaToInt());
 		setAttr("model", model);
-		render(path + "view.jsp");
+		render(path + "view.html");
 	}
 
 	public void delete() {
@@ -111,13 +111,13 @@ public class ColumnController extends BaseController {
 			model.put("parent_val", "根节点");
 		}
 		setAttr("model", model);
-		render(path + "edit.jsp");
+		render(path + "edit.html");
 	}
 
 	public void edit_content() {
 		TbColumn model = ColumnSvc.getColumn(getParaToInt());
 		setAttr("model", model);
-		render(path + "edit_content.jsp");
+		render(path + "edit_content.html");
 	}
 
 	public void view_content() {

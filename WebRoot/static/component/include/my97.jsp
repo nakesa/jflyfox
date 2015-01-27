@@ -1,1 +1,0 @@
-<script defer="defer" type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" %>static/component/My97DatePicker/WdatePicker.js"></script>

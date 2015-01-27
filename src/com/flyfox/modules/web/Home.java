@@ -19,7 +19,8 @@ public class Home extends BaseController {
 		List<TbColumn> columns = ColumnSvc.getListByParentId(TbColumn.ROOT);
 		setAttr("list", columns);
 
-		render(path + "home.jsp");
+		renderAuto(path + "home.html");
+
 	}
 
 }

@@ -2,10 +2,10 @@ package com.flyfox.modules;
 
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
-import com.flyfox.modules.column.ColumnCache;
 import com.flyfox.modules.dict.DictCache;
 import com.flyfox.modules.user.SysUser;
 import com.flyfox.modules.user.UserCache;
+import com.flyfox.util.Config;
 import com.flyfox.util.StrUtils;
 
 /**
@@ -14,12 +14,20 @@ import com.flyfox.util.StrUtils;
 @ControllerBind(controllerKey = "/")
 public class CommonController extends BaseController {
 
+	private String loginPage = "/login.html";
+
 	public void index() {
 		redirect("/web");
 	}
 
 	public void admin() {
-		render("/login.jsp");
+		if (getSessionUser() != null) {
+			// 如果session存在，不再验证
+			redirect("/contact/list");
+		} else {
+			render(loginPage);
+		}
+
 	}
 
 	/**
@@ -33,22 +41,22 @@ public class CommonController extends BaseController {
 		String password = getPara("password");
 		if (StrUtils.isEmpty(username)) {
 			setAttr("msg", "用户名不能为空");
-			render("/login.jsp");
+			render(loginPage);
 			return;
 		} else if (StrUtils.isEmpty(password)) {
 			setAttr("msg", "密码不能为空");
-			render("/login.jsp");
+			render(loginPage);
 			return;
 		}
 		SysUser user = SysUser.dao.findFirstByWhere(" where username = ? and password = ? ", username, password);
 		if (user == null || user.getInt("userid") <= 0) {
 			setAttr("msg", "认证失败，请您重新输入。");
-			render("/login.jsp");
+			render(loginPage);
 			return;
 		} else {
 			setSessionUser(user);
 		}
-		redirect("/column");
+		redirect("/contact/list");
 	}
 
 	/**
@@ -59,13 +67,17 @@ public class CommonController extends BaseController {
 	public void logout() {
 		removeSessionUser();
 		setAttr("msg", "您已退出");
-		render("/login.jsp");
+		render(loginPage);
 	}
 
 	public void update_cache() {
 		DictCache.init();
 		UserCache.init();
-		ColumnCache.init();
 		renderHtml("1");
+	}
+	
+	public void trans(){
+		String redirectPath =  Config.getStr("PAGES.TRANS");
+		render(redirectPath);
 	}
 }

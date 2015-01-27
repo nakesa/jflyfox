@@ -98,8 +98,18 @@
                     list.find('li a').addClass(settings.theme).removeClass('active');
                     list.find('li:eq(0) a').addClass(settings.theme).addClass('active');
                     //set width of paginator
+                    var liSize = list.find('li').length;
+                    // zb 2014-12-19 修改列表宽度:bug 可能第一个窄最后一个宽 
+                    /**
                     var sW = list.find('li:eq(0) a').outerWidth() + (parseInt(list.find('li:eq(0)').css('margin-left')) * 2);
                     var width = sW * list.find('li').length;
+                    **/
+                    var width = 0 ;
+                    var liSize = list.find('li').length;
+                    for(i=0 ; i<liSize ; i++){
+                    	var sW = list.find('li:eq('+i+') a').outerWidth() + (parseInt(list.find('li:eq('+i+')').css('margin-left')) * 2);
+                    	width += sW;
+                    }
                     list.css({ width: width });
                     showRequiredButtons(startPage);
                 }

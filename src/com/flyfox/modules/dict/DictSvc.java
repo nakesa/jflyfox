@@ -22,7 +22,7 @@ public class DictSvc extends BaseService {
 	 * @author flyfox 2013-11-19
 	 */
 	public static SysDictDetail getDictDetail(String key) {
-		return DictCache.dictMap.get(key);
+		return DictCache.getCacheMap().get(key);
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class DictSvc extends BaseService {
 	 * @author flyfox 2013-11-19
 	 */
 	public static String getDictName(String key) {
-		SysDictDetail detail = DictCache.dictMap.get(key);
+		SysDictDetail detail = DictCache.getCacheMap().get(key);
 		return detail == null ? null : detail.getStr("detail_name");
 	}
 

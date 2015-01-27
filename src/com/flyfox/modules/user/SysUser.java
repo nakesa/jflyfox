@@ -8,7 +8,7 @@ public class SysUser extends SessionUser<SysUser> {
 
 	private static final long serialVersionUID = 1L;
 	public static final SysUser dao = new SysUser();
-
+	
 	public Integer getUserid() {
 		return getInt("userid") == null ? -1 : getInt("userid");
 	}

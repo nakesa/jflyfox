@@ -2,7 +2,7 @@ package com.flyfox.modules.user;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.flyfox.jfinal.base.BaseController;
+import com.flyfox.jfinal.component.util.Attr;
 import com.flyfox.util.StrUtils;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
@@ -44,18 +44,17 @@ public class UserInterceptor implements Interceptor {
 		if (StrUtils.isNotEmpty(path_tmp) //
 				&& path_tmp.indexOf("login") < 0 // 登录
 				&& !path_tmp.startsWith("admin") // 登录
-				&& !path_tmp.endsWith("trans.jsp") // 过期
+				&& !path_tmp.endsWith("trans") // 过期
 				&& !path_tmp.endsWith("logout") // 登出
 				&& !path_tmp.startsWith("web") // 登出
 		) {
 			if (JFinal.me().getConstants().getDevMode()) {
 				SysUser user = SysUser.dao.findFirst("select * from sys_user where userid = 1");
-				controller.setSessionAttr(BaseController.SESSION_NAME, user);
+				controller.setSessionAttr(Attr.SESSION_NAME, user);
 			} else {
-				SysUser user = controller.getSessionAttr(BaseController.SESSION_NAME);
+				SysUser user = controller.getSessionAttr(Attr.SESSION_NAME);
 				if (user == null || user.getUserid() <= 0) {
-					controller.redirect("http://" + request.getHeader("Host") + request.getContextPath()
-							+ "/pages/error/trans.jsp");
+					controller.redirect("/trans");
 					return;
 				}
 			}

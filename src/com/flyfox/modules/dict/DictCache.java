@@ -5,7 +5,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import com.flyfox.util.cache.Cache;
+import com.flyfox.util.cache.CacheManager;
+import com.jfinal.log.Logger;
 
 
 /**
@@ -16,7 +18,8 @@ import org.apache.log4j.Logger;
 public class DictCache {
 
 	private final static Logger log = Logger.getLogger(DictCache.class);
-	static final Map<Integer, SysDictDetail> dictMap = new LinkedHashMap<Integer, SysDictDetail>();
+	private final static String cacheName = "DictCache";
+	private static Cache cache;
 
 	/**
 	 * 初始化Map
@@ -24,6 +27,9 @@ public class DictCache {
 	 * @author flyfox 2013-11-15
 	 */
 	public static void init() {
+		if (cache == null) {
+			cache = CacheManager.get(cacheName);
+		}
 		log.info("####数据字典Cache初始化......");
 		DictCache.initDict();
 	}
@@ -34,17 +40,18 @@ public class DictCache {
 	 * @author flyfox 2013-11-19
 	 */
 	public static void initDict() {
-		dictMap.clear();
+		Map<Integer, SysDictDetail> dictMap = new LinkedHashMap<Integer, SysDictDetail>();
 		List<SysDictDetail> listDetail = new ArrayList<SysDictDetail>();
 		// detailSort
 		listDetail = SysDictDetail.dao.findByWhere(" order by detail_sort,detail_id");
 		for (SysDictDetail detail : listDetail) {
 			dictMap.put(detail.getInt("detail_id"), detail);
 		}
+		cache.add("map", dictMap);
 	}
 
-	public static Map<Integer, SysDictDetail> getDictdetailMap() {
-		return DictCache.dictMap;
+	public static Map<Integer, SysDictDetail> getCacheMap() {
+		return cache.get("map");
 	}
 
 	//////////////////////////jstl 标签/////////////////////////////
@@ -59,7 +66,7 @@ public class DictCache {
 	 * @return
 	 */
 	public static String getSelect(String type, Integer selected_value) {
-		Map<Integer, SysDictDetail> map = DictCache.getDictdetailMap();
+		Map<Integer, SysDictDetail> map = DictCache.getCacheMap();
 		if (map == null || map.size() <= 0) {
 			return null;
 		}
@@ -91,7 +98,7 @@ public class DictCache {
 		if (key == null) {
 			return null;
 		}
-		SysDictDetail dict = dictMap.get(key);
+		SysDictDetail dict = getCacheMap().get(key);
 		return dict == null ? null : dict.getStr("detail_name");
 	}
 
@@ -107,7 +114,7 @@ public class DictCache {
 		if (key == null) {
 			return null;
 		}
-		SysDictDetail dict = dictMap.get(key);
+		SysDictDetail dict = getCacheMap().get(key);
 		return dict == null ? null : dict.getStr("detail_code");
 	}
 

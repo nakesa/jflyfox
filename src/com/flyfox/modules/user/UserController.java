@@ -8,8 +8,7 @@ import com.jfinal.plugin.activerecord.Page;
 /**
  * 用户管理
  * 
- * @author flyfox
- * 2014-2-11
+ * @author flyfox 2014-2-11
  */
 public class UserController extends BaseController {
 
@@ -17,26 +16,30 @@ public class UserController extends BaseController {
 
 	public void list() {
 		SysUser model = getModel(SysUser.class, "attr");
-		
-		SQLUtils sql = new SQLUtils(" from sys_user t where 1 = 1 order by userid");
-		sql.whereLike("username", model.getStr("username"));
-		sql.whereLike("realname", model.getStr("realname"));
-		Page<SysUser> page = SysUser.dao.paginate(getPaginator(), "select t.* ",
-				sql.toString().toString());
+
+		SQLUtils sql = new SQLUtils(" from sys_user t where 1 = 1 and userid != 1 ");
+
+		if (model.getAttrValues().length != 0) {
+			sql.whereLike("username", model.getStr("username"));
+			sql.whereLike("realname", model.getStr("realname"));
+		}
+
+		sql.append(" order by userid ");
+		Page<SysUser> page = SysUser.dao.paginate(getPaginator(), "select t.* ", sql.toString().toString());
 		// 下拉框
 		setAttr("page", page);
 		setAttr("attr", model);
-		render(path + "list.jsp");
+		render(path + "list.html");
 	}
 
 	public void add() {
-		render(path + "add.jsp");
+		render(path + "add.html");
 	}
 
 	public void view() {
 		SysUser model = SysUser.dao.findById(getParaToInt());
 		setAttr("model", model);
-		render(path + "view.jsp");
+		render(path + "view.html");
 	}
 
 	public void delete() {
@@ -48,7 +51,7 @@ public class UserController extends BaseController {
 	public void edit() {
 		SysUser model = SysUser.dao.findById(getParaToInt());
 		setAttr("model", model);
-		render(path + "edit.jsp");
+		render(path + "edit.html");
 	}
 
 	public void save() {

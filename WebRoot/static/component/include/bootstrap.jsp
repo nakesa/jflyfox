@@ -1,9 +1,0 @@
-<%-- bootstrap --%>
-<link rel="stylesheet" href="static/component/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="static/component/bootstrap/css/bootstrap-theme.min.css">
-<script src="static/component/bootstrap/js/bootstrap.min.js"></script>
-<script src="static/component/bootstrap/bootstrap-common.js"></script>
-
-<%-- 弹出框组件 --%>
-<link rel="stylesheet" href="static/component/bootstrap3-dialog/css/bootstrap-dialog.min.css">
-<script src="static/component/bootstrap3-dialog/js/bootstrap-dialog.min.js"></script>
