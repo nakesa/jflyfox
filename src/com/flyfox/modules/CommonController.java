@@ -15,6 +15,7 @@ import com.flyfox.util.StrUtils;
 public class CommonController extends BaseController {
 
 	private String loginPage = "/login.html";
+	private String mainPage = "/article/list";
 
 	public void index() {
 		redirect("/web");
@@ -23,7 +24,7 @@ public class CommonController extends BaseController {
 	public void admin() {
 		if (getSessionUser() != null) {
 			// 如果session存在，不再验证
-			redirect("/contact/list");
+			redirect(mainPage);
 		} else {
 			render(loginPage);
 		}
@@ -56,7 +57,7 @@ public class CommonController extends BaseController {
 		} else {
 			setSessionUser(user);
 		}
-		redirect("/contact/list");
+		redirect(mainPage);
 	}
 
 	/**

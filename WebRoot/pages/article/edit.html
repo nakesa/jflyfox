@@ -1,0 +1,91 @@
+<% 
+var headContent = {
+	include("/pages/template/head.html"){}
+%>
+<script type="text/javascript">
+	var oper ;
+	jQuery(function($) {
+		oper = new flyfox("article", "文章");
+	});
+</script>
+
+<%
+};
+var bodyContent = {
+%>
+<form name="form1" action="" method="post" class="form-horizontal"
+		enctype="multipart/form-data" role="form" onsubmit="oper.save(${model.id});">
+	<input type="hidden" name="model.id" value="${model.id}" />
+	<table class="table">
+		<% // 列表头部 %>
+			<tr>
+				<td>目录名称</td>
+				<td>
+					<select name="model.folder_id" class="form-control" >
+					${flyfox.sel(folder_json,model.folder_id!'')  }
+					</select>
+				</td>
+			</tr>
+					<tr>
+				<td>名称</td>
+				<td>
+						<input class="form-control" type="text" name="model.title" value="${model.title}" required='required' />
+				</td>
+			</tr>
+					<tr>
+				<td>排序</td>
+				<td>
+						<input class="form-control" type="NUMBER" name="model.sort" value="${model.sort}"  />
+				</td>
+			</tr>
+			<tr>
+				<td>图片
+					<% if(!strutil.isEmpty(model.image_url)){ %>
+						<a href="download/image_url/${model.image_url }" target="_blank" style="text-decoration:none;">
+							<img alt="图片" title="点击浏览" src="download/image_url/${model.image_url }" width="40" height="40">
+						</a>
+					<% } %></td>
+				<td>
+					<input type="file" accept="image/*" name="model.image_url" />
+				</td>
+			</tr>
+					<tr>
+				<td>发布时间</td>
+				<td>
+						<input class="form-control" type="DATE" name="model.publish_time" value="${model.publish_time}"  />
+				</td>
+			</tr>
+					<tr>
+				<td>发布者</td>
+				<td>
+						<input class="form-control" type="text" name="model.publish_user" value="${model.publish_user}"  />
+				</td>
+			</tr>
+					<tr>
+				<td>开始时间</td>
+				<td>
+						<input class="form-control" type="DATE" name="model.start_time" value="${model.start_time}"  />
+				</td>
+			</tr>
+					<tr>
+				<td>结束时间</td>
+				<td>
+						<input class="form-control" type="DATE" name="model.end_time" value="${model.end_time}"  />
+				</td>
+			</tr>
+		 
+		<tr>
+			<td></td>
+			<td>
+			<input type="submit" value="保 存" class="btn btn-default">
+			<button class="btn btn-default" onclick="closeIframe();">关 闭</button>
+			</td>
+		</tr>
+	</table>
+</form>
+<%}; %>
+
+<% layout("/pages/template/_layout.html",{head:headContent,body:bodyContent}){ %>
+<%} %>
+
+

@@ -1,13 +1,13 @@
-package com.flyfox.modules.column;
+/*package com.flyfox.modules.column;
 
 import com.flyfox.jfinal.base.BaseController;
 
-/**
+*//**
  * 首页文章展示
  * 
  * @author flyfox
  * 2014-2-11
- */
+ *//*
 public class ArticleController extends BaseController {
 
 	public void show() {
@@ -16,3 +16,4 @@ public class ArticleController extends BaseController {
 		renderHtml(column.getStr("content"));
 	}
 }
+*/

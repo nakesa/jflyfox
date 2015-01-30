@@ -1,6 +1,7 @@
 <% 
 	var headContent = {
 %>
+	<base href="/jflyfox/">
 	<title>Jflyfox博客</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="icon" href="favicon.ico" />
@@ -11,6 +12,7 @@
 	<meta http-equiv="keywords" content="Jflyfox博客">
 	<meta http-equiv="description" content="Jflyfox博客">
 
+	<link rel="stylesheet" href="static/web/header.css" type="text/css" media="screen, projection">
 	<link rel="stylesheet" href="static/web/home.css" type="text/css" media="screen, projection">
 
 <%
@@ -18,6 +20,30 @@
 
 var bodyContent = {
 %>
+
+	<header class="mod-topbar">
+		<div class="mod-topbar-pseudo-real">
+			<div class="wrapper-box clearfix">
+				<div class="center-box">
+					<ul class="q-menubox">
+						<% for(item in folders){ %>
+							<% if(item.type==1){ %>
+							<li class="q-menuitem  ${item.id==folders_selected?'q-selected':''} "><a href="web/${item.id}">${item.name}</a></li>
+							<% } else if(item.type==2){ %>
+							<li class="q-menuitem  ${item.id==folders_selected?'q-selected':''} "><a href="${item.jump_url}">${item.name}</a></li>
+							<% } else if(item.type==3){ %>
+							<li class="q-menuitem  ${item.id==folders_selected?'q-selected':''} "><a href="${item.jump_url}" target="_blank">${item.name}</a></li>
+							<% } else if(item.type==4){ %>
+							${item.jump_url}
+							<% } %>
+						<% } %>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	
 	<div class="x-page-container">
 		<div class="mod-diary">
 			<div class="mod-diary-top"></div>
@@ -27,7 +53,7 @@ var bodyContent = {
 				<div class="mod-diary-clip"></div>
 				<div class="mod-topspaceinfo">
 					<h1>
-						<a class="space-name" href="#">${model.title }</a>
+						<a class="space-name" href="#">${model.content }</a>
 					</h1>
 				</div>
 
@@ -39,7 +65,7 @@ var bodyContent = {
 							${item.publish_time}
 							</div>
 							<div class="item-title">
-								<a href="">${item.title}</a>
+								<a href="web/showArticle/${item.id}"  target="_blank">${item.title}</a>
 							</div>
 							<div class="item-content">${item.content }</div>
 						</div>

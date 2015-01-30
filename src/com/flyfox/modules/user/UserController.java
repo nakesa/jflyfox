@@ -3,6 +3,7 @@ package com.flyfox.modules.user;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.db.SQLUtils;
 import com.flyfox.util.DateUtils;
+import com.flyfox.util.StrUtils;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
@@ -61,7 +62,9 @@ public class UserController extends BaseController {
 			model.update();
 		} else { // 新增
 			model.remove("userid");
-			model.put("password", "123456");
+			if (StrUtils.isEmpty(model.getStr("password"))) {
+				model.put("password", "123456");
+			}
 			model.put("create_id", getSessionUser().getUserID());
 			model.put("create_time", DateUtils.getNow());
 			model.save();

@@ -1,0 +1,75 @@
+<% 
+var headContent = {
+	include("/pages/template/head.html"){}
+%>
+<script type="text/javascript">
+	var oper ;
+	jQuery(function($) {
+		oper = new flyfox("folder", "目录");
+	});
+</script>
+
+<%
+};
+var bodyContent = {
+%>
+<form name="form1" action="" method="post" class="form-horizontal"
+		role="form" onsubmit="oper.save(${model.id});">
+	<input type="hidden" name="model.id" value="${model.id}" />
+	<table class="table">
+		<% // 列表头部 %>
+			<tr>
+				<td>名称</td>
+				<td>
+						<input class="form-control" type="text" name="model.name" value="${model.name}" required='required' />
+				</td>
+			</tr>
+					<tr>
+				<td>排序</td>
+				<td>
+						<input class="form-control" type="NUMBER" name="model.sort" value="${model.sort}"  />
+				</td>
+			</tr>
+					<tr>
+				<td>状态</td>
+				<td>
+						<% var status_data = '[{"key":"1","value":"显示"},{"key":"2","value":"隐藏"}]'; %>
+						${flyfox.radio(status_data,'model.status',model.status!'')  }
+				</td>
+			</tr>
+					<tr>
+				<td>类型</td>
+				<td>
+					<select name="model.type" class="form-control" >
+					${flyfox.dictSelect('folderType' , model.type!'')  }
+					</select>
+								</td>
+			</tr>
+					<tr>
+				<td>地址</td>
+				<td>
+						<input class="form-control" type="text" name="model.jump_url" value="${model.jump_url}"  />
+				</td>
+			</tr>
+					<tr>
+				<td>说明</td>
+				<td>
+					<textarea class="form-control" rows="3" cols="30" name="model.content">${model.content}</textarea>
+				</td>
+			</tr>
+		 
+		<tr>
+			<td></td>
+			<td>
+			<input type="submit" value="保 存" class="btn btn-default">
+			<button class="btn btn-default" onclick="closeIframe();">关 闭</button>
+			</td>
+		</tr>
+	</table>
+</form>
+<%}; %>
+
+<% layout("/pages/template/_layout.html",{head:headContent,body:bodyContent}){ %>
+<%} %>
+
+
