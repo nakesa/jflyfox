@@ -124,7 +124,7 @@ html {
 }
 
 .mod-blogitem .item-title {
-	float:left;
+	/** float:left; **/
 	margin-left: 5px;
 	margin-top: 3px;
 	width: 722px;
