@@ -8,7 +8,6 @@ import com.flyfox.component.beelt.BeeltFunctions;
 import com.flyfox.jfinal.config.JflyfoxConfig;
 import com.flyfox.jfinal.template.CRUDFactory;
 import com.flyfox.jfinal.template.TemplateUtils;
-import com.flyfox.modules.column.ColumnCache;
 import com.flyfox.modules.dict.DictCache;
 import com.flyfox.modules.user.UserCache;
 import com.flyfox.modules.user.UserInterceptor;
@@ -65,7 +64,6 @@ public class BaseConfig extends JflyfoxConfig {
 	public static void reset() {
 		DictCache.init();
 		UserCache.init();
-		ColumnCache.init();
 	}
 
 }
