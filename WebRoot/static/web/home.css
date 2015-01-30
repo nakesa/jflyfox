@@ -145,7 +145,7 @@ html {
 	margin-top: 5px;
 	margin-left: 188px;
 	font-size: 12px;
-	line-height: 24px;
+	/** line-height: 24px; **/
 	overflow: hidden;
 }
 

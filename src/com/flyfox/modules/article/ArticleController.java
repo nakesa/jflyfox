@@ -55,6 +55,7 @@ public class ArticleController extends BaseController {
 			sql.whereLike("name", model.getStr("name"));
 			sql.whereEquals("folder_id", model.getInt("folder_id"));
 		}
+		sql.append(" order by folder_id,sort ");
 
 		Page<TbArticle> page = TbArticle.dao.paginate(getPaginator(), "select t.* ", //
 				sql.toString().toString());

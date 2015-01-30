@@ -27,7 +27,7 @@ public class FolderController extends BaseController {
 			sql.whereLike("name", model.getStr("name"));
 			sql.whereEquals("status", model.getInt("status"));
 		}
-
+		sql.append(" order by sort,id ");
 		Page<TbFolder> page = TbFolder.dao.paginate(getPaginator(), "select t.* ", //
 				sql.toString().toString());
 
