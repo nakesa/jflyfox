@@ -22,6 +22,11 @@
 
 # 更新说明
 
+>## 2015-01-30
+> 1. 去除ueditor改为umeditor
+> 2. 删除原有的文章管理
+> 3. 对初始化sql进行优化
+> 4. 去除ztree避免有树结构
 
 >## jflyfox2.0
 > 1. 模板全面更新为beelt，后台继承最新jflyfox_Jfinal.
