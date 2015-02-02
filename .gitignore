@@ -6,3 +6,4 @@
 # *.ear
 /logs
 /autopath
+/target
