@@ -1,4 +1,3 @@
-delete from tb_column;
 delete from sys_user;
 delete from sys_dict_detail;
 delete from sys_dict;
