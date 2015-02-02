@@ -8,14 +8,18 @@ commit;
 
 
 INSERT INTO `sys_dict` VALUES ('1', '目录类型', 'folderType', null);
+INSERT INTO `sys_dict` VALUES ('2', '目录类型', 'articleType', null);
 
 INSERT INTO `sys_dict_detail` VALUES ('1', 'folderType', '目录', '1', '1', null, null, null, null, '2015-01-30', '1');
 INSERT INTO `sys_dict_detail` VALUES ('2', 'folderType', 'a标签', '2', '2', null, null, null, null, '2015-01-30', '1');
 INSERT INTO `sys_dict_detail` VALUES ('3', 'folderType', 'a标签target', '3', '3', null, null, null, null, '2015-01-30', '1');
 INSERT INTO `sys_dict_detail` VALUES ('4', 'folderType', 'html标签', '4', '4', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('11', 'articleType', '正常', '1', '1', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('12', 'articleType', '预览', '2', '2', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('13', 'articleType', '程序', '3', '3', null, null, null, null, '2015-01-30', '1');
 
-INSERT INTO `sys_user` VALUES ('1', 'admin', 'admin123', null, null, null, null, null, '1', '2014-02-27 16:26:46');
-INSERT INTO `sys_user` VALUES ('2', 'test', '123456', 'test', null, null, null, null, '1', '2014-02-27 16:26:46');
+INSERT INTO `sys_user` VALUES ('1', 'admin', 'admin123', '系统管理员', null, null, null, null, '1', '2014-02-27 16:26:46');
+INSERT INTO `sys_user` VALUES ('2', 'test', '123456', '测试用户', null, null, null, null, '1', '2014-02-27 16:26:46');
 
 INSERT INTO `tb_folder` VALUES ('1', '首页', '', 'FLY的狐狸', '1', '1', '1', null, '2015-01-28 16:54:03', '2015-01-28', '1');
 INSERT INTO `tb_folder` VALUES ('2', '我的英语', '', null, '2', '1', '1', null, '2015-01-28 16:54:03', '2015-01-28', '1');

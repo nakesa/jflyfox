@@ -27,7 +27,7 @@ body { padding-top: 60px; }
       </ul>
       
       <ul class="nav navbar-nav navbar-right" style="margin-right: 2%">
-        <li><p class="navbar-text">${session.session_user.username }，您好</p></li>
+        <li><p class="navbar-text">${session.session_user.realname!session.session_user.username }，您好</p></li>
         <li><button type="button" onclick="window.location.href='logout'" class="btn btn-default navbar-btn">退出</button></li>
       </ul>
     </div><!-- /.navbar-collapse -->

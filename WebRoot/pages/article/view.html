@@ -27,6 +27,11 @@ var bodyContent = {
 		<td>${flyfox.radioValue(status_data,model.status!'')  }</td> 
 	</tr>
 	<tr>
+		<td>类型</td>
+		<td>${flyfox.dictValue(model.type )  }</td>
+			</tr>
+	<tr>
+	<tr>
 		<td>图片</td>
 		<td>
 			<% if(!strutil.isEmpty(model.image_url)){ %>

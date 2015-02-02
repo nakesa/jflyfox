@@ -47,6 +47,14 @@ var bodyContent = {
 			</td>
 		</tr>
 		<tr>
+			<td>类型</td>
+			<td>
+			<select name="model.type" class="form-control" >
+			${flyfox.dictSelect('articleType' , 11)  }
+			</select>
+			</td>
+		</tr>
+		<tr>
 			<td>图片</td>
 			<td>
 				<% if(!strutil.isEmpty(model.image_url)){ %>
@@ -61,13 +69,13 @@ var bodyContent = {
 		<tr>
 			<td>发布时间</td>
 			<td>
-			<input class="form-control" type="DATE" name="model.publish_time" value="${model.publish_time}"  />
+			<input class="form-control" type="DATE" name="model.publish_time" value="${flyfox.getNow() }"  />
 			</td>
 		</tr>
 		<tr>
 			<td>发布者</td>
 			<td>
-			<input class="form-control" type="text" name="model.publish_user" value="${session.session_user.username!'' }"  />
+			<input class="form-control" type="text" name="model.publish_user" value="${session.session_user.realname!session.session_user.username }"  />
 			</td>
 		</tr>
 		<tr>

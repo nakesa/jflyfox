@@ -46,6 +46,14 @@ var bodyContent = {
 				</td>
 			</tr>
 			<tr>
+				<td>类型</td>
+				<td>
+					<select name="model.type" class="form-control" >
+					${flyfox.dictSelect('articleType' , model.type!'')  }
+					</select>
+								</td>
+			</tr>
+			<tr>
 				<td>图片
 					<% if(!strutil.isEmpty(model.image_url)){ %>
 						<a href="download/image_url/${model.image_url }" target="_blank" style="text-decoration:none;">

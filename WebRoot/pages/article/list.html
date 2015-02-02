@@ -75,7 +75,8 @@ var bodyContent = {
 					<th>目录名称</th> 
 					<th>名称</th> 
 					<th>排序</th> 
-					<th>状态</th> 
+					<th>状态</th>
+					<th>类型</th> 
  					<th>发布时间</th> 
 					<th>发布者</th> 
 					<th>开始时间</th> 
@@ -93,6 +94,7 @@ var bodyContent = {
 					<td>${item.sort}</td>
 					<% var status_data = '[{"key":"1","value":"显示"},{"key":"2","value":"隐藏"}]'; %>
 					<td>${flyfox.radioValue(status_data,item.status!'')  }</td> 
+					<td>${flyfox.dictValue(item.type!'' )  }</td>
 	 				<td>${item.publish_time}</td>
 					<td>${item.publish_user}</td> 
 					<td>${item.start_time}</td>

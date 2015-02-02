@@ -19,13 +19,14 @@ public class Home extends BaseController {
 		}
 		// 根目录
 		setAttr("model", TbFolder.dao.findById(TbFolder.ROOT));
-		
+
 		// 目录列表
 		List<TbFolder> folders = TbFolder.dao.findByWhere(" where status = 1 order by sort");
 		setAttr("folders", folders);
 		setAttr("folders_selected", folder_id);
-		// 数据列表
-		List<TbArticle> articles = TbArticle.dao.findByWhere(" where status = 1 and folder_id = ? " //
+		// 数据列表,只查询展示的和类型为11,12的
+		List<TbArticle> articles = TbArticle.dao.findByWhere(" where status = 1 and type in (11,12) " //
+				+ "and folder_id = ? " //
 				+ "order by sort,create_time desc", folder_id);
 		setAttr("list", articles);
 

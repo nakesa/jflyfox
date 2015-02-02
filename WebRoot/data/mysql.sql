@@ -94,7 +94,7 @@ CREATE TABLE tb_article
   content text comment '文件内容', 
   count_view int(11) default '0' comment '浏览数',
   count_comment int(11) default '0' comment '评论数',
-  type  int(11) default '1' comment '类型',
+  type  int(11) default '1' comment '类型：1 正常 2 预览展示概述 3 程序调用处理',
   status varchar(20) default '1' comment '状态：2 隐藏 1 显示',
   sort  int(11) default '1' comment '排序',
   image_url varchar(256) default null comment '图片路径',

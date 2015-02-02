@@ -67,7 +67,12 @@ var bodyContent = {
 							<div class="item-title">
 								<a href="web/showArticle/${item.id}"  target="_blank">${item.title}</a>
 							</div>
-							<div class="item-content">${item.content }</div>
+							<% if(item.type==12) { %>
+							<div class="item-content">${item.content!'' }</div>
+							<% } else { // type ==11 %>
+							<% var article_content = flyfox.showHTML(item.content,200,'  ......'); %>
+							<div class="item-content">${article_content!'' }<br><br><a href="web/showArticle/${item.id}"  target="_blank">查看全部</a></div>
+							<% } %>
 						</div>
 					<% } %>
 
