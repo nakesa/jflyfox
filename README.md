@@ -2,8 +2,8 @@
 ------------------------
 
 #### 本网站后台基于Jfinal开发，模板基于beelt，数据库为Mysql。 ####
-#### 演示地址：http://jflyfox.oschina.mopaas.com/(http://jflyfox.oschina.mopaas.com/) ####
-#### 管理地址：http://jflyfox.oschina.mopaas.com/admin(http://jflyfox.oschina.mopaas.com/admin)  ####
+#### 演示地址：[http://jflyfox.oschina.mopaas.com/](http://jflyfox.oschina.mopaas.com/) ####
+#### 管理地址：[http://jflyfox.oschina.mopaas.com/admin](http://jflyfox.oschina.mopaas.com/admin)  ####
 #### 测试账号: admin/admin123 或 test/123456  ####
 
 # 一、平台部署说明 #
