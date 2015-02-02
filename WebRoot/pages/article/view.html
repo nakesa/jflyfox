@@ -22,6 +22,11 @@ var bodyContent = {
 		<td>${model.sort}</td>
 	</tr>
 	<tr>
+		<td>状态</td>
+		<% var status_data = '[{"key":"1","value":"显示"},{"key":"2","value":"隐藏"}]'; %>
+		<td>${flyfox.radioValue(status_data,model.status!'')  }</td> 
+	</tr>
+	<tr>
 		<td>图片</td>
 		<td>
 			<% if(!strutil.isEmpty(model.image_url)){ %>

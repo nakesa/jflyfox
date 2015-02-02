@@ -68,7 +68,7 @@ public class TableConfig {
 				.setFormType(FormType.TEXTAREA).setOperate((byte) 0));
 		article.setAttr(new ModelAttr().setKey("sort").setName("排序").setInputType(InputType.NUMBER));
 		String articleStatus = TemplateUtils.radioJson("1", "显示", "2", "隐藏");
-		folder.setAttr(new ModelAttr().setKey("status").setName("状态") //
+		article.setAttr(new ModelAttr().setKey("status").setName("状态") //
 				.setInputType(InputType.RADIO).setFormTypeData(articleStatus).addSearch());
 
 		article.setAttr(new ModelAttr().setKey("publish_time").setName("发布时间").setInputType(InputType.DATE));

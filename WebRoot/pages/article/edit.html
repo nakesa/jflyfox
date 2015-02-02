@@ -39,6 +39,13 @@ var bodyContent = {
 				</td>
 			</tr>
 			<tr>
+				<td>状态</td>
+				<td>
+						<% var status_data = '[{"key":"1","value":"显示"},{"key":"2","value":"隐藏"}]'; %>
+						${flyfox.radio(status_data,'model.status',model.status!'')  }
+				</td>
+			</tr>
+			<tr>
 				<td>图片
 					<% if(!strutil.isEmpty(model.image_url)){ %>
 						<a href="download/image_url/${model.image_url }" target="_blank" style="text-decoration:none;">

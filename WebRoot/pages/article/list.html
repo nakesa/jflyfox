@@ -43,11 +43,17 @@ var bodyContent = {
 				${flyfox.sel(folder_json,attr.folder_id!'')  }
 				</select>
 			</div>
-				<div class="form-group">
+			<div class="form-group">
 					<input class="form-control" type="text" name="attr.title" value="${attr.title!''}" 
 						placeholder="请输入名称" required='required' />
 			</div>
-	 
+	 		<div class="form-group">
+					<select name="attr.status" class="form-control" >
+					<option value="-1">--请选择--</option>
+					<% var status_data = '[{"key":"1","value":"显示"},{"key":"2","value":"隐藏"}]'; %>
+					${flyfox.sel(status_data,attr.status!'')  }
+					</select>
+			</div>
 			
 			<button type="button" class="btn btn-default" onclick="oper.list();" name="search">
 			 		<span class="glyphicon glyphicon-search"></span> 查 询
@@ -69,6 +75,7 @@ var bodyContent = {
 					<th>目录名称</th> 
 					<th>名称</th> 
 					<th>排序</th> 
+					<th>状态</th> 
  					<th>发布时间</th> 
 					<th>发布者</th> 
 					<th>开始时间</th> 
@@ -84,6 +91,8 @@ var bodyContent = {
 					<td>${flyfox.selValue(folder_json,item.folder_id!'')  }</td>
 					<td>${item.title}</td> 
 					<td>${item.sort}</td>
+					<% var status_data = '[{"key":"1","value":"显示"},{"key":"2","value":"隐藏"}]'; %>
+					<td>${flyfox.radioValue(status_data,item.status!'')  }</td> 
 	 				<td>${item.publish_time}</td>
 					<td>${item.publish_user}</td> 
 					<td>${item.start_time}</td>
