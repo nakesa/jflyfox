@@ -6,14 +6,16 @@
 #### 管理地址：[http://jflyfox.oschina.mopaas.com/admin](http://jflyfox.oschina.mopaas.com/admin)  ####
 #### 测试账号: admin/admin123 或 test/123456  ####
 
+# 首页、登陆、后台展示 #
+![image](http://static.oschina.net/uploads/space/2015/0202/132448_RrZa_166354.jpg)
+![image](http://static.oschina.net/uploads/space/2015/0202/132545_qlWx_166354.jpg)
+![image](http://static.oschina.net/uploads/space/2015/0202/132559_bxcq_166354.jpg)
+
 # 一、平台部署说明 #
 ------------------------
-## **1、下载jflyfox项目** ##
-#### 1）数据库配置文件：/jflyfox/src/conf/db.properties ####
-
-## **2、数据库安装** ##
-#### 1）安装mysql数据库，创建用户和数据库。 ####
-#### 2）运行mysql.sql和mysql_data.sql文件####
+>## 1）数据库配置文件：/jflyfox/src/conf/db.properties ####
+>## 2）安装mysql数据库，创建用户和数据库。 ####
+>## 3）运行mysql.sql和mysql_data.sql文件####
 
 # 鸣谢
  1. [JFinal](http://www.oschina.net/p/jfinal)
