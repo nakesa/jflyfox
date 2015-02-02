@@ -43,7 +43,7 @@ var bodyContent = {
 			<td>状态</td>
 			<td>
 			<% var status_data = '[{"key":"1","value":"显示"},{"key":"2","value":"隐藏"}]'; %>	
-			${flyfox.radio(status_data,'model.status',model.status!'1')  }
+			${flyfox.radio(status_data,'model.status',1)  }
 			</td>
 		</tr>
 		<tr>
@@ -67,7 +67,7 @@ var bodyContent = {
 		<tr>
 			<td>发布者</td>
 			<td>
-			<input class="form-control" type="text" name="model.publish_user" value="${model.publish_user }"  />
+			<input class="form-control" type="text" name="model.publish_user" value="${session.session_user.username!'' }"  />
 			</td>
 		</tr>
 		<tr>
