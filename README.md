@@ -13,9 +13,9 @@
 
 # 一、平台部署说明 #
 ------------------------
-> 1) 数据库配置文件：/jflyfox/src/conf/db.properties ####
-> 2) 安装mysql数据库，创建用户和数据库。 ####
-> 3) 运行mysql.sql和mysql_data.sql文件####
+> 1. 数据库配置文件：/jflyfox/src/conf/db.properties。
+> 2. 安装mysql数据库，创建用户和数据库。
+> 3. 运行mysql.sql和mysql_data.sql文件。
 
 # 鸣谢
  1. [JFinal](http://www.oschina.net/p/jfinal)
