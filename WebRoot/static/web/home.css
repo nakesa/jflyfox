@@ -162,3 +162,19 @@ html {
 	zoom: 1;
 	font-style: italic;
 }
+
+
+/********************* TOP start ***********************/
+#scrollTop {
+	width: 37px;
+	height: 38px;
+	position: fixed;
+	right: 20px;
+	bottom: 52px;
+	background: url(top_1205.png) no-repeat 1px 0;
+}
+
+#scrollTop:hover{
+	background: url(top_1205.png) no-repeat -38px 0px;
+}
+/********************* TOP end ***********************/
