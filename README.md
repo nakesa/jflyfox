@@ -23,6 +23,8 @@
  3. [oschina](http://www.oschina.net/)
 
 # 更新说明
+>## 2015-02-13
+> 1. 首页加入回到顶部功能
 
 >## jflyfox2.1 2015-02-02
 > 1. 发布jflyfox2.1。
