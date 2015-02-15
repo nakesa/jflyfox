@@ -107,6 +107,8 @@ CREATE TABLE tb_article
   create_id  int(11) DEFAULT 0 COMMENT '创建者',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章';
+--主键从200开始
+alter table tb_article AUTO_INCREMENT=200;
 
 /**
  * 联系人表

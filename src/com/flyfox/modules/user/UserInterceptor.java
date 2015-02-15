@@ -46,7 +46,8 @@ public class UserInterceptor implements Interceptor {
 				&& !path_tmp.startsWith("admin") // 登录
 				&& !path_tmp.endsWith("trans") // 过期
 				&& !path_tmp.endsWith("logout") // 登出
-				&& !path_tmp.startsWith("web") // 登出
+				&& !path_tmp.startsWith("web") // 首页
+				&& !path_tmp.startsWith("oauth2") // oauth2认证
 		) {
 			if (JFinal.me().getConstants().getDevMode()) {
 				SysUser user = SysUser.dao.findFirst("select * from sys_user where userid = 1");
