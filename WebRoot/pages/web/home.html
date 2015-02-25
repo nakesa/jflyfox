@@ -23,43 +23,7 @@
 var bodyContent = {
 %>
 
-	<header id="container" class="mod-topbar">
-		<div class="mod-topbar-pseudo-real">
-			<div class="wrapper-box clearfix">
-				<div class="center-box">
-					<ul class="q-menubox">
-						<% if (!isEmpty(folders)){ %>
-						<% for(item in folders){ %>
-							<% if(item.type==1){ %>
-							<li class="q-menuitem  ${item.id==folders_selected?'q-selected':''} "><a href="web/${item.id}">${item.name}</a></li>
-							<% } else if(item.type==2){ %>
-							<li class="q-menuitem  ${item.id==folders_selected?'q-selected':''} "><a href="${item.jump_url}">${item.name}</a></li>
-							<% } else if(item.type==3){ %>
-							<li class="q-menuitem  ${item.id==folders_selected?'q-selected':''} "><a href="${item.jump_url}" target="_blank">${item.name}</a></li>
-							<% } else if(item.type==4){ %>
-							${item.jump_url}
-							<% } %>
-						<% } %>
-						<% } %>
-					</ul>
-				</div>
-				
-				<div class="right-box">
-					<ul class="q-menubox">
-						<% if(isEmpty(session.session_user)){ %>
-						<li class="q-menuitem"><a href="web/login">登陆</a></li>
-						<li class="q-menuitem"><a href="web/regist" >注册</a></li>
-						<% } else { %>
-						<li class="q-menuitem"><a href="web/message">我的消息</a></li>
-						<li class="q-menuitem"><a href="web/person/${session.session_user.userid!'0'}" >${session.session_user.realname!session.session_user.username }</a></li>
-						<li class="q-menuitem"><a href="web/logout" >退出</a></li>
-						<% } %>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</header>
-	
+<%  include("/pages/web/home_header.html"){} %>	
 	
 	<div class="x-page-container">
 		<div class="mod-diary">
@@ -70,7 +34,7 @@ var bodyContent = {
 				<div class="mod-diary-clip"></div>
 				<div class="mod-topspaceinfo">
 					<h1>
-						<a class="space-name" href="#">${model.content }</a>
+						<a class="space-name" href="javascript:void(0);">${model.content }</a>
 					</h1>
 				</div>
 

@@ -31,7 +31,7 @@ public class UserCache {
 		Map<Integer, SysUser> cacheMap = new HashMap<Integer, SysUser>();
 		List<SysUser> userList = SysUser.dao.findByWhere(" order by userid ");
 		for (SysUser user : userList) {
-			cacheMap.put(user.getInt("pid"), user);
+			cacheMap.put(user.getInt("userid"), user);
 		}
 		cache.add("map", cacheMap);
 	}
