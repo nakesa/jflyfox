@@ -18,8 +18,8 @@ INSERT INTO `sys_dict_detail` VALUES ('11', 'articleType', '正常', '1', '1', n
 INSERT INTO `sys_dict_detail` VALUES ('12', 'articleType', '预览', '2', '2', null, null, null, null, '2015-01-30', '1');
 INSERT INTO `sys_dict_detail` VALUES ('13', 'articleType', '程序', '3', '3', null, null, null, null, '2015-01-30', '1');
 
-INSERT INTO `sys_user` VALUES ('1', 'admin', 'admin123', '系统管理员', null, null, null, null, '1', '2014-02-27 16:26:46');
-INSERT INTO `sys_user` VALUES ('2', 'test', '123456', '测试用户', null, null, null, null, '1', '2014-02-27 16:26:46');
+INSERT INTO `sys_user` VALUES ('1', 'admin', 'LHmWhtwF/dGhJxqKJ8QXRg==', '系统管理员', '1','1', null, null, null,null, null, null, '1', '2014-02-27 16:26:46');
+INSERT INTO `sys_user` VALUES ('2', 'test', 'hZLBUnV3xZo=', '测试用户', '2','1', null, null, null,null, null, null, '1', '2014-02-27 16:26:46');
 
 INSERT INTO `tb_folder` VALUES ('1', '首页', '', 'FLY的狐狸', '1', '1', '1', null, '2015-01-28 16:54:03', '2015-01-28', '1');
 INSERT INTO `tb_folder` VALUES ('2', '我的英语', '', null, '2', '1', '1', null, '2015-01-28 16:54:03', '2015-01-28', '1');
