@@ -6,7 +6,6 @@ import org.beetl.ext.jfinal.BeetlRenderFactory;
 import com.beetl.functions.BeetlStrUtils;
 import com.flyfox.component.beelt.BeeltFunctions;
 import com.flyfox.jfinal.config.JflyfoxConfig;
-import com.flyfox.jfinal.template.CRUDFactory;
 import com.flyfox.jfinal.template.TemplateUtils;
 import com.flyfox.modules.dict.DictCache;
 import com.flyfox.modules.user.UserCache;
@@ -54,11 +53,6 @@ public class BaseConfig extends JflyfoxConfig {
 	@Override
 	public void afterJFinalStart() {
 		reset();
-		// 读取配置文件
-		CRUDFactory.instance().clear();
-		CRUDFactory.instance().init();
-		// 类注入
-		// TableConfig.init();
 	}
 
 	public static void reset() {
