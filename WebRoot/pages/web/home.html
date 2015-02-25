@@ -28,6 +28,7 @@ var bodyContent = {
 			<div class="wrapper-box clearfix">
 				<div class="center-box">
 					<ul class="q-menubox">
+						<% if (!isEmpty(folders)){ %>
 						<% for(item in folders){ %>
 							<% if(item.type==1){ %>
 							<li class="q-menuitem  ${item.id==folders_selected?'q-selected':''} "><a href="web/${item.id}">${item.name}</a></li>
@@ -38,6 +39,20 @@ var bodyContent = {
 							<% } else if(item.type==4){ %>
 							${item.jump_url}
 							<% } %>
+						<% } %>
+						<% } %>
+					</ul>
+				</div>
+				
+				<div class="right-box">
+					<ul class="q-menubox">
+						<% if(isEmpty(session.session_user)){ %>
+						<li class="q-menuitem"><a href="web/login">登陆</a></li>
+						<li class="q-menuitem"><a href="web/regist" >注册</a></li>
+						<% } else { %>
+						<li class="q-menuitem"><a href="web/message">我的消息</a></li>
+						<li class="q-menuitem"><a href="web/person/${session.session_user.userid!'0'}" >${session.session_user.realname!session.session_user.username }</a></li>
+						<li class="q-menuitem"><a href="web/logout" >退出</a></li>
 						<% } %>
 					</ul>
 				</div>

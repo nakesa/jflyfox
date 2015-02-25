@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
+import com.flyfox.modules.CommonController;
 import com.flyfox.modules.article.TbArticle;
 import com.flyfox.modules.folder.TbFolder;
 
@@ -45,6 +46,53 @@ public class Home extends BaseController {
 
 		renderAuto(path + "show_article.html");
 
+	}
+
+	/**
+	 * 登陆
+	 */
+	public void login() {
+		setAttr("pre_page", getPrePage());
+		render(CommonController.loginPage);
+	}
+
+	/**
+	 * 注册
+	 */
+	public void regist() {
+		setAttr("pre_page", getPrePage());
+		render(CommonController.registPage);
+	}
+
+	/**
+	 * 登出
+	 */
+	public void logout() {
+		removeSessionUser();
+		redirect(getPrePage());
+	}
+
+	public String getPrePage() {
+		return getRequest().getHeader("Referer");
+	}
+	
+	/**
+	 * 我的消息
+	 */
+	public void message() {
+		index();
+	}
+	
+	/**
+	 * 个人信息
+	 */
+	public void person() {
+		int id = getParaToInt();
+		if (id <= 0 ) {
+			index();
+		} else {
+			index();
+		}
 	}
 
 }

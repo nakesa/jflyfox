@@ -110,7 +110,7 @@
 		<!-- 打包目录 -->
 		<directory>target</directory>
 		<!-- 打包名称 -->
-		<finalName>${artifactId}</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

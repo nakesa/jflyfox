@@ -6,17 +6,14 @@ CONSTANTS.TEST=true
 #\u9ed8\u8ba4\u5206\u9875\uff1a\u6bcf\u9875\u663e\u793a\u6570\u91cf
 CONSTANTS.DEFAULT_PAGE_SIZE=20
 #\u5f00\u53d1\u6a21\u5f0f
-CONSTANTS.DEV_MODE=false
+CONSTANTS.DEV_MODE=true
 
 ########################ATTR
 ATTR.SESSION_NAME=session_user
 ATTR.SESSION_IS_MOILE=flyfox_is_moile
 ATTR.SESSION_NAME=session_user
-ATTR.ATTR_NAME=attr
 ATTR.MODEL_NAME=model
-#\u624b\u673a\u8bbf\u95ee\u524d\u7f00
-ATTR.PATH_MOBILE=
-#\u7535\u8111\u8bbf\u95ee\u524d\u7f00
+ATTR.PATH_MOBILE=mobile
 ATTR.PATH_PC=
 
 #######################PATH

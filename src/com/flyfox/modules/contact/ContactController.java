@@ -15,7 +15,7 @@ public class ContactController extends BaseController {
 	private static final String path = "/pages/contact/";
 
 	public void list() {
-		TbContact model = getModel(TbContact.class, "attr");
+		TbContact model = getModelByAttr(TbContact.class);
 
 		SQLUtils sql = new SQLUtils(" from tb_contact t where 1=1 ");
 		if (model.getAttrValues().length != 0) {

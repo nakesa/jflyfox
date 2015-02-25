@@ -7,7 +7,7 @@
 var oper ;
 jQuery(function($) {
 	oper = new flyfox("user", "用户");
-	oper.height = 2 * 60 + 90; // 重设高度
+	oper.height = 7 * 60 + 90; // 重设高度
 	if(oper.height < 300) oper.height = 300;
 	if(oper.height > 500) oper.height = 500;
 	paginator = function(page) {
@@ -38,6 +38,13 @@ var bodyContent = {
 					<input class="form-control" type="text" name="attr.realname" value="${attr.realname!''}" 
 						placeholder="请输入真实姓名"  />
 			</div>
+				<div class="form-group">
+				<% var usertype_data = '[{"key":"1","value":"管理员"},{"key":"2","value":"普通用户"},{"key":"3","value":"前台用户"},{"key":"4","value":"第三方用户"},{"key":"9","value":"其他用户"}]'; %>
+				<select name="attr.usertype" class="form-control" >
+				<option value="-1">--请选择--</option>
+				${flyfox.sel(usertype_data,attr.usertype!'')  }
+				</select>
+			</div>
 	 
 			
 			<button type="button" class="btn btn-default" onclick="oper.list();" name="search">
@@ -59,6 +66,10 @@ var bodyContent = {
 					<%  // 列表头部 %>
 					<th>登陆名</th> 
 					<th>真实姓名</th> 
+					<th>状态</th> 
+					<th>Email</th> 
+					<th>手机号</th> 
+					<th>说明</th> 
  
 					<th>操作</th>
 				</tr>
@@ -70,6 +81,17 @@ var bodyContent = {
 					<%  // 列表内容 %>
 					<td>${item.username}</td> 
 					<td>${item.realname}</td> 
+					<% var usertype_data = '[{"key":"1","value":"管理员"},{"key":"2","value":"普通用户"},{"key":"3","value":"前台用户"},{"key":"4","value":"第三方用户"},{"key":"9","value":"其他用户"}]'; %>
+				<td>${flyfox.selValue(usertype_data,item.usertype!'')  }</td>
+					<td>${item.email}</td> 
+					<td>${item.tel}</td> 
+					<td title="${item.remark}">
+					<% if (strutil.length(item.remark) > 6) { %>
+						${strutil.subStringTo(item.remark, 0, 6)}...
+					<% 	} else { %>
+						${item.remark}
+					<%  } %>
+					</td> 
 	 
 					<td>
 					<a href="javascript:void(0);" class="btn btn-sm btn-success" onclick="oper.view(${item.userid});">查看</a> 

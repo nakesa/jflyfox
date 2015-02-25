@@ -559,3 +559,38 @@ a.ui-button {
 html {
 	background: 0
 }
+
+/**************** 第三方登陆 *****************/
+.ui-form-other .login_text {
+	float: left;
+	font-size: 12px;
+	color: #ff9800;
+	font-weight: 700;
+}
+
+.ui-form-other .login_qq {
+	display: block;
+	float: left;
+	margin-left:5px;
+	height:16px;
+	width:16px;
+	background:url(../oauth2/qq_logo.png);
+}
+
+.ui-form-other .login_baidu {
+	display: block;
+	float: left;
+	margin-left:5px;
+	height:16px;
+	width:16px;
+	background:url(../oauth2/baidu_logo.png);
+}
+
+.ui-form-other .login_sina {
+	display: block;
+	float: left;
+	margin-left:5px;
+	height:16px;
+	width:16px;
+	background:url(../oauth2/sina_logo.png);
+}

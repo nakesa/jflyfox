@@ -43,9 +43,9 @@ public class UserInterceptor implements Interceptor {
 
 		if (StrUtils.isNotEmpty(path_tmp) //
 				&& path_tmp.indexOf("login") < 0 // 登录
-				&& !path_tmp.startsWith("admin") // 登录
 				&& !path_tmp.endsWith("trans") // 过期
 				&& !path_tmp.endsWith("logout") // 登出
+				&& !path_tmp.startsWith("admin") // 登录
 				&& !path_tmp.startsWith("web") // 首页
 				&& !path_tmp.startsWith("oauth2") // oauth2认证
 		) {

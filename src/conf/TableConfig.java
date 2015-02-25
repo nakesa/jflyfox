@@ -72,7 +72,7 @@ public class TableConfig {
 				.setInputType(InputType.RADIO).setFormTypeData(articleStatus).addSearch());
 		article.setAttr(new ModelAttr().setKey("type").setName("类型") //
 				.setFormType(FormType.DICT).setFormTypeData("articleType"));
-		
+
 		article.setAttr(new ModelAttr().setKey("publish_time").setName("发布时间").setInputType(InputType.DATE));
 		article.setAttr(new ModelAttr().setKey("publish_user").setName("发布者"));
 		article.setAttr(new ModelAttr().setKey("start_time").setName("开始时间").setInputType(InputType.DATE));
@@ -103,7 +103,17 @@ public class TableConfig {
 				.setFormTypeVaild("required='required'"));
 		user.setAttr(new ModelAttr().setKey("realname").setName("真实姓名").addSearch());
 		user.setAttr(new ModelAttr().setKey("password").setName("密码") //
-				.setInputType(InputType.PASSWORD).setFormTypeVaild("required='required'"));
+				.setInputType(InputType.PASSWORD).setFormTypeVaild("required='required'") //
+				.removeEdit().removeList().removeAdd());
+		String state = TemplateUtils.selJson("1", "管理员", "2", "普通用户", "3", //
+				"前台用户", "4", "第三方用户", "9", "其他用户");
+		user.setAttr(new ModelAttr().setKey("usertype").setName("状态") //
+				.setFormType(FormType.SELECT).setFormTypeData(state).addSearch());
+		user.setAttr(new ModelAttr().setKey("email").setName("Email"));
+		user.setAttr(new ModelAttr().setKey("tel").setName("手机号"));
+		user.setAttr(new ModelAttr().setKey("address").setName("地址").removeList());
+		
+		user.setAttr(new ModelAttr().setKey("remark").setName("说明").setFormType(FormType.TEXTAREA));
 		add(user);
 	}
 

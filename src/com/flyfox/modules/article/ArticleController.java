@@ -47,13 +47,14 @@ public class ArticleController extends BaseController {
 	}
 
 	public void list() {
-		TbArticle model = getModel(TbArticle.class, "attr");
+		TbArticle model = getModelByAttr(TbArticle.class);
 
 		SQLUtils sql = new SQLUtils(" from tb_article t where 1=1 ");
 		if (model.getAttrValues().length != 0) {
 			sql.setAlias("t");
-			sql.whereLike("name", model.getStr("name"));
+			sql.whereLike("title", model.getStr("title"));
 			sql.whereEquals("folder_id", model.getInt("folder_id"));
+			sql.whereEquals("status", model.getInt("status"));
 		}
 		sql.append(" order by folder_id,sort ");
 

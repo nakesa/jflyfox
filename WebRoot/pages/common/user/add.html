@@ -32,9 +32,36 @@ var bodyContent = {
 			</td>
 		</tr>
 		<tr>
-			<td>密码</td>
+			<td>状态</td>
 			<td>
-			<input class="form-control" type="PASSWORD" name="model.password" value="${model.password}" required='required' />
+			<% var usertype_data = '[{"key":"1","value":"管理员"},{"key":"2","value":"普通用户"},{"key":"3","value":"前台用户"},{"key":"4","value":"第三方用户"},{"key":"9","value":"其他用户"}]'; %>
+			<select name="model.usertype" class="form-control" >
+			${flyfox.sel(usertype_data,model.usertype!'')  }
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td>
+			<input class="form-control" type="text" name="model.email" value="${model.email }"  />
+			</td>
+		</tr>
+		<tr>
+			<td>手机号</td>
+			<td>
+			<input class="form-control" type="text" name="model.tel" value="${model.tel }"  />
+			</td>
+		</tr>
+		<tr>
+			<td>地址</td>
+			<td>
+			<input class="form-control" type="text" name="model.address" value="${model.address }"  />
+			</td>
+		</tr>
+		<tr>
+			<td>说明</td>
+			<td>
+			<textarea class="form-control" rows="3" cols="30" name="model.remark">${model.remark}</textarea>
 			</td>
 		</tr>
  

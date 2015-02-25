@@ -1,5 +1,6 @@
 package com.flyfox.modules.user;
 
+import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.db.SQLUtils;
 import com.flyfox.util.DateUtils;
@@ -16,7 +17,7 @@ public class UserController extends BaseController {
 	private static final String path = "/pages/common/user/";
 
 	public void list() {
-		SysUser model = getModel(SysUser.class, "attr");
+		SysUser model = getModelByAttr(SysUser.class);
 
 		SQLUtils sql = new SQLUtils(" from sys_user t where 1 = 1 and userid != 1 ");
 
@@ -63,7 +64,7 @@ public class UserController extends BaseController {
 		} else { // 新增
 			model.remove("userid");
 			if (StrUtils.isEmpty(model.getStr("password"))) {
-				model.put("password", "123456");
+				model.put("password", JFlyFoxUtils.getDefaultPassword());
 			}
 			model.put("create_id", getSessionUser().getUserID());
 			model.put("create_time", DateUtils.getNow());

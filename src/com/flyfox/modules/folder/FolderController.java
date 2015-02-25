@@ -19,7 +19,7 @@ public class FolderController extends BaseController {
 	}
 
 	public void list() {
-		TbFolder model = getModel(TbFolder.class, "attr");
+		TbFolder model = getModelByAttr(TbFolder.class);
 
 		SQLUtils sql = new SQLUtils(" from tb_folder t where 1=1 ");
 		if (model.getAttrValues().length != 0) {

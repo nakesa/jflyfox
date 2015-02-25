@@ -16,7 +16,7 @@ public class DictController extends BaseController {
 	DictSvc svc = new DictSvc();
 
 	public void list() {
-		SysDictDetail attr = getModel(SysDictDetail.class, "attr");
+		SysDictDetail attr = getModelByAttr(SysDictDetail.class);
 		StringBuffer sql = new StringBuffer(" from sys_dict_detail t,sys_dict d where t.dict_type = d.dict_type ");
 		String attrVal = attr.getStr("dict_type");
 		if (StrUtils.isNotEmpty(attrVal)) {
