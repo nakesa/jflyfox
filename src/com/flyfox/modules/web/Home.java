@@ -149,7 +149,7 @@ public class Home extends BaseController {
 
 		model.update();
 		SysUser newUser = SysUser.dao.findById(userid);
-		UserCache.getUserMap().put(userid, newUser); // 设置缓存
+		UserCache.updateUser(newUser); // 设置缓存
 		setSessionUser(newUser); // 设置session
 		json.put("status", 1);// 成功
 
