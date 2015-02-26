@@ -140,6 +140,17 @@ html {
 	text-decoration: none;
 }
 
+.mod-blogitem .item-right {
+	float: right;
+	margin-right: 10px;
+}
+
+.mod-blogitem .item-right span {
+	color: gray;
+	font-size: 12px;
+	margin-right: 20px;
+}
+
 .mod-blogitem .item-content {
 	width: 722px;
 	margin-top: 5px;

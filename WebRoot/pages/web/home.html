@@ -47,6 +47,7 @@ var bodyContent = {
 							</div>
 							<div class="item-title">
 								<a href="web/showArticle/${item.id}"  target="_blank">${item.title}</a>
+								<div class="item-right"><span>浏览量(${item.count_view!'0'})</span><span>评论(${item.count_comment!'0'})</span></div>
 							</div>
 							<% if(item.type==12) { %>
 							<div class="item-content">${item.content!'' }</div>
