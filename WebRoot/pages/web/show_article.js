@@ -51,23 +51,24 @@ $(function() {
 });
 
 function oper_del_comment(comment_id,article_id) {
-	jQuery.ajax({
-		type:'POST',
-		url:'web/comment_del',
-		data:"model.id=" + comment_id + "&model.article_id=" + article_id,
-		success:function(data){
-			if(data.status==1){
-				$('#'+comment_id+'_'+article_id).remove();
-				alert('删除成功');
-			} else {
-				alert('删除失败：'+data.msg);
+	if(window.confirm('你确定要删除该评论吗？')){
+		jQuery.ajax({
+			type:'POST',
+			url:'web/comment_del',
+			data:"model.id=" + comment_id + "&model.article_id=" + article_id,
+			success:function(data){
+				if(data.status==1){
+					$('#'+comment_id+'_'+article_id).remove();
+				} else {
+					alert('删除失败：'+data.msg);
+				}
+				$('[name="comment"]').val('');
+			},
+			error:function(html){
+				var flag = (typeof console != 'undefined');
+				if(flag) console.log("服务器忙，提交数据失败，代码:" +html.status+ "，请联系管理员！");
+				alert("服务器忙，提交数据失败，请联系管理员！");
 			}
-			$('[name="comment"]').val('');
-		},
-		error:function(html){
-			var flag = (typeof console != 'undefined');
-			if(flag) console.log("服务器忙，提交数据失败，代码:" +html.status+ "，请联系管理员！");
-			alert("服务器忙，提交数据失败，请联系管理员！");
-		}
-	});
+		});
+	}
 }
