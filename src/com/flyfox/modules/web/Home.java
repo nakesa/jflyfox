@@ -3,6 +3,7 @@ package com.flyfox.modules.web;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
+import com.flyfox.component.util.ArticleCountCache;
 import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
@@ -47,6 +48,9 @@ public class Home extends BaseController {
 		// 数据列表
 		TbArticle article = TbArticle.dao.findById(getParaToInt());
 		if (article != null) {
+			// 更新浏览量
+			ArticleCountCache.addCountView(article);
+			
 			setAttr("item", article);
 		}
 
@@ -151,8 +155,8 @@ public class Home extends BaseController {
 		}
 
 		model.update();
+		UserCache.init(); // 设置缓存
 		SysUser newUser = SysUser.dao.findById(userid);
-		UserCache.updateUser(newUser); // 设置缓存
 		setSessionUser(newUser); // 设置session
 		json.put("status", 1);// 成功
 

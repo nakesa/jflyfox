@@ -139,7 +139,7 @@ public class Oauth2Controller extends BaseController {
 			user.put("create_id", 0);
 			user.put("create_time", DateUtils.getNow());
 			user.save();
-			UserCache.updateUser(user);
+			UserCache.init();
 		} 
 
 		setSessionUser(user);

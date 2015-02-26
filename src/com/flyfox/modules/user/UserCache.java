@@ -29,21 +29,17 @@ public class UserCache {
 		}
 		log.info("####用户Cache初始化......");
 		Map<Integer, SysUser> cacheMap = new HashMap<Integer, SysUser>();
-		cache.add("map", cacheMap);
 		List<SysUser> userList = SysUser.dao.findByWhere(" order by userid ");
 		for (SysUser user : userList) {
-			updateUser(user);
+			cacheMap.put(user.getInt("userid"), user);
 		}
+		cache.add("map", cacheMap);
 	}
 
 	public static SysUser getUser(Integer pid) {
 		return getUserMap().get(pid);
 	}
 
-	public static void updateUser(SysUser user) {
-		getUserMap().put(user.getInt("userid"), user);
-	}
-	
 	public static Map<Integer, SysUser> getUserMap() {
 		return cache.get("map");
 	}
