@@ -27,6 +27,11 @@ var bodyContent = {
 		<td>${flyfox.radioValue(status_data,model.status!'')  }</td> 
 	</tr>
 	<tr>
+		<td>是否评论</td>
+		<% var is_comment_data = '[{"key":"1","value":"是"},{"key":"2","value":"否"}]'; %>
+		<td>${flyfox.radioValue(is_comment_data,model.is_comment!'')  }</td> 
+	</tr>
+	<tr>
 		<td>类型</td>
 		<td>${flyfox.dictValue(model.type )  }</td>
 			</tr>

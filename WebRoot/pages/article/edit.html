@@ -46,6 +46,13 @@ var bodyContent = {
 				</td>
 			</tr>
 			<tr>
+				<td>是否评论</td>
+				<td>
+						<% var is_comment_data = '[{"key":"1","value":"是"},{"key":"2","value":"否"}]'; %>
+						${flyfox.radio(is_comment_data,'model.is_comment',model.is_comment!'')  }
+				</td>
+			</tr>
+			<tr>
 				<td>类型</td>
 				<td>
 					<select name="model.type" class="form-control" >

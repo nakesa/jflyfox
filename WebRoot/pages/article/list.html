@@ -76,6 +76,7 @@ var bodyContent = {
 					<th>名称</th> 
 					<th>排序</th> 
 					<th>状态</th>
+					<th>评论</th>
 					<th>类型</th> 
  					<th>发布时间</th> 
 					<th>发布者</th> 
@@ -94,6 +95,8 @@ var bodyContent = {
 					<td>${item.sort}</td>
 					<% var status_data = '[{"key":"1","value":"显示"},{"key":"2","value":"隐藏"}]'; %>
 					<td>${flyfox.radioValue(status_data,item.status!'')  }</td> 
+					<% var is_comment_data = '[{"key":"1","value":"是"},{"key":"2","value":"否"}]'; %>
+					<td>${flyfox.radioValue(is_comment_data,item.is_comment!'')  }</td> 
 					<td>${flyfox.dictValue(item.type!'' )  }</td>
 	 				<td>${item.publish_time}</td>
 					<td>${item.publish_user}</td> 
