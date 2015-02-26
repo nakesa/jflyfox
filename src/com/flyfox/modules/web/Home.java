@@ -125,20 +125,23 @@ public class Home extends BaseController {
 			return;
 		}
 
-		String oldPassword = getPara("old_password");
-		String newPassword = getPara("new_password");
-		String newPassword2 = getPara("new_password2");
-		if (!user.getStr("password").equals(JFlyFoxUtils.passwordEncrypt(oldPassword))) {
-			json.put("msg", "密码错误！");
-			renderJson(json.toJSONString());
-			return;
-		}
-		if (StrUtils.isNotEmpty(newPassword) && !newPassword.equals(newPassword2)) {
-			json.put("msg", "两次新密码不一致！");
-			renderJson(json.toJSONString());
-			return;
-		} else if (StrUtils.isNotEmpty(newPassword)) { // 输入密码并且一直
-			model.set("password", JFlyFoxUtils.passwordEncrypt(newPassword));
+		// 第三方用户不需要密码
+		if (!user.getStr("usertype").equals("4")) {
+			String oldPassword = getPara("old_password");
+			String newPassword = getPara("new_password");
+			String newPassword2 = getPara("new_password2");
+			if (!user.getStr("password").equals(JFlyFoxUtils.passwordEncrypt(oldPassword))) {
+				json.put("msg", "密码错误！");
+				renderJson(json.toJSONString());
+				return;
+			}
+			if (StrUtils.isNotEmpty(newPassword) && !newPassword.equals(newPassword2)) {
+				json.put("msg", "两次新密码不一致！");
+				renderJson(json.toJSONString());
+				return;
+			} else if (StrUtils.isNotEmpty(newPassword)) { // 输入密码并且一直
+				model.set("password", JFlyFoxUtils.passwordEncrypt(newPassword));
+			}
 		}
 
 		if (StrUtils.isNotEmpty(model.getStr("email")) && model.getStr("email").indexOf("@") < 0) {
