@@ -5,6 +5,7 @@ import org.beetl.ext.jfinal.BeetlRenderFactory;
 
 import com.beetl.functions.BeetlStrUtils;
 import com.flyfox.component.beelt.BeeltFunctions;
+import com.flyfox.component.util.UserKeyInterceptor;
 import com.flyfox.jfinal.config.JflyfoxConfig;
 import com.flyfox.jfinal.template.TemplateUtils;
 import com.flyfox.modules.dict.DictCache;
@@ -41,6 +42,8 @@ public class BaseConfig extends JflyfoxConfig {
 	 * 配置全局拦截器
 	 */
 	public void configInterceptor(Interceptors me) {
+		// 用户Key设置
+		me.add(new UserKeyInterceptor());
 		// 用户认证
 		me.add(new UserInterceptor());
 		// session model转换

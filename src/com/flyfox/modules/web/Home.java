@@ -42,6 +42,12 @@ public class Home extends BaseController {
 
 	}
 
+	/**
+	 * 查看文章
+	 * 
+	 * 2015年2月26日 下午1:46:14
+	 * flyfox 330627517@qq.com
+	 */
 	public void showArticle() {
 		// 根目录
 		setAttr("model", TbFolder.dao.findById(TbFolder.ROOT));
@@ -49,7 +55,10 @@ public class Home extends BaseController {
 		TbArticle article = TbArticle.dao.findById(getParaToInt());
 		if (article != null) {
 			// 更新浏览量
-			ArticleCountCache.addCountView(article);
+			String key = getSessionAttr(JFlyFoxUtils.USER_KEY);
+			if (key != null) {
+				ArticleCountCache.addCountView(article, key);
+			}
 			
 			setAttr("item", article);
 		}

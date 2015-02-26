@@ -4,6 +4,8 @@ import com.flyfox.util.encrypt.DESUtils;
 
 public class JFlyFoxUtils {
 
+	public static final String USER_KEY = "USER_KEY";
+	
 	private static final DESUtils des = new DESUtils("flyoffox");
 
 	// admin:LHmWhtwF/dHIwArTw+HUEg==  test:qvPQPhVn96Lx80f7BIaVjA==
