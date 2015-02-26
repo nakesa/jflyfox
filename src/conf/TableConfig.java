@@ -70,6 +70,11 @@ public class TableConfig {
 		String articleStatus = TemplateUtils.radioJson("1", "显示", "2", "隐藏");
 		article.setAttr(new ModelAttr().setKey("status").setName("状态") //
 				.setInputType(InputType.RADIO).setFormTypeData(articleStatus).addSearch());
+		
+		String articleIsComment = TemplateUtils.radioJson("1", "是", "2", "否");
+		article.setAttr(new ModelAttr().setKey("is_comment").setName("是否评论") //
+				.setInputType(InputType.RADIO).setFormTypeData(articleIsComment));
+		
 		article.setAttr(new ModelAttr().setKey("type").setName("类型") //
 				.setFormType(FormType.DICT).setFormTypeData("articleType"));
 
