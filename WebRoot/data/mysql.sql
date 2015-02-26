@@ -100,6 +100,7 @@ CREATE TABLE tb_article
   count_comment int(11) default '0' comment '评论数',
   type  int(11) default '1' comment '类型：1 正常 2 预览展示概述 3 程序调用处理',
   status varchar(20) default '1' comment '状态：2 隐藏 1 显示',
+  is_comment varchar(20) default '1' comment '是否评论：2 否 1 是',
   sort  int(11) default '1' comment '排序',
   image_url varchar(256) default null comment '图片路径',
   publish_time varchar(64) DEFAULT NULL COMMENT '发布时间',
@@ -111,7 +112,7 @@ CREATE TABLE tb_article
   create_id  int(11) DEFAULT 0 COMMENT '创建者',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章';
---主键从200开始
+-- 主键从200开始
 alter table tb_article AUTO_INCREMENT=200;
 
 /**
@@ -135,3 +136,23 @@ CREATE TABLE tb_contact
   create_id  int(11) DEFAULT 0 COMMENT '创建者',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='联系人';
+
+
+/**
+ * 评论表
+ */ 
+-- Table: tb_comment
+
+-- DROP TABLE tb_comment;
+drop table if exists tb_comment;
+
+CREATE TABLE tb_comment (
+  id  int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  fatherId int(11) DEFAULT NULL COMMENT '父评论ID',
+  article_id int(11) DEFAULT NULL COMMENT '文章ID',
+  content text NOT NULL COMMENT '内容',
+  status varchar(32) DEFAULT NULL COMMENT '状态',
+  create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
+  create_id  int(11) DEFAULT 0 COMMENT '创建者 评论者',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='评论';
