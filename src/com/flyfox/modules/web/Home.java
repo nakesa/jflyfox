@@ -10,9 +10,11 @@ import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.jfinal.component.util.Attr;
 import com.flyfox.modules.CommonController;
 import com.flyfox.modules.article.TbArticle;
+import com.flyfox.modules.comment.TbComment;
 import com.flyfox.modules.folder.TbFolder;
 import com.flyfox.modules.user.SysUser;
 import com.flyfox.modules.user.UserCache;
+import com.flyfox.util.DateUtils;
 import com.flyfox.util.StrUtils;
 
 @ControllerBind(controllerKey = "/web")
@@ -45,26 +47,94 @@ public class Home extends BaseController {
 	/**
 	 * 查看文章
 	 * 
-	 * 2015年2月26日 下午1:46:14
-	 * flyfox 330627517@qq.com
+	 * 2015年2月26日 下午1:46:14 flyfox 330627517@qq.com
 	 */
 	public void showArticle() {
 		// 根目录
 		setAttr("model", TbFolder.dao.findById(TbFolder.ROOT));
 		// 数据列表
-		TbArticle article = TbArticle.dao.findById(getParaToInt());
+		int articleId = getParaToInt();
+		TbArticle article = TbArticle.dao.findById(articleId);
 		if (article != null) {
 			// 更新浏览量
 			String key = getSessionAttr(JFlyFoxUtils.USER_KEY);
 			if (key != null) {
 				ArticleCountCache.addCountView(article, key);
 			}
-			
+
 			setAttr("item", article);
+
+			List<TbComment> listComment = TbComment.dao.findByWhere( //
+					" where article_id = ? order by create_time desc ", articleId);
+			setAttr("listComment", listComment);
 		}
 
 		renderAuto(path + "show_article.html");
 
+	}
+
+	/**
+	 * 保存评论
+	 */
+	public void comment_del() {
+		JSONObject json = new JSONObject();
+		json.put("status", 2);// 失败
+
+		SysUser user = getSessionAttr(Attr.SESSION_NAME);
+
+		if (user == null) {
+			json.put("msg", "没有登陆，无法进行删除！");
+			renderJson(json.toJSONString());
+			return;
+		}
+
+		TbComment comment = getModel(TbComment.class);
+		int id = comment.getInt("id");
+		if (id <= 0) {
+			json.put("msg", "提交数据错误，无法删除！");
+			renderJson(json.toJSONString());
+			return;
+		}
+		comment.deleteById(id);
+		json.put("status", 1);// 成功
+
+		renderJson(json.toJSONString());
+	}
+
+	/**
+	 * 保存评论
+	 */
+	public void comment_save() {
+		JSONObject json = new JSONObject();
+		json.put("status", 2);// 失败
+
+		SysUser user = getSessionAttr(Attr.SESSION_NAME);
+
+		if (user == null) {
+			json.put("msg", "没有登陆，无法进行评论！");
+			renderJson(json.toJSONString());
+			return;
+		}
+
+		TbComment comment = getModel(TbComment.class);
+		if (StrUtils.isEmpty(comment.getStr("content"))) {
+			json.put("msg", "发布内容不能为空！");
+			renderJson(json.toJSONString());
+			return;
+		}
+
+		String now = DateUtils.getNow("yyyy-MM-dd HH:mm:ss");
+		comment.put("fatherId", 0);
+		comment.put("create_id", user.getUserID());
+		comment.put("create_time", now);
+		comment.save();
+
+		json.put("comment_id", comment.getInt("id"));
+		json.put("create_name", user.getUserName());
+		json.put("create_time", now);
+		json.put("status", 1);// 成功
+
+		renderJson(json.toJSONString());
 	}
 
 	/**

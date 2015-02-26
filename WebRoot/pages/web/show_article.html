@@ -14,11 +14,15 @@
 
 	<link rel="stylesheet" href="static/web/home.css" type="text/css" media="screen, projection">
 
+	<% include("/static/component/include/jquery.html"){} %>
+	<script type="text/javascript" src="pages/web/home.js"></script>
+	<script type="text/javascript" src="pages/web/show_article.js"></script>
 <%
 };
 
 var bodyContent = {
 %>
+	<input type="hidden" name="article_id" value="${item.id}">
 	<div class="x-page-container">
 		<div class="mod-diary">
 			<div class="mod-diary-top"></div>
@@ -33,21 +37,82 @@ var bodyContent = {
 				</div>
 
 				<div class="mod-bloglist">
-						<div class="mod-blogitem">
-							<div class="box-postdate">
-							${item.publish_time!''}
-							</div>
-							<div class="item-title">
-								<a href="javascript:void(0);">${item.title}</a>
-								<div class="item-right"><span>浏览量(10)</span><span>评论(0)</span></div>
-							</div>
-							<div class="item-content">${item.content!'' }</div>
+					<div class="mod-blogitem">
+						<div class="box-postdate">
+						${item.publish_time!''}
 						</div>
+						<div class="item-title">
+							<a href="javascript:void(0);">${item.title}</a>
+							<div class="item-right"><span>浏览量(${item.count_view!'0'})</span><span>评论(${item.count_comment!'0'})</span></div>
+						</div>
+						<div class="item-content">${item.content!'' }</div>
+					</div>
 				</div>
+				
+				<% if(item.is_comment=='1'){ %>
+				<div class="mod-bloglist">
+					<div class="mod-blogcommentitem">
+					<% if(!isEmpty(session.session_user)){ %>
+					<div class="comment-inner ">
+						<div class="comment-title">评论</div>
+						<textarea class="comment-textarea" name="comment"></textarea>
+						<div class="comment-btn">
+							<input id="comment-btn" type="button" value="发  布"  class="btn" style="background-color: #FF9933;"/>
+						</div>
+					</div>
+					<% } else { %>
+					<div class="comment-inner ">
+						<div class="comment-title">没有<a href="web/login">登陆</a>不能评论</div>
+					</div>
+					<% } %>
+					<div class="comment-list">
+					
+						<% for(comment in listComment){ %>
+						<div class="comment-item" id="${comment.id}_${comment.article_id}">
+							<div style="float:none;line-height: 24px;overflow: visible;">
+							<div class="item-top">
+								<a href="#"><img alt="" src="static/images/user/user.png" /></a>
+								<a href="#" class="user-name">${flyfox.getUserName(comment.create_id)}</a>
+								<span>${comment.content}</span>
+							</div>
+							</div>
+							<div class="item-bottom">
+								<span>${comment.create_time}</span>
+								<% if(!isEmpty(session.session_user) && comment.create_id==session.session_user.userid){ %>
+									<a href="javascript:oper_del_comment(${comment.id},${comment.article_id});" style="float: right;">删除</a>
+								<% } %>
+							</div>
+						</div>
+						<%  } %>
+						
+
+						<div class="comment-item">
+							<div style="float:none;line-height: 24px;overflow: visible;">
+							<div class="item-top">
+								<a href="#"><img alt="" src="static/images/user/user.png" /></a>
+								<a href="#" class="user-name">张三</a>
+								<span>你说你都干什么了你说你都干什么了你说你都干什么了你说你都干什么了你说你都干什么了你说你都干什么了你说你都干什么了你说你都干什么了
+								</span>
+							</div>
+							</div>
+							<div class="item-bottom">
+								<span>2015-02-26 12:00:00</span>
+								<a href="" style="float: right;">删除</a>
+							</div>
+						</div>
+					</div>
+					
+					</div>
+					
+				</div>
+				<% } %>
+				
 			</div>
 			<div class="mod-diary-bottom"></div>
 		</div>
 	</div>
+	
+	<a id="scrollTop" href="javacript:void(0);" title="返回顶部" style="display: inline;"></a>
 <%}; %>
 
 

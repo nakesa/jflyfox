@@ -2,6 +2,8 @@ package com.flyfox.component.beelt;
 
 import com.flyfox.jfinal.template.TemplateFunctions;
 import com.flyfox.modules.dict.DictCache;
+import com.flyfox.modules.user.SysUser;
+import com.flyfox.modules.user.UserCache;
 import com.flyfox.util.DateUtils;
 import com.flyfox.util.NumberUtils;
 import com.flyfox.util.StrUtils;
@@ -56,6 +58,25 @@ public class BeeltFunctions extends TemplateFunctions {
 		String tmpStr = HtmlUtils.delHTMLTag(htmlStr);
 		tmpStr = StrUtils.suojin(tmpStr, num + endStr.length(), endStr);
 		return tmpStr;
+	}
+	
+	/**
+	 * 获取用户名
+	 * 
+	 * 2015年2月26日 下午4:24:39
+	 * flyfox 330627517@qq.com
+	 * @param pid
+	 * @return
+	 */
+	public static String getUserName(Integer pid) {
+		SysUser user = UserCache.getUser(pid);
+		if (user==null) {
+			return "";
+		}
+		if (StrUtils.isNotEmpty(user.getStr("realname"))) {
+			return user.getStr("realname");	
+		}
+		return user.getStr("username");
 	}
 
 }
