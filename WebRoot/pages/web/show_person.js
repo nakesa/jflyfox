@@ -1,3 +1,15 @@
+$(function() {
+	// 头像展示
+	$('[name="model.title_url"]').change(function(){
+		var pic = $(this).val() ;
+		if(pic == '') {
+			pic = 'static/images/user/user.png';
+		}
+		
+		$('#title_pic').attr('src',pic);
+	});
+});
+
 function oper_save(){
 	if($('[name="old_password"]').val()==''){
 		alert('密码不能为空');

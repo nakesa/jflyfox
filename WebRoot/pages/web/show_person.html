@@ -51,7 +51,8 @@
 	
 				<div class="mod-bloglist">
 					<div class="mod-blogitem">
-						<div class="box-postdate"></div>
+						<div class="box-postdate">
+						</div>
 						<div class="item-title">
 							<a href="javascript:void(0);"></a>
 						</div>
@@ -59,7 +60,12 @@
 						<form name="form1" action="" method="post">
 						<input type="hidden" name="model.userid" value="${model.userid}" />
 						
-						<div class="item-content" style="margin-left: 350px;">
+						<div class="item-content" style="margin-left: 280px;">
+							<div style="float: left;margin-right: 20px;">
+								<img id="title_pic" alt="头像"  width="64" height="64" 
+							 class="img_radius" src="${model.title_url!'static/images/user/user.png'}">
+							</div>
+							
 							<table>
 								<tr>
 									<td class="right_td">登陆名：</td>

@@ -75,7 +75,7 @@ var bodyContent = {
 						<div class="comment-item" id="${comment.id}_${comment.article_id}">
 							<div class="item-top">
 								<% var user = flyfox.getUser(comment.create_id);  %>
-								<a href="#"><img width="32" height="32" alt="" 
+								<a href="#"><img width="32" height="32" alt="头像" class="img_radius"
 									src="${user.title_url!'static/images/user/user.png'}" /></a>
 								<a href="#" class="user-name">${flyfox.getUserName(comment.create_id)}</a>
 								<span>${comment.content}</span>
