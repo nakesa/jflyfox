@@ -18,7 +18,7 @@ flyfox = function(project, project_name, form) {
 	this.project = project;
 	this.project_name = project_name;
 	this.form = getForm(form);
-	this.width = 350; // 默认宽度
+	this.width = 400; // 默认宽度
 	this.height = 300; // 默认高度
 	
 	// ajax后就可以抛弃form了

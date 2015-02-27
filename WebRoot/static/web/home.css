@@ -241,6 +241,16 @@ html {
 	overflow: visible;
 }
 
+.comment-list .comment-item .item-top img {
+	-webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+ 
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+}
+
 .comment-list .comment-item .item-bottom {
 	display: block;
 	margin-left: 30px;

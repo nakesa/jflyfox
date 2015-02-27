@@ -61,6 +61,19 @@ public class BeeltFunctions extends TemplateFunctions {
 	}
 	
 	/**
+	 * 获取用户
+	 * 
+	 * 2015年2月26日 下午4:24:39
+	 * flyfox 330627517@qq.com
+	 * @param pid
+	 * @return
+	 */
+	public static SysUser getUser(Integer pid) {
+		SysUser user = UserCache.getUser(pid);
+		return user;
+	}
+	
+	/**
 	 * 获取用户名
 	 * 
 	 * 2015年2月26日 下午4:24:39
