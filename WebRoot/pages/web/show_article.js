@@ -33,6 +33,11 @@ $(function() {
 					htmlText += '<a href="javascript:oper_del_comment(' + comment_id + ',' + article_id +');" style="float: right;">删除</a>';
 					htmlText += '</div></div>';		
 					$('.comment-list').prepend(htmlText);
+					
+					var count = parseInt($('[name="count_comment"]').val());
+					$('[name="count_comment"]').val(count + 1);
+					$('#count_comment_show').html("评论(" + (count + 1) + ")");
+					
 				} else {
 					alert('保存失败：'+data.msg);
 				}
@@ -59,6 +64,10 @@ function oper_del_comment(comment_id,article_id) {
 			success:function(data){
 				if(data.status==1){
 					$('#'+comment_id+'_'+article_id).remove();
+					
+					var count = parseInt($('[name="count_comment"]').val());
+					$('[name="count_comment"]').val(count - 1);
+					$('#count_comment_show').html("评论(" + (count - 1) + ")");
 				} else {
 					alert('删除失败：'+data.msg);
 				}

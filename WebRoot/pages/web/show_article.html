@@ -23,6 +23,8 @@
 var bodyContent = {
 %>
 	<input type="hidden" name="article_id" value="${item.id}">
+	<input type="hidden" name="count_comment" value="${item.count_comment!'0'}">
+	
 	<div class="x-page-container">
 		<div class="mod-diary">
 			<div class="mod-diary-top"></div>
@@ -43,7 +45,7 @@ var bodyContent = {
 						</div>
 						<div class="item-title">
 							<a href="javascript:void(0);">${item.title}</a>
-							<div class="item-right"><span>浏览量(${item.count_view!'0'})</span><span>评论(${item.count_comment!'0'})</span></div>
+							<div class="item-right"><span>浏览量(${item.count_view!'0'})</span><span id="count_comment_show">评论(${item.count_comment!'0'})</span></div>
 						</div>
 						<div class="item-content">${item.content!'' }</div>
 					</div>

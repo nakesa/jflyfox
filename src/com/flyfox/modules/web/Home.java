@@ -16,6 +16,7 @@ import com.flyfox.modules.user.SysUser;
 import com.flyfox.modules.user.UserCache;
 import com.flyfox.util.DateUtils;
 import com.flyfox.util.StrUtils;
+import com.jfinal.plugin.activerecord.Db;
 
 @ControllerBind(controllerKey = "/web")
 public class Home extends BaseController {
@@ -96,6 +97,9 @@ public class Home extends BaseController {
 			return;
 		}
 		comment.deleteById(id);
+		// 更新评论数
+		updateCommentCount(comment.getInt("article_id"));
+		
 		json.put("status", 1);// 成功
 
 		renderJson(json.toJSONString());
@@ -128,13 +132,21 @@ public class Home extends BaseController {
 		comment.put("create_id", user.getUserID());
 		comment.put("create_time", now);
 		comment.save();
-
+		// 更新评论数
+		updateCommentCount(comment.getInt("article_id"));
+		
 		json.put("comment_id", comment.getInt("id"));
 		json.put("create_name", user.getUserName());
 		json.put("create_time", now);
 		json.put("status", 1);// 成功
 
 		renderJson(json.toJSONString());
+	}
+
+	private void updateCommentCount(int article_id) {
+		String sql = "update tb_article set count_comment = " //
+				+ "(select count(*) from tb_comment where article_id = ? ) where id = ? ";
+		Db.update(sql,article_id , article_id);
 	}
 
 	/**
