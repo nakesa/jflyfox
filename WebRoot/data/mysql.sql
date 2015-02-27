@@ -54,6 +54,7 @@ create table sys_user
   email       varchar(64) COMMENT 'email',
   tel         varchar(32) COMMENT '手机号',
   address     varchar(32) COMMENT '地址',
+  title_url   varchar(200) COMMENT '头像地址',
   remark      varchar(1000) COMMENT '说明',
   create_id   int(11) default 0,
   create_time varchar(32),
