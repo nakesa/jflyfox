@@ -88,7 +88,12 @@ public class CommonController extends BaseController {
 	}
 
 	public void trans() {
-		String redirectPath = Config.getStr("PAGES.TRANS");
+		String redirectPath = getPara();
+		if (StrUtils.isEmpty(redirectPath)) {
+			redirectPath = Config.getStr("PAGES.TRANS");
+		} else if (redirectPath.equals("auth")) {
+			redirectPath = "/pages/error/trans_no_auth.html";
+		}
 		render(redirectPath);
 	}
 }
