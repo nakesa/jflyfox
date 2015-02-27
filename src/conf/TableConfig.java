@@ -117,6 +117,7 @@ public class TableConfig {
 		user.setAttr(new ModelAttr().setKey("email").setName("Email"));
 		user.setAttr(new ModelAttr().setKey("tel").setName("手机号"));
 		user.setAttr(new ModelAttr().setKey("address").setName("地址").removeList());
+		user.setAttr(new ModelAttr().setKey("title_url").setName("头像地址").removeList());
 		
 		user.setAttr(new ModelAttr().setKey("remark").setName("说明").setFormType(FormType.TEXTAREA));
 		add(user);
