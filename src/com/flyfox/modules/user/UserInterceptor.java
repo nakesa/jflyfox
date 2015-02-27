@@ -8,7 +8,6 @@ import com.flyfox.util.StrUtils;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
-import com.jfinal.core.JFinal;
 import com.jfinal.log.Logger;
 
 /**
@@ -44,11 +43,11 @@ public class UserInterceptor implements Interceptor {
 
 		SysUser user = controller.getSessionAttr(Attr.SESSION_NAME);
 
-		if ((user == null || user.getUserid() <= 0) //
-				&& JFinal.me().getConstants().getDevMode()) { // 开发模式
-			user = SysUser.dao.findFirst("select * from sys_user where userid = 1");
-			controller.setSessionAttr(Attr.SESSION_NAME, user);
-		}
+//		if ((user == null || user.getUserid() <= 0) //
+//				&& JFinal.me().getConstants().getDevMode()) { // 开发模式
+//			user = SysUser.dao.findFirst("select * from sys_user where userid = 1");
+//			controller.setSessionAttr(Attr.SESSION_NAME, user);
+//		}
 
 		if (isAuth(path_tmp)) {
 			if (user == null || user.getUserid() <= 0) {
