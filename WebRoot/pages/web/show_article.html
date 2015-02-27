@@ -55,7 +55,9 @@ var bodyContent = {
 					<% if(!isEmpty(session.session_user)){ %>
 					<div class="comment-inner ">
 						<div class="comment-title">评论</div>
+						<div>
 						<textarea class="comment-textarea" name="comment"></textarea>
+						</div>
 						<div class="comment-btn">
 							<input id="comment-btn" type="button" value="发  布"  class="btn" style="background-color: #FF9933;"/>
 						</div>
@@ -69,12 +71,10 @@ var bodyContent = {
 					
 						<% for(comment in listComment){ %>
 						<div class="comment-item" id="${comment.id}_${comment.article_id}">
-							<div style="float:none;line-height: 24px;overflow: visible;">
 							<div class="item-top">
 								<a href="#"><img alt="" src="static/images/user/user.png" /></a>
 								<a href="#" class="user-name">${flyfox.getUserName(comment.create_id)}</a>
 								<span>${comment.content}</span>
-							</div>
 							</div>
 							<div class="item-bottom">
 								<span>${comment.create_time}</span>

@@ -191,6 +191,7 @@ html {
 }
 
 .mod-blogcommentitem .comment-inner {
+	width: 682px;
 	margin: 20px 20px 0px 20px;
 	color: #ddd;
 }
@@ -203,8 +204,8 @@ html {
 
 .mod-blogcommentitem .comment-inner .comment-textarea {
 	overflow: hidden; 
-	height: 63px;
 	width: 675px;
+	height: 63px;
 }
 
 .mod-blogcommentitem .comment-inner .comment-btn {
@@ -214,8 +215,9 @@ html {
 }
 
 .mod-blogcommentitem .comment-list {
-	float: left;
+	width: 682px;
 	margin: 20px 20px 0px 20px;
+	float: left;
 }
 
 .mod-blogcommentitem .comment-list .comment-item {
@@ -234,13 +236,16 @@ html {
 }
 
 .comment-list .comment-item .item-top {
+	float: none;
+	line-height: 24px;
+	overflow: visible;
 }
 
 .comment-list .comment-item .item-bottom {
+	display: block;
 	margin-left: 30px;
 	margin-top: 5px;
 	margin-bottom: 10px;
-	display: block;
 	overflow: visible;
 }
 
