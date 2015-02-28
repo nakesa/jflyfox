@@ -29,6 +29,10 @@ function oper_save(){
 		alert('两次密码不一致！');
 		return;
 	}
+	if($('[name="imageCode"]').val()==''){
+		alert('验证码不能为空！');
+		return;
+	}
 	
 	jQuery.ajax({
 		type:'POST',
@@ -43,10 +47,12 @@ function oper_save(){
 				}
 				window.top.location.href = prePage;
 			} else {
+				loadPicimageCode();
+				$('[name="imageCode"]').val('');
+				$('[name="password"]').val('');
+				$('[name="password2"]').val('');
 				alert('保存失败：'+data.msg);
 			}
-			$('[name="password"]').val('');
-			$('[name="password2"]').val('');
 		},
 		error:function(html){
 			var flag = (typeof console != 'undefined');
