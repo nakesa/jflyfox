@@ -1,9 +1,13 @@
 package com.flyfox.modules.web;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.ServletException;
 
 import com.alibaba.fastjson.JSONObject;
 import com.flyfox.component.util.ArticleCountCache;
+import com.flyfox.component.util.ImageCode;
 import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
@@ -99,7 +103,7 @@ public class Home extends BaseController {
 		comment.deleteById(id);
 		// 更新评论数
 		updateCommentCount(comment.getInt("article_id"));
-		
+
 		json.put("status", 1);// 成功
 
 		renderJson(json.toJSONString());
@@ -134,7 +138,7 @@ public class Home extends BaseController {
 		comment.save();
 		// 更新评论数
 		updateCommentCount(comment.getInt("article_id"));
-		
+
 		json.put("comment_id", comment.getInt("id"));
 		json.put("create_name", user.getUserName());
 		json.put("create_time", now);
@@ -146,7 +150,7 @@ public class Home extends BaseController {
 	private void updateCommentCount(int article_id) {
 		String sql = "update tb_article set count_comment = " //
 				+ "(select count(*) from tb_comment where article_id = ? ) where id = ? ";
-		Db.update(sql,article_id , article_id);
+		Db.update(sql, article_id, article_id);
 	}
 
 	/**
@@ -155,14 +159,6 @@ public class Home extends BaseController {
 	public void login() {
 		setAttr("pre_page", getPrePage());
 		render(CommonController.loginPage);
-	}
-
-	/**
-	 * 注册
-	 */
-	public void regist() {
-		setAttr("pre_page", getPrePage());
-		render(CommonController.registPage);
 	}
 
 	/**
@@ -254,4 +250,100 @@ public class Home extends BaseController {
 		renderJson(json.toJSONString());
 	}
 
+	/**
+	 * 生成注册码
+	 * 
+	 * 2015年2月28日 下午1:50:25
+	 * flyfox 330627517@qq.com
+	 */
+	public void image_code(){
+		try {
+			new ImageCode().doGet(getRequest(), getResponse());
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		renderNull();
+	}
+	
+	/**
+	 * 注册
+	 */
+	public void regist() {
+		// 目录列表
+		List<TbFolder> folders = TbFolder.dao.findByWhere(" where status = 1 order by sort");
+		setAttr("folders", folders);
+		setAttr("folders_selected", "regist");
+
+		String prePage = getPara("pre_page");
+		if (StrUtils.isEmpty(prePage)) {
+			prePage = getPrePage();
+		}
+		setAttr("pre_page", prePage);
+
+		SysUser user = getSessionAttr(Attr.SESSION_NAME);
+		// 如果已经登陆了~您就别注册啦
+		if (user != null) {
+			redirect(prePage);
+		} else {
+			renderAuto(path + "show_regist.html");
+		}
+	}
+
+	/**
+	 * 注册信息保存
+	 */
+	public void regist_save() {
+		JSONObject json = new JSONObject();
+		json.put("status", 2);// 失败
+
+		SysUser user = getModel(SysUser.class);
+		String password = getPara("password");
+		String password2 = getPara("password2");
+		String key = user.getStr("email");
+		
+		// 获取验证码
+		String imageCode = getSessionAttr(ImageCode.class.getName());
+		String checkCode = this.getPara("imageCode");
+		
+		if (StrUtils.isEmpty(imageCode) || !imageCode.equalsIgnoreCase(checkCode)) {
+			json.put("msg", "验证码错误！");
+			renderJson(json.toJSONString());
+			return;
+		}
+		
+		if (StrUtils.isEmpty(key) || key.indexOf("@") < 0) {
+			json.put("msg", "email格式错误！");
+			renderJson(json.toJSONString());
+			return;
+		}
+
+		if (user.getInt("userid") != null || StrUtils.isEmpty(user.getStr("realname")) //
+				|| StrUtils.isEmpty(password) || StrUtils.isEmpty(password2) //
+				|| password.length() < 6 || !password.equals(password2)) {
+			json.put("msg", "提交数据错误！");
+			renderJson(json.toJSONString());
+			return;
+		}
+
+		SysUser newUser = SysUser.dao.findFirstByWhere("where username = ? ",key);
+		if (newUser!=null) {
+			json.put("msg", "邮箱已存在，请重新输入");
+			renderJson(json.toJSONString());
+			return;
+		}
+		
+		user.set("username", key);
+		user.set("password", JFlyFoxUtils.passwordEncrypt(password));
+		user.set("usertype", "3");
+		user.put("create_id", 1);
+		user.put("create_time", DateUtils.getNow());
+		user.save();
+		UserCache.init(); // 设置缓存
+		setSessionUser(user); // 设置session
+		json.put("status", 1);// 成功
+
+		renderJson(json.toJSONString());
+	}
 }

@@ -26,6 +26,10 @@
 		form1.submit();
 		// submit_js("login_login.action", "loginform");
 	}
+	function toRegist() {
+		form1.action = "web/regist";
+		form1.submit();
+	}
 	<!-- jQuery 当键盘敲击【ENTER】键时，系统登录 -->
 	$(document).ready(function() {
 		$("body").keydown(function(event) {
@@ -75,7 +79,7 @@
 			<!-- 
 			<a class="login_sina" href="javascript:void(0);" onclick='toLogin("sina")' title="新浪登陆"></a>
 			 -->
-			<a class="register" href="#" target="_blank" title="注册" tabindex="8">注册</a>
+			<a class="register" href="javascript:void(0);" target="_blank" title="注册" tabindex="8" onclick="toRegist();">注册</a>
 		</p>
 	</div>
 </fieldset>

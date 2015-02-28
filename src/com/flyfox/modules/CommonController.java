@@ -17,7 +17,6 @@ public class CommonController extends BaseController {
 
 	public static final String loginPage = "/login.html";
 	public static final String mainPage = "/article/list";
-	public static final String registPage = "/regist.html";
 
 	public void index() {
 		redirect("/web");
