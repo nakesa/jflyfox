@@ -1,5 +1,5 @@
 function loadPicimageCode() {
-	document.getElementById("picimageCode").src = 'web/image_code?' + Math.random();
+	document.getElementById("picimageCode").src = 'web/image_code?ran=' + Math.random();
 }
 
 function oper_save(){
