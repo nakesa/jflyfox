@@ -62,6 +62,23 @@ create table sys_user
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /**
+ * 访问量统计
+ */ 
+-- Table: tb_pageview
+
+-- DROP TABLE tb_pageview;
+drop table if exists tb_pageview;
+
+CREATE TABLE tb_pageview (
+  id  int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  ip varchar(64) NOT NULL  COMMENT 'IP地址',
+  userid int(11) DEFAULT NULL COMMENT '用户ID',
+  create_day  varchar(64) NOT NULL COMMENT '创建时间到天',
+  create_time  varchar(64) NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='访问量统计';
+
+/**
  * 目录表
  */
 -- Table: tb_folder

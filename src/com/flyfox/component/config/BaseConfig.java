@@ -9,6 +9,8 @@ import com.flyfox.component.util.UserKeyInterceptor;
 import com.flyfox.jfinal.config.JflyfoxConfig;
 import com.flyfox.jfinal.template.TemplateUtils;
 import com.flyfox.modules.dict.DictCache;
+import com.flyfox.modules.pageview.PageViewCache;
+import com.flyfox.modules.pageview.PageViewInterceptor;
 import com.flyfox.modules.user.UserCache;
 import com.flyfox.modules.user.UserInterceptor;
 import com.jfinal.config.Handlers;
@@ -44,6 +46,8 @@ public class BaseConfig extends JflyfoxConfig {
 	public void configInterceptor(Interceptors me) {
 		// 用户Key设置
 		me.add(new UserKeyInterceptor());
+		// page view 统计
+		me.add(new PageViewInterceptor());
 		// 用户认证
 		me.add(new UserInterceptor());
 		// session model转换
@@ -61,6 +65,8 @@ public class BaseConfig extends JflyfoxConfig {
 	public static void reset() {
 		DictCache.init();
 		UserCache.init();
+		// PV缓存绑定
+		PageViewCache.init();
 	}
 
 }
