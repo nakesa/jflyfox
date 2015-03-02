@@ -19,8 +19,8 @@ $(function() {
 					var username = data.create_name;
 					var createTime = data.create_time;
 					var comment_id = data.comment_id;
-					var title_url = data.title_url;
-					title_url = (title_url||''=='')?'static/images/user/user.png':title_url;
+					var title_url = data.title_url||'';
+					title_url = (title_url=='')?'static/images/user/user.png':title_url;
 					
 					var htmlText = '<div class="comment-item" id='+ comment_id + '_' + article_id + '>';
 					htmlText += '<div class="item-top">';
