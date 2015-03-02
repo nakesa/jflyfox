@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
-import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.util.StrUtils;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
@@ -31,7 +30,6 @@ public class PageViewInterceptor implements Interceptor {
 			PageViewCache.add(ip);
 		}
 
-		controller.setSessionAttr(JFlyFoxUtils.PV_SIZE_KEY, PageViewCache.size());
 		ai.invoke();
 	}
 

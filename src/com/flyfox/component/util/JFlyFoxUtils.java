@@ -8,10 +8,6 @@ public class JFlyFoxUtils {
 	 * session唯一Key
 	 */
 	public static final String USER_KEY = "USER_KEY";
-	/**
-	 * 当日访问量KEY
-	 */
-	public static final String PV_SIZE_KEY = "PV_SIZE_KEY";
 	
 	private static final DESUtils des = new DESUtils("flyoffox");
 
