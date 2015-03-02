@@ -140,6 +140,7 @@ public class Home extends BaseController {
 		updateCommentCount(comment.getInt("article_id"));
 
 		json.put("comment_id", comment.getInt("id"));
+		json.put("title_url", user.getStr("title_url"));
 		json.put("create_name", user.getUserName());
 		json.put("create_time", now);
 		json.put("status", 1);// 成功

@@ -19,10 +19,12 @@ $(function() {
 					var username = data.create_name;
 					var createTime = data.create_time;
 					var comment_id = data.comment_id;
+					var title_url = data.title_url;
+					title_url = (title_url||''=='')?'static/images/user/user.png':title_url;
 					
 					var htmlText = '<div class="comment-item" id='+ comment_id + '_' + article_id + '>';
 					htmlText += '<div class="item-top">';
-					htmlText += '<a href="#"><img alt="" src="static/images/user/user.png" /></a>';
+					htmlText += '<a href="#"><img alt="" width="32" height="32" alt="头像" class="img_radius" src="'+title_url+'" /></a>';
 					htmlText += '<a href="#" class="user-name">'+username+'</a>';
 					htmlText += '<div style="float:none;line-height: 24px;overflow: visible;">';
 					htmlText += '<div style="float:none;line-height: 24px;overflow: visible;">';
