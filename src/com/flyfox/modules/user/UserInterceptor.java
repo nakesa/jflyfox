@@ -55,7 +55,7 @@ public class UserInterceptor implements Interceptor {
 				return;
 			}
 			// TODO 这里展示控制第三方用户和前端用户不能登录后台
-			int usertype = NumberUtils.parseInt(user.getStr("usertype"));
+			int usertype = NumberUtils.parseInt(user.get("usertype"));
 			if (usertype == 4 // 第三方用户
 					|| usertype == 3) { // 前端用户
 				controller.redirect("/trans/auth");
