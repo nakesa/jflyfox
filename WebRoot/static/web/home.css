@@ -142,13 +142,13 @@ html {
 
 .mod-blogitem .item-right {
 	float: right;
-	margin-right: 10px;
+	margin-right: 25px;
 }
 
 .mod-blogitem .item-right span {
 	color: gray;
 	font-size: 12px;
-	margin-right: 20px;
+	margin-right: 5px;
 }
 
 .mod-blogitem .item-content {

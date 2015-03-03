@@ -45,14 +45,19 @@ var bodyContent = {
 						</div>
 						<div class="item-title">
 							<a href="javascript:void(0);">${item.title}</a>
-							<div class="item-right"><span>浏览量(${item.count_view!'0'})</span><span id="count_comment_show">评论(${item.count_comment!'0'})</span></div>
+							<div class="item-right">
+							<% if(item.is_comment=='1'){ %>
+							<a href="web/showArticle/${item.id}#article_comment" style="font-size: 12px;"><span id="count_comment_show">评论(${item.count_comment!'0'})</span></a>
+							<% } %>
+							<span>浏览量(${item.count_view!'0'})</span>
+							</div>
 						</div>
 						<div class="item-content">${item.content!'' }</div>
 					</div>
 				</div>
 				
 				<% if(item.is_comment=='1'){ %>
-				<div class="mod-bloglist">
+				<div class="mod-bloglist" id="article_comment">
 					<div class="mod-blogcommentitem">
 					<% if(!isEmpty(session.session_user)){ %>
 					<div class="comment-inner ">
