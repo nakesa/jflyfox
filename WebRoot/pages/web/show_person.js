@@ -18,7 +18,7 @@ function oper_save(){
 	
 	jQuery.ajax({
 		type:'POST',
-		url:'web/person_save',
+		url:'web_person/save',
 		data:$("form").serialize(),
 		success:function(data){
 			if(data.status==1){

@@ -46,10 +46,10 @@ var bodyContent = {
 							${item.publish_time}
 							</div>
 							<div class="item-title">
-								<a href="web/showArticle/${item.id}"  target="_blank">${item.title}</a>
+								<a href="web/article/${item.id}"  target="_blank">${item.title}</a>
 								<div class="item-right">
 								<% if(item.is_comment=='1'){ %>
-								<a href="web/showArticle/${item.id}#article_comment"  target="_blank"><span>评论(${item.count_comment!'0'})</span></a>
+								<a href="web/article/${item.id}#article_comment"  target="_blank"><span>评论(${item.count_comment!'0'})</span></a>
 								<% } %>
 								<span>浏览量(${item.count_view!'0'})</span>
 								</div>
@@ -58,7 +58,7 @@ var bodyContent = {
 							<div class="item-content">${item.content!'' }</div>
 							<% } else { // type ==11 %>
 							<% var article_content = flyfox.showHTML(item.content!'',200,'  ......'); %>
-							<div class="item-content">${article_content!'' }<br><br><a href="web/showArticle/${item.id}"  target="_blank">查看全部</a></div>
+							<div class="item-content">${article_content!'' }<br><br><a href="web/article/${item.id}"  target="_blank">查看全部</a></div>
 							<% } %>
 						</div>
 					<% } %>

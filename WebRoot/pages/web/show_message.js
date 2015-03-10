@@ -21,7 +21,7 @@ $(function() {
 		
 		jQuery.ajax({
 			type:'POST',
-			url:'web_comment/save',
+			url:'web/comment_save',
 			data:"model.content=" + comment + "&model.article_id=" + article_id + "&model.reply_userid=" + comm_reply_userid,
 			success:function(data){
 				if(data.status==1){
@@ -92,7 +92,7 @@ function oper_del_comment(comment_id) {
 	if(window.confirm('你确定要删除该评论吗？')){
 		jQuery.ajax({
 			type:'POST',
-			url:'web_comment/del',
+			url:'web/comment_del',
 			data:"model.id=" + comment_id + "&model.article_id=" + article_id,
 			success:function(data){
 				if(data.status==1){

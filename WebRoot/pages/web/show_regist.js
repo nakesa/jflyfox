@@ -36,7 +36,7 @@ function oper_save(){
 	
 	jQuery.ajax({
 		type:'POST',
-		url:'web/regist_save',
+		url:'web_regist/save',
 		data:$("form").serialize(),
 		success:function(data){
 			if(data.status==1){

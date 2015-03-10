@@ -169,7 +169,8 @@ CREATE TABLE tb_comment (
   fatherId int(11) DEFAULT NULL COMMENT '父评论ID',
   article_id int(11) DEFAULT NULL COMMENT '文章ID',
   content text NOT NULL COMMENT '内容',
-  status varchar(32) DEFAULT NULL COMMENT '状态',
+  status varchar(32) DEFAULT '1' COMMENT '状态',
+  reply_userid int(11) DEFAULT 0 COMMENT '回复者',
   create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
   create_id  int(11) DEFAULT 0 COMMENT '创建者 评论者',
   PRIMARY KEY (id)

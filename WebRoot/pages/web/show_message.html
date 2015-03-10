@@ -17,16 +17,13 @@
 
 	<% include("/static/component/include/jquery.html"){} %>
 	<script type="text/javascript" src="pages/web/home.js"></script>
-	<script type="text/javascript" src="pages/web/show_article.js"></script>
+	<script type="text/javascript" src="pages/web/show_message.js"></script>
 <%
 };
 
 var bodyContent = {
 %>
 <%  include("/pages/web/home_header.html"){} %>	
-
-	<input type="hidden" name="article_id" value="${item.id}">
-	<input type="hidden" name="count_comment" value="${item.count_comment!'0'}">
 	
 	<div class="x-page-container">
 		<div class="mod-diary">
@@ -37,46 +34,13 @@ var bodyContent = {
 				<div class="mod-diary-clip"></div>
 				<div class="mod-topspaceinfo">
 					<h1>
-						<a class="space-name" href="javascript:void(0);">${model.content }</a>
+						<a class="space-name" href="javascript:void(0);">我的消息</a>
 					</h1>
 				</div>
 
-				<div class="mod-bloglist">
-					<div class="mod-blogitem">
-						<div class="box-postdate">
-						${item.publish_time!''}
-						</div>
-						<div class="item-title">
-							<a href="javascript:void(0);">${item.title}</a>
-							<div class="item-right">
-							<% if(item.is_comment=='1'){ %>
-							<a href="web/article/${item.id}#article_comment" style="font-size: 12px;"><span id="count_comment_show">评论(${item.count_comment!'0'})</span></a>
-							<% } %>
-							<span>浏览量(${item.count_view!'0'})</span>
-							</div>
-						</div>
-						<div class="item-content">${item.content!'' }</div>
-					</div>
-				</div>
-				
-				<% if(item.is_comment=='1'){ %>
 				<div class="mod-bloglist" id="article_comment">
-					<div class="mod-blogcommentitem">
-					<% if(!isEmpty(session.session_user)){ %>
-					<div class="comment-inner ">
-						<div class="comment-title">评论</div>
-						<div>
-						<textarea class="comment-textarea" name="comment"></textarea>
-						</div>
-						<div class="comment-btn">
-							<input id="comment-btn" type="button" value="发  布"  class="btn" style="background-color: #FF9933;"/>
-						</div>
-					</div>
-					<% } else { %>
-					<div class="comment-inner ">
-						<div class="comment-title">没有<a href="web/login">登陆</a>不能评论</div>
-					</div>
-					<% } %>
+					<div class="mod-blogcommentitem" style="margin-top: 100px;">
+				
 					<div class="comment-list">
 					
 						<% for(comment in listComment){ %>
@@ -110,7 +74,6 @@ var bodyContent = {
 					</div>
 					
 				</div>
-				<% } %>
 				
 			</div>
 			<div class="mod-diary-bottom"></div>
