@@ -99,6 +99,11 @@ function resetForm(){
 	$(".tableSearch select").val("-1");
 }
 
+function console_log(str){
+	var flag = (typeof console != 'undefined');
+	if(flag) console.log('flyfox--> '+str);
+}
+
 /////////////////////////bootstrap 扩展////////////////////////////
 var modal = {
 		iframe:function (url,height,title){
@@ -110,3 +115,4 @@ var modal = {
 			$('#myModal').modal('show');
 		}
 };
+

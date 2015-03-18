@@ -36,6 +36,9 @@ var bodyContent = {
 						<div class="mod-blogitem">
 							<div class="box-postdate">
 							${item.publish_time!''}
+							<p title="${item.publish_user!''}" >
+							<a class="box-postuser" href="javascript:void(0);">${flyfox.suojin(item.publish_user!'',6)}</a>
+							</p>
 							</div>
 							<div class="item-title">
 								<a href="javascript:void(0);">${item.title}</a>

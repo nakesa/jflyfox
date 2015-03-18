@@ -34,7 +34,7 @@ var bodyContent = {
 				<div class="mod-diary-clip"></div>
 				<div class="mod-topspaceinfo">
 					<h1>
-						<a class="space-name" href="javascript:void(0);">${model.content }</a>
+						<a class="space-name" href="javascript:void(0);">${web_title }</a>
 					</h1>
 				</div>
 
@@ -44,12 +44,15 @@ var bodyContent = {
 						<div class="mod-blogitem">
 							<div class="box-postdate">
 							${item.publish_time}
+							<p title="${item.publish_user!''}" >
+							<a class="box-postuser" href="web_article/user/${item.create_id}"  target="_blank">${flyfox.suojin(item.publish_user!'',6)}</a>
+							</p>
 							</div>
 							<div class="item-title">
-								<a href="web/article/${item.id}"  target="_blank">${item.title}</a>
+								<a href="web_article/${item.id}"  target="_blank">${item.title}</a>
 								<div class="item-right">
 								<% if(item.is_comment=='1'){ %>
-								<a href="web/article/${item.id}#article_comment"  target="_blank"><span>评论(${item.count_comment!'0'})</span></a>
+								<a href="web_article/${item.id}#article_comment"  target="_blank"><span>评论(${item.count_comment!'0'})</span></a>
 								<% } %>
 								<span>浏览量(${item.count_view!'0'})</span>
 								</div>
@@ -58,7 +61,7 @@ var bodyContent = {
 							<div class="item-content">${item.content!'' }</div>
 							<% } else { // type ==11 %>
 							<% var article_content = flyfox.showHTML(item.content!'',200,'  ......'); %>
-							<div class="item-content">${article_content!'' }<br><br><a href="web/article/${item.id}"  target="_blank">查看全部</a></div>
+							<div class="item-content">${article_content!'' }<br><br><a href="web_article/${item.id}"  target="_blank">查看全部</a></div>
 							<% } %>
 						</div>
 					<% } %>

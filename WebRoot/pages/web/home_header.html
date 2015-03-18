@@ -30,7 +30,10 @@
 						<li class="q-menuitem"><a href="web/login">登陆</a></li>
 						<li class="q-menuitem ${'regist'==folders_selected?'q-selected':''}"><a href="web_regist" >注册</a></li>
 						<% } else { %>
-						<li class="q-menuitem ${'message'==folders_selected?'q-selected':''}"><a href="web_message">我的消息</a></li>
+						<li class="q-menuitem ${'message'==folders_selected?'q-selected':''}"><a href="web_message" id="web_message" >我的消息</a></li>
+						<!-- 
+						<li class="q-menuitem ${'space'==folders_selected?'q-selected':''}"><a href="web_space" id="web_space" >我的空间</a></li>
+						 -->
 						<li class="q-menuitem ${'person'==folders_selected?'q-selected':''}"><a href="web_person">${session.session_user.realname!session.session_user.username }</a></li>
 						<li class="q-menuitem"><a href="web/logout" >退出</a></li>
 						<% } %>

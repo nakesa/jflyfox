@@ -93,4 +93,36 @@ public class CommentController extends BaseController {
 
 		renderJson(json.toJSONString());
 	}
+
+	/**
+	 * 获取最新评论数
+	 * 
+	 * 2015年3月16日 下午5:33:55 flyfox 330627517@qq.com
+	 */
+	public void count() {
+		JSONObject json = new JSONObject();
+		json.put("status", 2);// 失败
+
+		SysUser user = getSessionAttr(Attr.SESSION_NAME);
+		if (user == null) {
+			json.put("msg", "没有登陆，无法获取评论数！");
+			renderJson(json.toJSONString());
+			return;
+		}
+
+		String sql = "select count(*) AS cnt from tb_comment t " //
+				+ " where t.reply_userid = ? and status = 1";
+		TbComment obj = TbComment.dao.findFirst(sql, user.getUserid());
+		// 更新状态为已读
+		Object cnt = obj.get("cnt");
+		if (cnt == null) {
+			json.put("msg", "没有登陆，评论数获取失败！");
+			renderJson(json.toJSONString());
+			return;
+		}
+
+		json.put("count", cnt.toString());
+		json.put("status", 1);// 成功
+		renderJson(json.toJSONString());
+	}
 }

@@ -5,14 +5,12 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 
-import com.flyfox.component.util.ArticleCountCache;
 import com.flyfox.component.util.ImageCode;
 import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.modules.CommonController;
 import com.flyfox.modules.article.TbArticle;
-import com.flyfox.modules.comment.TbComment;
 import com.flyfox.modules.folder.TbFolder;
 
 @ControllerBind(controllerKey = "/web")
@@ -25,8 +23,8 @@ public class Home extends BaseController {
 		if (folder_id == null || folder_id <= 0) {
 			folder_id = TbFolder.ROOT;
 		}
-		// TODO 应该静态化或者取用户信息根目录
-		setAttr("model", TbFolder.dao.findById(TbFolder.ROOT));
+		// 题目
+		setAttr("web_title", JFlyFoxUtils.getWebTitle());
 		// 目录列表
 		new HomeService().showDirectory(this, folder_id);
 		
@@ -37,39 +35,6 @@ public class Home extends BaseController {
 		setAttr("list", articles);
 
 		renderAuto(path + "home.html");
-
-	}
-
-	/**
-	 * 查看文章
-	 * 
-	 * 2015年2月26日 下午1:46:14 flyfox 330627517@qq.com
-	 */
-	public void article() {
-
-		// 数据列表
-		int articleId = getParaToInt();
-		TbArticle article = TbArticle.dao.findById(articleId);
-		if (article != null) {
-			// 更新浏览量
-			String key = getSessionAttr(JFlyFoxUtils.USER_KEY);
-			if (key != null) {
-				ArticleCountCache.addCountView(article, key);
-			}
-
-			setAttr("item", article);
-
-			List<TbComment> listComment = TbComment.dao.findByWhere( //
-					" where article_id = ? order by create_time desc ", articleId);
-			setAttr("listComment", listComment);
-		}
-		
-		// TODO 应该静态化或者取用户信息根目录
-		setAttr("model", TbFolder.dao.findById(TbFolder.ROOT));
-		// 目录列表
-		new HomeService().showDirectory(this, article.getInt("folder_id"));
-		
-		renderAuto(path + "show_article.html");
 
 	}
 
@@ -86,7 +51,7 @@ public class Home extends BaseController {
 	 */
 	public void logout() {
 		removeSessionUser();
-		redirect(getPrePage());
+		redirect(CommonController.firstPage);
 	}
 
 	/**

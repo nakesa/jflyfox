@@ -78,6 +78,11 @@ $(function() {
 		}
 	});
 	
+	// 点击为已读
+	$('.item-top').click(function(){
+		$(this).removeClass('comment-read');
+	});
+	
 	
 });
 

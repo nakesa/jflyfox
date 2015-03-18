@@ -1,5 +1,6 @@
 package com.flyfox.component.beelt;
 
+import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.template.TemplateFunctions;
 import com.flyfox.modules.dict.DictCache;
 import com.flyfox.modules.user.SysUser;
@@ -38,6 +39,10 @@ public class BeeltFunctions extends TemplateFunctions {
 	}
 
 	// //////////////////////自定义方法///////////////////////////
+	public static String webtitle() {
+		return JFlyFoxUtils.getWebTitle();
+	}
+	
 	public static String getNow() {
 		return DateUtils.getNow();
 	}
@@ -46,6 +51,9 @@ public class BeeltFunctions extends TemplateFunctions {
 		return DateUtils.getNow(regex);
 	}
 
+	public static String suojin(String str, int length) {
+		return StrUtils.suojin(str, length);
+	}
 	/**
 	 * html预览
 	 * 
