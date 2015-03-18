@@ -17,6 +17,7 @@
 
 	<% include("/static/component/include/jquery.html"){} %>
 	<script type="text/javascript" src="pages/web/home.js"></script>
+	<script type="text/javascript" src="pages/web/web_common.js"></script>
 	<script type="text/javascript" src="pages/web/show_message.js"></script>
 <%
 };
@@ -62,7 +63,7 @@ var bodyContent = {
 							<div class="item-bottom">
 								<span>${comment.create_time}</span>
 								<% if(!isEmpty(session.session_user) && comment.create_id==session.session_user.userid){ %>
-									<a href="javascript:oper_del_comment(${comment.id});" style="float: right;">删除</a>
+									<a href="javascript:comment.oper_del(${comment.id},${comment.article_id});" style="float: right;">删除</a>
 								<% } %>
 								<% if(!isEmpty(session.session_user) && comment.create_id!=session.session_user.userid){ %>
 									<a href="javascript:oper_reply_comment(${comment.create_id},'${flyfox.getUserName(comment.create_id)}');" style="float: right;">回复</a>
