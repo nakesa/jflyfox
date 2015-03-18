@@ -11,7 +11,7 @@ INSERT INTO `sys_dict` VALUES ('100', '系统参数', 'systemParam', null);
 INSERT INTO `sys_dict` VALUES ('1', '目录类型', 'folderType', null);
 INSERT INTO `sys_dict` VALUES ('2', '目录类型', 'articleType', null);
 
-INSERT INTO `sys_dict_detail` VALUES ('101', 'systemParam', '系统名称', '1', '1', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('101', 'systemParam', 'FLY的狐狸', '1', '1', null, null, null, null, '2015-01-30', '1');
 INSERT INTO `sys_dict_detail` VALUES ('1', 'folderType', '目录', '1', '1', null, null, null, null, '2015-01-30', '1');
 INSERT INTO `sys_dict_detail` VALUES ('2', 'folderType', 'a标签', '2', '2', null, null, null, null, '2015-01-30', '1');
 INSERT INTO `sys_dict_detail` VALUES ('3', 'folderType', 'a标签target', '3', '3', null, null, null, null, '2015-01-30', '1');
