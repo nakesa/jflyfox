@@ -135,6 +135,13 @@ comment = {
 						$('#web_message').css('font-weight','bold');
 						$('#web_message').css('color','green');
 						$('#web_message').show(500);
+					} else {
+						// 如果已经读过，那么恢复初始化
+						if($('#web_message').text() != '我的消息') {
+							$('#web_message').text('我的消息');
+							$('#web_message').css('font-weight','');
+							$('#web_message').css('color','#454545');							
+						}
 					}
 				} else {
 					console_log('获取评论失败：'+data.msg);
