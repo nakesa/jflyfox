@@ -30,12 +30,12 @@ public class MessageController extends BaseController {
 			return;
 		}
 
-		String sql = "select t.*,art.title from tb_comment t " //
+		String sql = "select t.*,art.title,art.create_id as article_create_id from tb_comment t " //
 				+ " left join tb_article art on art.id = t.article_id " //
 				+ " where t.create_id = ? or t.reply_userid = ? order by t.create_time desc ";
 		List<TbComment> list = TbComment.dao.find(sql, user.getUserid(), user.getUserid());
 		// 更新状态为已读
-		new HomeService().updateCommentStatus(user.getUserid(), 2);
+		new HomeService().updateCommentStatusRead(user.getUserid());
 
 		setAttr("listComment", list);
 		renderAuto(Home.path + "show_message.html");

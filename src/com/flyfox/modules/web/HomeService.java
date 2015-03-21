@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.base.BaseService;
+import com.flyfox.modules.comment.CommentContants;
 import com.flyfox.modules.folder.TbFolder;
 import com.jfinal.plugin.activerecord.Db;
 
@@ -45,9 +46,11 @@ public class HomeService extends BaseService {
 	 * @param userid
 	 * @param status
 	 */
-	public void updateCommentStatus(Integer userid, int status) {
-		String sql = "update tb_comment set status = ? " //
-				+ " where create_id = ? or reply_userid = ? ";
-		Db.update(sql, status, userid, userid);
+	public void updateCommentStatusRead(Integer userid) {
+		String sql = "update tb_comment set status = status + 1 " //
+				+ " where reply_userid = ? and " //
+				+ "status in (" + CommentContants.STATUS_NO_READ //
+				+ "," + CommentContants.STATUS_REPLY_NO_READ + ") ";
+		Db.update(sql, userid);
 	}
 }

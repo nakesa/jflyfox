@@ -41,33 +41,50 @@ var bodyContent = {
 
 				<div class="mod-bloglist" id="article_comment">
 					<div class="mod-blogcommentitem" style="margin-top: 100px;">
-				
+					
+					
 					<div class="comment-list">
 					
 						<% for(comment in listComment){ %>
-						<div class="comment-item" id="${comment.id}_${comment.article_id}">
-							<div class="item-top ${comment.status=='1' ? 'comment-read':''}" >
+						<div class="comment-item" id="comment_${comment.id}_${comment.article_id}">
+							<%  // 回复给当前用户 并且 未读的数据
+								var is_no_read = (session.session_user.userid==comment.reply_userid) 
+										&& (comment.status==11 || comment.status==21); 
+							%>
+							<div class="item-top ${is_no_read ? 'comment-no-read':'' }" >
 								<% var user = flyfox.getUser(comment.create_id);  %>
 								<a href="#"><img width="32" height="32" alt="头像" class="img_radius"
 									src="${user.title_url!'static/images/user/user.png'}" /></a>
 								<a href="web_article/${comment.article_id}#article_comment" target="_blank" class="user-name">${comment.title}</a>
-								<span class="comment-txt">文章中：</span>
+								<span class="comment-txt">文章中</span>
 								<a href="web_article/user/${comment.create_id}" target="_blank" class="user-name">${flyfox.getUserName(comment.create_id)}</a>
-								<% if(comment.reply_userid > 0) { %>
+								<% if(comment.status > 20) { %>
 								<span class="comment-txt">回复</span>
 								<a href="web_article/user/${comment.reply_userid}" target="_blank" class="user-name">${flyfox.getUserName(comment.reply_userid)}</a>
 								<% } %>
 								<br>
 								<span>${comment.content}</span>
 							</div>
+							
 							<div class="item-bottom">
 								<span>${comment.create_time}</span>
 								<% if(!isEmpty(session.session_user) && comment.create_id==session.session_user.userid){ %>
 									<a href="javascript:comment.oper_del(${comment.id},${comment.article_id});" style="float: right;">删除</a>
 								<% } %>
 								<% if(!isEmpty(session.session_user) && comment.create_id!=session.session_user.userid){ %>
-									<a href="javascript:oper_reply_comment(${comment.create_id},'${flyfox.getUserName(comment.create_id)}');" style="float: right;">回复</a>
+									<a href="javascript:show_reply_comment(${comment.id},${comment.article_id});" style="float: right;">回复</a>
 								<% } %>
+							</div>
+							
+							<div id="reply_${comment.id}_${comment.article_id}" class="comment-inner" style="display:none;">
+								<div>
+								<textarea class="comment-textarea" name="comment"></textarea>
+								</div>
+								<div class="comment-btn">
+									<input id="comment-btn" type="button" value="发  布"  
+										onclick="oper_reply_comment(${comment.id},${comment.article_id},${comment.create_id},${comment.article_create_id},'${comment.title}');"
+										class="btn" style="background-color: #FF9933;"/>
+								</div>
 							</div>
 						</div>
 						<%  } %>

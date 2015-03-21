@@ -255,7 +255,7 @@ html {
 	margin-right: 10px;
 }
 
-.comment-list .comment-read {
+.comment-list .comment-no-read {
 	font-weight: bold;
 }
 

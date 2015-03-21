@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.jfinal.component.util.Attr;
+import com.flyfox.modules.comment.CommentContants;
 import com.flyfox.modules.comment.TbComment;
 import com.flyfox.modules.user.SysUser;
 import com.flyfox.modules.user.UserCache;
@@ -74,6 +75,14 @@ public class CommentController extends BaseController {
 			return;
 		}
 
+		// 评论
+		if (comment.getInt("reply_userid")==0) {
+			comment.put("status", CommentContants.STATUS_NO_READ);
+			// 设置 回复人为文章创建者
+			comment.put("reply_userid", comment.getInt("create_id"));
+		} else { // 回复
+			comment.put("status", CommentContants.STATUS_REPLY_NO_READ);
+		}
 		String now = DateUtils.getNow("yyyy-MM-dd HH:mm:ss");
 		comment.put("fatherId", 0);
 		comment.put("create_id", user.getUserID());
@@ -84,9 +93,9 @@ public class CommentController extends BaseController {
 
 		json.put("comment_id", comment.getInt("id"));
 		json.put("title_url", user.getStr("title_url"));
-		if (comment.getInt("reply_userid") > 0) {
-			json.put("reply_username", UserCache.getUser(comment.getInt("reply_userid")).getUserName());
-		}
+		json.put("reply_userid", comment.getInt("reply_userid"));
+		json.put("reply_username", UserCache.getUser(comment.getInt("reply_userid")).getUserName());
+		json.put("create_id", user.getUserID());
 		json.put("create_name", user.getUserName());
 		json.put("create_time", now);
 		json.put("status", 1);// 成功
@@ -111,7 +120,9 @@ public class CommentController extends BaseController {
 		}
 
 		String sql = "select count(*) AS cnt from tb_comment t " //
-				+ " where t.reply_userid = ? and status = 1";
+				+ " where t.reply_userid = ? " //
+				+ " and status in (" + CommentContants.STATUS_NO_READ //
+				+ "," + CommentContants.STATUS_REPLY_NO_READ + ") ";
 		TbComment obj = TbComment.dao.findFirst(sql, user.getUserid());
 		// 更新状态为已读
 		Object cnt = obj.get("cnt");

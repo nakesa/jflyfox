@@ -40,3 +40,9 @@ INSERT INTO `tb_article` VALUES ('103', '5', '信息', '<p>北京市</p>', '0', 
 INSERT INTO `tb_contact` VALUES ('1', '张三', '测试', null, null, null, null, '2015-01-27', '1');
 
 commit;
+
+--更新数据sql
+update tb_comment set status = 11  where reply_userid = 0;
+update tb_comment set reply_userid = 1  where reply_userid = 0;
+update tb_comment set status = 21  where reply_userid != 0;
+
