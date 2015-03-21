@@ -143,7 +143,7 @@ comment = {
 			error:function(html){
 				var flag = (typeof console != 'undefined');
 				if(flag) console.log("服务器忙，提交数据失败，代码:" +html.status+ "，请联系管理员！");
-				alert("服务器忙，提交数据失败，请联系管理员！");
+				// alert("服务器忙，提交数据失败，请联系管理员！");
 			}
 		});
 		// 压力太大了就改大点
