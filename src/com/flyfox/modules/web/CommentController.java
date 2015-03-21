@@ -124,6 +124,7 @@ public class CommentController extends BaseController {
 			return;
 		}
 
+		// TODO 由于评论数量会有大量请求，可以把count放在map进行存储，修改的地方进行更新
 		String sql = "select count(*) AS cnt from tb_comment t " //
 				+ " where t.reply_userid = ? " //
 				+ " and status in (" + CommentContants.STATUS_NO_READ //
