@@ -14,7 +14,13 @@
 
 	<link rel="stylesheet" href="static/web/header.css" type="text/css" media="screen, projection">
 	<link rel="stylesheet" href="static/web/home.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="static/web/paginator.css" type="text/css" media="screen, projection">
+	
+	<style>
+<!--
 
+-->
+</style>
 	<% include("/static/component/include/jquery.html"){} %>
 	<script type="text/javascript" src="pages/web/home.js"></script>
 	<script type="text/javascript" src="pages/web/web_common.js"></script>
@@ -84,7 +90,7 @@ var bodyContent = {
 					<% } %>
 					<div class="comment-list">
 					
-						<% for(comment in listComment){ %>
+						<% for(comment in page.list){ %>
 						<div class="comment-item" id="comment_${comment.id}_${comment.article_id}">
 							<div class="item-top">
 								<% var user = flyfox.getUser(comment.create_id);  %>
@@ -111,7 +117,7 @@ var bodyContent = {
 						<%  } %>
 						
 					</div>
-					
+					<%include("/static/component/include/web_paginator.html",{suffix:'#article_comment'}){} %>
 					</div>
 					
 				</div>

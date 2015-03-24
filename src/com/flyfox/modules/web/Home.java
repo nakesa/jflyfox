@@ -1,7 +1,6 @@
 package com.flyfox.modules.web;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 
@@ -12,6 +11,7 @@ import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.modules.CommonController;
 import com.flyfox.modules.article.TbArticle;
 import com.flyfox.modules.folder.TbFolder;
+import com.jfinal.plugin.activerecord.Page;
 
 @ControllerBind(controllerKey = "/web")
 public class Home extends BaseController {
@@ -27,12 +27,13 @@ public class Home extends BaseController {
 		setAttr("web_title", JFlyFoxUtils.getWebTitle());
 		// 目录列表
 		new HomeService().showDirectory(this, folder_id);
-		
+
 		// 数据列表,只查询展示的和类型为11,12的
-		List<TbArticle> articles = TbArticle.dao.findByWhere(" where status = 1 and type in (11,12) " //
-				+ "and folder_id = ? " //
-				+ "order by sort,create_time desc", folder_id);
-		setAttr("list", articles);
+		Page<TbArticle> articles = TbArticle.dao.paginate(getPaginator(), "select * " //
+				, " from tb_article  where status = 1 and type in (11,12) " //
+						+ "and folder_id = ? " //
+						+ "order by sort,create_time desc", folder_id);
+		setAttr("page", articles);
 
 		renderAuto(path + "home.html");
 
@@ -70,5 +71,4 @@ public class Home extends BaseController {
 		renderNull();
 	}
 
-	
 }

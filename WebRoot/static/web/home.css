@@ -380,3 +380,14 @@ html {
 	color: #333;
 }
 /********** table td ***********/
+
+/************分页定位**************/
+.mod-blogpager {
+	position: relative;
+	top: 30px;
+	left: 0px;
+	margin-left: 168px;
+	width: 940px;
+	font-size: 12px;
+	overflow: hidden;
+}

@@ -14,6 +14,7 @@
 
 	<link rel="stylesheet" href="static/web/header.css" type="text/css" media="screen, projection">
 	<link rel="stylesheet" href="static/web/home.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="static/web/paginator.css" type="text/css" media="screen, projection">
 
 	<% include("/static/component/include/jquery.html"){} %>
 	<script type="text/javascript" src="pages/web/home.js"></script>
@@ -45,7 +46,7 @@ var bodyContent = {
 					
 					<div class="comment-list">
 					
-						<% for(comment in listComment){ %>
+						<% for(comment in page.list){ %>
 						<div class="comment-item" id="comment_${comment.id}_${comment.article_id}">
 							<%  // 回复给当前用户 并且 未读的数据
 								var is_no_read = (session.session_user.userid==comment.reply_userid) 
@@ -91,6 +92,7 @@ var bodyContent = {
 						
 					</div>
 					
+					<%include("/static/component/include/web_paginator.html"){} %>
 					</div>
 					
 				</div>

@@ -14,6 +14,7 @@
 
 	<link rel="stylesheet" href="static/web/header.css" type="text/css" media="screen, projection">
 	<link rel="stylesheet" href="static/web/home.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="static/web/paginator.css" type="text/css" media="screen, projection">
 	
 	<% include("/static/component/include/jquery.html"){} %>
 	<script type="text/javascript" src="pages/web/web_common.js"></script>
@@ -41,7 +42,7 @@ var bodyContent = {
 
 				<div class="mod-bloglist">
 
-					<% for(item in list){ %>
+					<% for(item in page.list){ %>
 						<div class="mod-blogitem">
 							<div class="box-postdate">
 							${item.publish_time}
@@ -68,7 +69,12 @@ var bodyContent = {
 					<% } %>
 
 				</div>
+				
+				<div class="mod-blogpager">
+					<%include("/static/component/include/web_paginator.html"){} %>
+				</div>
 			</div>
+			
 			<div class="mod-diary-bottom"></div>
 		</div>
 	</div>
