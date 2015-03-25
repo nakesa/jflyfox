@@ -42,7 +42,7 @@ public class ArticleController extends BaseController {
 	 * @return
 	 */
 	public String selectFolderJson() {
-		return getJsonData("select id,name from tb_folder", "id", "name");
+		return getJsonData("select id,name from tb_folder order by sort,create_time desc ", "id", "name");
 	}
 
 	public void list() {
@@ -55,7 +55,7 @@ public class ArticleController extends BaseController {
 			sql.whereEquals("folder_id", model.getInt("folder_id"));
 			sql.whereEquals("status", model.getInt("status"));
 		}
-		sql.append(" order by folder_id,sort ");
+		sql.append(" order by folder_id,sort,create_time desc ");
 
 		Page<TbArticle> page = TbArticle.dao.paginate(getPaginator(), "select t.* ", //
 				sql.toString().toString());
