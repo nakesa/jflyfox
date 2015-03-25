@@ -2,7 +2,6 @@ package com.flyfox.modules.contact;
 
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.db.SQLUtils;
-import com.flyfox.util.DateUtils;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
@@ -62,7 +61,7 @@ public class ContactController extends BaseController {
 		} else { // 新增
 			model.remove("id");
 			model.put("create_id", getSessionUser().getUserID());
-			model.put("create_time", DateUtils.getNow());
+			model.put("create_time", getNow());
 			model.save();
 		}
 		renderMessage("保存成功");

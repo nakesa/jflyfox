@@ -2,7 +2,6 @@ package com.flyfox.modules.folder;
 
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.db.SQLUtils;
-import com.flyfox.util.DateUtils;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
@@ -72,13 +71,13 @@ public class FolderController extends BaseController {
 		
 		Integer pid = getParaToInt();
 		TbFolder model = getModel(TbFolder.class);
-		model.put("update_time", DateUtils.getNow("yyyy-MM-dd HH:mm:ss"));
+		model.put("update_time", getNow());
 		if (pid != null && pid > 0) { // 更新
 			model.update();
 		} else { // 新增
 			model.remove("id");
 			model.put("create_id", getSessionUser().getUserID());
-			model.put("create_time", DateUtils.getNow());
+			model.put("create_time", getNow());
 			model.save();
 		}
 		renderMessage("保存成功");

@@ -1,7 +1,6 @@
 package com.flyfox.modules.dict;
 
 import com.flyfox.jfinal.base.BaseController;
-import com.flyfox.util.DateUtils;
 import com.flyfox.util.StrUtils;
 import com.jfinal.plugin.activerecord.Page;
 
@@ -67,7 +66,7 @@ public class DictController extends BaseController {
 			SysDictDetail model = getModel(SysDictDetail.class);
 			model.remove("detail_id");
 			model.put("create_id", getSessionUser().getUserID());
-			model.put("create_time", DateUtils.getNow());
+			model.put("create_time", getNow());
 			svc.addDetail(model);
 		}
 		renderMessage("保存成功");

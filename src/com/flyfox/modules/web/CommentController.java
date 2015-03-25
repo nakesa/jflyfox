@@ -8,7 +8,6 @@ import com.flyfox.modules.comment.CommentContants;
 import com.flyfox.modules.comment.TbComment;
 import com.flyfox.modules.user.SysUser;
 import com.flyfox.modules.user.UserCache;
-import com.flyfox.util.DateUtils;
 import com.flyfox.util.StrUtils;
 
 @ControllerBind(controllerKey = "/web_comment")
@@ -90,7 +89,7 @@ public class CommentController extends BaseController {
 		
 		comment.put("fatherId", 0);
 		comment.put("create_id", user.getUserID());
-		String now = DateUtils.getNow("yyyy-MM-dd HH:mm:ss");
+		String now = getNow();
 		comment.put("create_time", now);
 		comment.save();
 		// 更新评论数

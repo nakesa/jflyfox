@@ -14,7 +14,6 @@ import com.flyfox.modules.CommonController;
 import com.flyfox.modules.article.TbArticle;
 import com.flyfox.modules.user.SysUser;
 import com.flyfox.modules.user.UserCache;
-import com.flyfox.util.DateUtils;
 import com.flyfox.util.StrUtils;
 
 @ControllerBind(controllerKey = "/oauth2")
@@ -136,8 +135,8 @@ public class Oauth2Controller extends BaseController {
 			user.set("usertype", "4"); // 第三方用户
 			user.set("state", 1);
 			user.set("thirdid", openid);
+			user.put("create_time", getNow());
 			user.put("create_id", 0);
-			user.put("create_time", DateUtils.getNow());
 			user.save();
 			UserCache.init();
 		} 

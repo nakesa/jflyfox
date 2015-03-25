@@ -5,7 +5,6 @@ import java.io.File;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.db.SQLUtils;
 import com.flyfox.modules.folder.TbFolder;
-import com.flyfox.util.DateUtils;
 import com.jfinal.kit.PathKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.upload.UploadFile;
@@ -98,13 +97,13 @@ public class ArticleController extends BaseController {
 			model.set("image_url", uploadFile.getFileName());
 		}
 
-		model.put("update_time", DateUtils.getNow("yyyy-MM-dd HH:mm:ss"));
+		model.put("update_time", getNow());
 		if (pid != null && pid > 0) { // 更新
 			model.update();
 		} else { // 新增
 			model.remove("id");
 			model.put("create_id", getSessionUser().getUserID());
-			model.put("create_time", DateUtils.getNow());
+			model.put("create_time", getNow());
 			if (model.get("sort") == null)
 				model.put("sort", 1);
 			model.save();
