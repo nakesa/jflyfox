@@ -131,7 +131,7 @@
 			</resource>
 		</resources>
 		<!-- 输出路径${basedir} -->
-		<outputDirectory>target\classes</outputDirectory>
+		<outputDirectory>WebRoot\WEB-INF\classes</outputDirectory>
 
 		<!-- 测试文件 -->
 		<testSourceDirectory>test</testSourceDirectory>
