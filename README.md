@@ -1,7 +1,7 @@
 # 个人博客
 ------------------------
 
-#### 本网站后台基于Jfinal开发，模板基于beelt，数据库为Mysql。 ####
+#### 本网站后台基于Jfinal开发，模板基于beetl，数据库为Mysql。 ####
 #### 演示地址：[http://jflyfox.oschina.mopaas.com/](http://jflyfox.oschina.mopaas.com/) ####
 #### 管理地址：[http://jflyfox.oschina.mopaas.com/admin](http://jflyfox.oschina.mopaas.com/admin)  ####
 #### 测试账号: admin/admin123 或 test/123456  ####
@@ -92,7 +92,7 @@
 > 5. 优化代码，解决ie、火狐、谷歌样式兼容性问题
 
 >## jflyfox2.0
-> 1. 模板全面更新为beelt，后台继承最新jflyfox_Jfinal.
+> 1. 模板全面更新为beetl，后台继承最新jflyfox_Jfinal.
 
 >## jflyfox1.1
 > 1. jsp最后版本
