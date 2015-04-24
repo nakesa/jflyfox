@@ -1,8 +1,12 @@
 package com.flyfox.component.beelt;
 
+import java.util.List;
+
 import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.template.TemplateFunctions;
 import com.flyfox.modules.dict.DictCache;
+import com.flyfox.modules.friendlylink.FriendlylinkCache;
+import com.flyfox.modules.friendlylink.TbFriendlylink;
 import com.flyfox.modules.user.SysUser;
 import com.flyfox.modules.user.UserCache;
 import com.flyfox.util.DateUtils;
@@ -100,4 +104,15 @@ public class BeeltFunctions extends TemplateFunctions {
 		return user.getStr("username");
 	}
 
+	
+	/**
+	 * 友情链接
+	 * 
+	 * 2015年2月26日 下午4:24:39
+	 * flyfox 330627517@qq.com
+	 * @return
+	 */
+	public static List<TbFriendlylink> getFriendlylinkList() {
+		return FriendlylinkCache.getList();
+	}
 }

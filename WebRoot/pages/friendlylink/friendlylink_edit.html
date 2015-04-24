@@ -1,0 +1,68 @@
+<% 
+var headContent = {
+	include("/pages/template/head.html"){}
+%>
+<script type="text/javascript">
+	var oper ;
+	jQuery(function($) {
+		oper = new flyfox("friendlylink", "友情链接表");
+	});
+</script>
+
+<%
+};
+var bodyContent = {
+%>
+<form name="form1" action="" method="post" class="form-horizontal"
+		role="form" onsubmit="oper.save(${model.id});">
+	<input type="hidden" name="model.id" value="${model.id}" />
+	<table class="table">
+		<%  // 列表头部%>
+				<tr>
+					<td>名称</td>
+					<td>
+					<input class="form-control" type="text" name="model.name" value="${model.name }"  />
+											</td>
+				</tr>
+				<tr>
+					<td>URL</td>
+					<td>
+					<input class="form-control" type="text" name="model.url" value="${model.url }"  />
+											</td>
+				</tr>
+				<tr>
+					<td>排序号</td>
+					<td>
+					<input class="form-control" type="text" name="model.sort" value="${model.sort }"  />
+											</td>
+				</tr>
+				<tr>
+					<td>是否显示</td>
+					<td>
+<label class="radio-inline">
+  <input type="radio" name="model.state" id="" value="1"  ${model.state==1?"checked":"" } > 显示
+</label>
+<label class="radio-inline">
+  <input type="radio" name="model.state" id="" value="2"  ${model.state==2?"checked":"" } > 不显示
+</label>
+					</td>
+				</tr>
+				<tr>
+					<td>备注</td>
+					<td>
+					<textarea class="form-control" rows="3" cols="30" name="model.remark">${model.remark}</textarea>
+					</td>
+				</tr>
+		<tr>
+			<td colspan="2" style="text-align: center;">
+			<input type="submit" value="保 存" class="btn btn-default">
+			<button class="btn btn-default" onclick="closeIframe();return false;">关 闭</button>
+			</td>
+		</tr>
+	</table>
+</form>
+<%}; %>
+
+<% layout("/pages/template/_layout.html",{head:headContent,body:bodyContent}){ %>
+<%} 
+%>

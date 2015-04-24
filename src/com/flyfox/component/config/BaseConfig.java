@@ -9,6 +9,7 @@ import com.flyfox.component.util.UserKeyInterceptor;
 import com.flyfox.jfinal.config.JflyfoxConfig;
 import com.flyfox.jfinal.template.TemplateUtils;
 import com.flyfox.modules.dict.DictCache;
+import com.flyfox.modules.friendlylink.FriendlylinkCache;
 import com.flyfox.modules.pageview.PageViewCache;
 import com.flyfox.modules.pageview.PageViewInterceptor;
 import com.flyfox.modules.user.UserCache;
@@ -28,7 +29,7 @@ public class BaseConfig extends JflyfoxConfig {
 		GroupTemplate groupTemplate = BeetlRenderFactory.groupTemplate;
 		groupTemplate.registerFunctionPackage("strutil", BeetlStrUtils.class);
 		groupTemplate.registerFunctionPackage("flyfox", BeeltFunctions.class);
-		
+
 		TemplateUtils.groupTemplate.registerFunctionPackage("strutil", BeetlStrUtils.class);
 		TemplateUtils.groupTemplate.registerFunctionPackage("flyfox", BeeltFunctions.class);
 	};
@@ -60,6 +61,9 @@ public class BaseConfig extends JflyfoxConfig {
 	@Override
 	public void afterJFinalStart() {
 		reset();
+		System.out.println("##################################");
+		System.out.println("############系统启动完成##########");
+		System.out.println("##################################");
 	}
 
 	public static void reset() {
@@ -67,6 +71,8 @@ public class BaseConfig extends JflyfoxConfig {
 		UserCache.init();
 		// PV缓存绑定
 		PageViewCache.init();
+		// 友情链接缓存
+		FriendlylinkCache.init();
 	}
 
 }

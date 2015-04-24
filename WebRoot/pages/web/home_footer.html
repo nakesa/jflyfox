@@ -1,0 +1,14 @@
+<footer class="mod-footer">
+	<div class="clearfix hidden-box"></div>
+	<div class="footer-box">
+		<div class="inner-box">
+			<% for(item in flyfox.getFriendlylinkList()){ %>
+				<a href="${item.url}" target="_blank">${item.name}</a>
+				<% if(itemLP.index!=flyfox.getFriendlylinkList().~size) { %>
+					<span>&nbsp;|&nbsp;</span>
+				<% } %>
+			<% } %>
+		</div>
+		<div class="copy-box">©2015&nbsp;FLY的狐狸</div>
+	</div>
+</footer>
