@@ -14,7 +14,7 @@ $(function() {
 		$("#scrollTop").hide();
 	}
 	
-	$("#scrollTop").click(function(){$(window).scrollTop(0);});
+	$("#scrollTop").click(function(){$(window).scrollTop(0);return false;});
 	
 	// 评论数获取
 	comment.count();
