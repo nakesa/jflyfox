@@ -9,8 +9,8 @@ import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.jfinal.component.util.Attr;
 import com.flyfox.modules.folder.TbFolder;
-import com.flyfox.modules.user.SysUser;
-import com.flyfox.modules.user.UserCache;
+import com.flyfox.system.user.SysUser;
+import com.flyfox.system.user.UserCache;
 import com.flyfox.util.StrUtils;
 
 @ControllerBind(controllerKey = "/web_regist")
@@ -85,7 +85,8 @@ public class RegistController extends BaseController {
 
 		user.set("username", key);
 		user.set("password", JFlyFoxUtils.passwordEncrypt(password));
-		user.set("usertype", "3");
+		user.set("usertype", 3);
+		user.set("departid", 2);
 		user.put("create_time", getNow());
 		user.put("create_id", 1);
 		user.save();

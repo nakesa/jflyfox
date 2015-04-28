@@ -16,7 +16,7 @@ import com.jfinal.upload.UploadFile;
  */
 public class ArticleController extends BaseController {
 
-	private static final String path = "/pages/article/";
+	private static final String path = "/pages/article/article_";
 	/**
 	 * 图片目录
 	 */
@@ -114,7 +114,7 @@ public class ArticleController extends BaseController {
 	public void edit_content() {
 		TbArticle model = TbArticle.dao.findById(getParaToInt());
 		setAttr("model", model);
-		super.render(path + "edit_article.html");
+		super.render(path + "edit_content.html");
 	}
 
 	public void view_content() {
@@ -126,7 +126,7 @@ public class ArticleController extends BaseController {
 			setAttr("item", article);
 		}
 
-		renderAuto(path + "show_article.html");
+		renderAuto(path + "view_content.html");
 
 	}
 

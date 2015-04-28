@@ -11,7 +11,7 @@ import com.jfinal.plugin.activerecord.Page;
  */
 public class FolderController extends BaseController {
 
-	private static final String path = "/pages/folder/";
+	private static final String path = "/pages/folder/folder_";
 
 	public void index() {
 		list();

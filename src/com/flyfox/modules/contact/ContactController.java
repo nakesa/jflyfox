@@ -11,7 +11,7 @@ import com.jfinal.plugin.activerecord.Page;
  */
 public class ContactController extends BaseController {
 
-	private static final String path = "/pages/contact/";
+	private static final String path = "/pages/contact/contact_";
 
 	public void list() {
 		TbContact model = getModelByAttr(TbContact.class);

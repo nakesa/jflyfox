@@ -5,7 +5,7 @@ import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.jfinal.component.util.Attr;
 import com.flyfox.modules.CommonController;
 import com.flyfox.modules.comment.TbComment;
-import com.flyfox.modules.user.SysUser;
+import com.flyfox.system.user.SysUser;
 import com.jfinal.plugin.activerecord.Page;
 
 /**

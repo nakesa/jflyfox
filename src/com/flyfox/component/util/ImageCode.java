@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * 功能描述：产生验证码图片
  * </p>
  * 
- * @author 陈兵
+ * @author zb
  * @version 1.0
  */
 public class ImageCode extends HttpServlet {

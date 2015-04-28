@@ -6,8 +6,8 @@ import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.jfinal.component.util.Attr;
 import com.flyfox.modules.comment.CommentContants;
 import com.flyfox.modules.comment.TbComment;
-import com.flyfox.modules.user.SysUser;
-import com.flyfox.modules.user.UserCache;
+import com.flyfox.system.user.SysUser;
+import com.flyfox.system.user.UserCache;
 import com.flyfox.util.StrUtils;
 
 @ControllerBind(controllerKey = "/web_comment")

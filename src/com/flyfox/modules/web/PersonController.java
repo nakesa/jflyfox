@@ -5,8 +5,8 @@ import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.jfinal.component.util.Attr;
-import com.flyfox.modules.user.SysUser;
-import com.flyfox.modules.user.UserCache;
+import com.flyfox.system.user.SysUser;
+import com.flyfox.system.user.UserCache;
 import com.flyfox.util.StrUtils;
 
 /**
@@ -51,7 +51,7 @@ public class PersonController extends BaseController {
 		}
 
 		// 第三方用户不需要密码
-		if (!user.getStr("usertype").equals("4")) {
+		if (user.getInt("usertype") != 4) {
 			String oldPassword = getPara("old_password");
 			String newPassword = getPara("new_password");
 			String newPassword2 = getPara("new_password2");

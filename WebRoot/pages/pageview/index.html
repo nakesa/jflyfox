@@ -3,6 +3,8 @@
 	include("/pages/template/head.html"){}
 %>
 <script type="text/javascript" src="static/component/echarts/echarts-plain.js"></script>
+<!-- 时间组件 -->
+<% include("/static/component/include/my97.html"){} %>
 
 <script type="text/javascript">
 $(function() {
@@ -83,10 +85,10 @@ var bodyContent = {
 		<div class="tableSearch">
 			<div class="form-group">
 				<label class="sr-only">区间</label>
-				<input type="date" name="start_day" class="form-control"
-					value="${start_day}" placeholder="开始时间"  />
-				-<input type="date" name="end_day" class="form-control" 
-					value="${end_day}"  placeholder="结束时间"  />
+				<input type="text" name="start_day" class="form-control" style="width: 140px;"
+					value="${start_day}" placeholder="开始时间" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+				-<input type="text" name="end_day" class="form-control" style="width: 140px;"
+					value="${end_day}"  placeholder="结束时间" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
 			</div>
 			<button type="button" class="btn btn-default" onclick="oper_list();" name="search">
 			 		<span class="glyphicon glyphicon-search"></span> 查 询

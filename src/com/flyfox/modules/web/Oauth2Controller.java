@@ -12,8 +12,8 @@ import com.flyfox.jfinal.component.oauth.OauthSina;
 import com.flyfox.jfinal.component.oauth.util.TokenUtil;
 import com.flyfox.modules.CommonController;
 import com.flyfox.modules.article.TbArticle;
-import com.flyfox.modules.user.SysUser;
-import com.flyfox.modules.user.UserCache;
+import com.flyfox.system.user.SysUser;
+import com.flyfox.system.user.UserCache;
 import com.flyfox.util.StrUtils;
 
 @ControllerBind(controllerKey = "/oauth2")
@@ -132,7 +132,7 @@ public class Oauth2Controller extends BaseController {
 			user.set("username", username);
 			user.set("realname", username);
 			user.set("password", JFlyFoxUtils.getDefaultPassword());
-			user.set("usertype", "4"); // 第三方用户
+			user.set("usertype", 4); // 第三方用户
 			user.set("state", 1);
 			user.set("thirdid", openid);
 			user.put("create_time", getNow());

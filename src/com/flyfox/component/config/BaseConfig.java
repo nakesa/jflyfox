@@ -8,12 +8,12 @@ import com.flyfox.component.beelt.BeeltFunctions;
 import com.flyfox.component.util.UserKeyInterceptor;
 import com.flyfox.jfinal.config.JflyfoxConfig;
 import com.flyfox.jfinal.template.TemplateUtils;
-import com.flyfox.modules.dict.DictCache;
 import com.flyfox.modules.friendlylink.FriendlylinkCache;
 import com.flyfox.modules.pageview.PageViewCache;
 import com.flyfox.modules.pageview.PageViewInterceptor;
-import com.flyfox.modules.user.UserCache;
-import com.flyfox.modules.user.UserInterceptor;
+import com.flyfox.system.dict.DictCache;
+import com.flyfox.system.user.UserCache;
+import com.flyfox.system.user.UserInterceptor;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
 

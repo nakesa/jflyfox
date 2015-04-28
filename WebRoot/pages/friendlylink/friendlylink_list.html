@@ -4,19 +4,51 @@
 %>
 
 <script type="text/javascript">
-var oper ;
+var oper;
 jQuery(function($) {
-	oper = new flyfox("friendlylink", "友情链接表");
-	oper.height = 5 * 60 + 90; // 重设高度
-	if(oper.height < 300) oper.height = 300;
-	if(oper.height > 500) oper.height = 500;
-	paginator = function(page) {
-		oper.list();
+	// 页面方法
+	oper = {
+		width : 400,
+		height : 400,
+		form : document.form1,
+		list : function() {
+			var url = 'friendlylink/list';
+			this.form.action = url;
+			this.form.submit();
+		},
+		view : function(id) {
+			var url = 'friendlylink/view/'+id;
+			var title = '查看友情链接';
+			Iframe(url, this.width, this.height, title, false, false, false, EmptyFunc);
+		},
+		add : function() {
+			var url = 'friendlylink/add';
+			var title = '添加友情链接';
+			Iframe(url, this.width, this.height, title);
+		},
+		edit : function(id) {
+			var url = 'friendlylink/edit/'+id;
+			var title = '修改友情链接';
+			Iframe(url, this.width, this.height, title);
+		},
+		del : function(id) {
+			var url = 'friendlylink/delete/'+id;
+			var title = '确认要删除该友情链接信息？';
+			Confirm(title, function() {
+				form1.action = url;
+				form1.submit();
+			});
+		}
 	};
-
 	//显示Menu索引
 	showMenu('page_friendlylink');
 });
+
+//分页
+var paginator = function(page) {
+	oper.list();
+};
+
 </script>
 
 <%

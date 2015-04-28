@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.template.TemplateFunctions;
-import com.flyfox.modules.dict.DictCache;
 import com.flyfox.modules.friendlylink.FriendlylinkCache;
 import com.flyfox.modules.friendlylink.TbFriendlylink;
-import com.flyfox.modules.user.SysUser;
-import com.flyfox.modules.user.UserCache;
+import com.flyfox.system.dict.DictCache;
+import com.flyfox.system.user.SysUser;
+import com.flyfox.system.user.UserCache;
 import com.flyfox.util.DateUtils;
 import com.flyfox.util.NumberUtils;
 import com.flyfox.util.StrUtils;

@@ -9,7 +9,7 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 
 /**
- * 联系人管理
+ * 用户PV统计管理
  * 
  * @author flyfox 2014-2-11
  */

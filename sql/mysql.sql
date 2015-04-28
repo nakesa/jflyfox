@@ -1,66 +1,4 @@
 /**
- * 数据字典主表
- */
-drop table if exists sys_dict;
-
-CREATE TABLE sys_dict
-(
-  dict_id int(11) NOT NULL AUTO_INCREMENT COMMENT '主键', 
-  dict_name   VARCHAR(256) not null COMMENT '名称',
-  dict_type  VARCHAR(64) not null COMMENT '类型',
-  dict_remark VARCHAR(256) COMMENT '备注',
-  PRIMARY KEY (dict_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-alter table sys_dict add unique UK_SYS_DICT_TYPE (dict_type);
-
-/**
- * 数据字典明细表
- */
-drop table if exists sys_dict_detail;
-
-create table sys_dict_detail
-(
-  detail_id      int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  dict_type      varchar(64) NOT NULL COMMENT '数据字典类型',
-  detail_name    varchar(256) COMMENT '名称',
-  detail_code    varchar(32) COMMENT '代码',
-  detail_sort    varchar(32) COMMENT '排序号',
-  detail_type    varchar(32) COMMENT '类型',
-  detail_state   varchar(32) COMMENT '状态',
-  detail_content varchar(256) COMMENT '内容',
-  detail_remark  varchar(256) COMMENT '备注',
-  create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
-  create_id  int(11) DEFAULT 0 COMMENT '创建者',
-  PRIMARY KEY (detail_id)
-  -- ,foreign key (dict_type) references sys_dict (dict_type)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-  
-/**
- * 用户表
- */
-drop table if exists sys_user;
-
-create table sys_user
-(
-  userid      int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  username    varchar(32) NOT NULL COMMENT '用户名',
-  password    varchar(32) NOT NULL COMMENT '密码',
-  realname    varchar(32) DEFAULT NULL COMMENT '真实姓名',
-  usertype    varchar(32) DEFAULT '2' comment '类型//select/1,管理员,2,普通用户,3,前台用户,4,第三方用户',
-  state       varchar(32) DEFAULT '10' comment '状态',
-  thirdid	  varchar(200) DEFAULT NULL COMMENT '第三方ID',
-  endtime     varchar(32) DEFAULT NULL COMMENT '结束时间',
-  email       varchar(64) DEFAULT NULL COMMENT 'email',
-  tel         varchar(32) DEFAULT NULL COMMENT '手机号',
-  address     varchar(32) DEFAULT NULL COMMENT '地址',
-  title_url   varchar(200) DEFAULT NULL COMMENT '头像地址',
-  remark      varchar(1000) DEFAULT NULL COMMENT '说明',
-  create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
-  create_id  int(11) DEFAULT 0 COMMENT '创建者',
-  PRIMARY KEY (userid)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/**
  * 访问量统计
  */ 
 drop table if exists tb_pageview;
@@ -181,3 +119,170 @@ create table tb_friendlylink
   create_id  int(11) DEFAULT 0 COMMENT '创建者',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='友情链接表';
+
+
+/************************ 系统表分界线 **********************************/
+/**
+ * 数据字典主表
+ */
+drop table if exists sys_dict;
+
+CREATE TABLE sys_dict
+(
+  dict_id int(11) NOT NULL AUTO_INCREMENT COMMENT '主键', 
+  dict_name   VARCHAR(256) not null COMMENT '名称',
+  dict_type  VARCHAR(64) not null COMMENT '类型',
+  dict_remark VARCHAR(256) COMMENT '备注',
+  PRIMARY KEY (dict_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='数据字典主表';
+alter table sys_dict add unique UK_SYS_DICT_TYPE (dict_type);
+
+/**
+ * 数据字典明细表
+ */
+drop table if exists sys_dict_detail;
+
+create table sys_dict_detail
+(
+  detail_id      int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  dict_type      varchar(64) NOT NULL COMMENT '数据字典类型',
+  detail_name    varchar(256) COMMENT '名称',
+  detail_code    varchar(32) COMMENT '代码',
+  detail_sort    varchar(32) COMMENT '排序号',
+  detail_type    varchar(32) COMMENT '类型',
+  detail_state   varchar(32) COMMENT '状态',
+  detail_content varchar(256) COMMENT '内容',
+  detail_remark  varchar(256) COMMENT '备注',
+  create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
+  create_id  int(11) DEFAULT 0 COMMENT '创建者',
+  PRIMARY KEY (detail_id)
+  -- ,foreign key (dict_type) references sys_dict (dict_type)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='数据字典';
+
+/**
+ * 部门表
+ */
+drop table if exists sys_department;
+
+create table sys_department
+(
+  id      int(11) NOT NULL AUTO_INCREMENT,
+  name    varchar(32) NOT NULL COMMENT '部门/11111',
+  sort int(11) DEFAULT 0 COMMENT '序号',
+  linkman varchar(64) DEFAULT NULL COMMENT '联系人',
+  linkman_no varchar(32) DEFAULT NULL COMMENT '联系人电话',
+  create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
+  create_id  int(11) DEFAULT 0 COMMENT '创建者',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部门';
+
+/**
+ * 用户表
+ */
+drop table if exists sys_user;
+
+create table sys_user
+(
+  userid      int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  username    varchar(32) NOT NULL COMMENT '用户名/11111',
+  password    varchar(32) NOT NULL COMMENT '密码',
+  realname    varchar(32) DEFAULT NULL COMMENT '真实姓名',
+  departid    int(11) default 0 COMMENT '部门/11111/dict',
+  usertype    int(11) DEFAULT '2' comment '类型//select/1,管理员,2,普通用户,3,前台用户,4,第三方用户',
+  state       int(11) DEFAULT '10' comment '状态',
+  thirdid	  varchar(200) DEFAULT NULL COMMENT '第三方ID',
+  endtime     varchar(32) DEFAULT NULL COMMENT '结束时间',
+  email       varchar(64) DEFAULT NULL COMMENT 'email',
+  tel         varchar(32) DEFAULT NULL COMMENT '手机号',
+  address     varchar(32) DEFAULT NULL COMMENT '地址',
+  title_url   varchar(200) DEFAULT NULL COMMENT '头像地址',
+  remark      varchar(1000) DEFAULT NULL COMMENT '说明',
+  create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
+  create_id  int(11) DEFAULT 0 COMMENT '创建者',
+  PRIMARY KEY (userid)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户';
+
+/**
+ * 菜单表
+ */
+drop table if exists sys_menu;
+CREATE TABLE sys_menu
+(
+  id int(11) not null auto_increment comment 'id',
+  parentid int(11) not null default 0 comment '父id',
+  name varchar(200) not null default '' comment '名称/11111',
+  urlkey varchar(256) default null comment '菜单key',
+  url varchar(256) default null comment '链接地址',
+  status int(11) default '1' comment '状态//radio/2,隐藏,1,显示',
+  type int(11) DEFAULT '1' COMMENT '类型//select/1,根目录,2,a标签,3,a标签_blank,4,外部url',
+  sort  int(11) default '1' comment '排序',
+  level int(11) default 1 comment '级别', 
+  create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
+  create_id  int(11) DEFAULT 0 COMMENT '创建者',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='菜单';
+
+/**
+ * 角色和菜单关联表
+ */
+drop table if exists sys_role;
+CREATE TABLE sys_role
+(
+  id int(11) not null auto_increment comment 'id',
+  name varchar(200) not null default '' comment '名称/11111/',
+  status int(11) default 1 comment '状态//radio/2,隐藏,1,显示',
+  sort  int(11) default '1' comment '排序', 
+  remark text default null comment '说明//textarea',
+  create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
+  create_id  int(11) DEFAULT 0 COMMENT '创建者',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色';
+
+/**
+ * 角色菜单关联表
+ */
+drop table if exists sys_role_menu;
+CREATE TABLE sys_role_menu
+(
+  id int(11) not null auto_increment comment 'id',
+  roleid int(11) not null comment '角色id',
+  menuid int(11) not null comment '菜单id', 
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色和菜单关联';
+
+/**
+ * 用户和角色关联表
+ */
+drop table if exists sys_user_role;
+CREATE TABLE sys_user_role
+(
+  id int(11) not null auto_increment comment 'id',
+  userid int(11) not null comment '用户id', 
+  roleid int(11) not null comment '角色id',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户和角色关联';
+
+
+DROP TABLE IF EXISTS `tb_contact`;
+CREATE TABLE `tb_contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `name` varchar(256) NOT NULL COMMENT '姓名',
+  `phone` varchar(32) DEFAULT NULL COMMENT '手机号',
+  `email` varchar(32) DEFAULT NULL COMMENT 'Email',
+  `addr` varchar(256) DEFAULT NULL COMMENT '地址',
+  `birthday` varchar(32) DEFAULT NULL COMMENT '生日',
+  `remark` varchar(256) DEFAULT NULL COMMENT '说明',
+  `create_time` varchar(64) DEFAULT NULL COMMENT '创建时间',
+  `create_id` int(11) DEFAULT '0' COMMENT '创建者',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='联系人';
+
+/**
+ * 数据
+ */
+-- 部门
+INSERT INTO `sys_department` VALUES ('1', '系统承建单位', '99', 'system', '15888888888', '2016-06-06 06:06:06', '1');
+-- 用户
+INSERT INTO `sys_user` VALUES ('1', 'admin', 'LHmWhtwF/dGhJxqKJ8QXRg==', '系统管理员', 1,1, 0, null, null, null, null, null, null, null, '2016-06-06 06:06:06',1);
+
+/************************ 系统表分界线 **********************************/

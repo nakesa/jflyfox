@@ -1,6 +1,6 @@
 package com.flyfox.component.util;
 
-import com.flyfox.modules.dict.SysDictDetail;
+import com.flyfox.system.dict.SysDictDetail;
 import com.flyfox.util.encrypt.DESUtils;
 
 public class JFlyFoxUtils {
