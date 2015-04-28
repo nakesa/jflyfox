@@ -282,7 +282,34 @@ CREATE TABLE `tb_contact` (
  */
 -- 部门
 INSERT INTO `sys_department` VALUES ('1', '系统承建单位', '99', 'system', '15888888888', '2016-06-06 06:06:06', '1');
+INSERT INTO `sys_department` VALUES ('2', '注册用户', '97', '无人', '15888888888', '2015-04-28 22:39:34', '1');
+
 -- 用户
 INSERT INTO `sys_user` VALUES ('1', 'admin', 'LHmWhtwF/dGhJxqKJ8QXRg==', '系统管理员', 1,1, 0, null, null, null, null, null, null, null, '2016-06-06 06:06:06',1);
+-- 数据字典
+INSERT INTO `sys_dict` VALUES ('2', '目录类型', 'articleType', null);
+INSERT INTO `sys_dict` VALUES ('11', '目录类型', 'folderType', null);
+INSERT INTO `sys_dict` VALUES ('100', '系统参数', 'systemParam', null);
+
+INSERT INTO `sys_dict_detail` VALUES ('1', 'folderType', '目录', '1', '1', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('2', 'folderType', 'a标签', '2', '2', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('3', 'folderType', 'a标签target', '3', '3', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('4', 'folderType', 'html标签', '4', '4', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('11', 'articleType', '正常', '1', '1', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('12', 'articleType', '预览', '2', '2', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('13', 'articleType', '程序', '3', '3', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('101', 'systemParam', 'FLY的狐狸', '1', '1', null, null, null, null, '2015-01-30', '1');
+-- 菜单
+INSERT INTO `sys_menu` VALUES ('1', '0', '系统管理', 'system', null, '1', '1', '99', '1', '2015-04-27 17:28:06', '1');
+INSERT INTO `sys_menu` VALUES ('2', '1', '组织机构', 'department', 'department/list', '1', '1', '10', '2', '2015-04-27 17:28:25', '1');
+INSERT INTO `sys_menu` VALUES ('3', '1', '用户管理', 'user', 'user/list', '1', '1', '12', '2', '2015-04-27 17:28:46', '1');
+INSERT INTO `sys_menu` VALUES ('4', '1', '角色管理', 'role', 'role/list', '1', '1', '14', '2', '2015-04-27 17:29:13', '1');
+INSERT INTO `sys_menu` VALUES ('5', '1', '菜单管理', 'menu', 'menu/list', '1', '1', '16', '2', '2015-04-27 17:29:43', '1');
+INSERT INTO `sys_menu` VALUES ('6', '1', '数据字典', 'dict', 'dict/list', '1', '1', '18', '2', '2015-04-27 17:30:05', '1');
+INSERT INTO `sys_menu` VALUES ('7', '0', '联系人管理', 'contact', 'contact/list', '1', '1', '19', '1', '2015-04-28 12:38:04', '1');
+INSERT INTO `sys_menu` VALUES ('8', '0', '目录管理', 'folder', 'folder/list', '1', '1', '10', '1', '2015-04-28 22:34:46', '1');
+INSERT INTO `sys_menu` VALUES ('9', '0', '文章管理', 'article', 'article/list', '1', '1', '12', '1', '2015-04-28 22:35:24', '1');
+INSERT INTO `sys_menu` VALUES ('10', '0', '友情链接', 'friendlylink', 'friendlylink/list', '1', '1', '14', '1', '2015-04-28 22:35:56', '1');
+INSERT INTO `sys_menu` VALUES ('11', '0', '访问量统计', 'pageview', 'pageview', '1', '1', '16', '1', '2015-04-28 22:36:34', '1');
 
 /************************ 系统表分界线 **********************************/
