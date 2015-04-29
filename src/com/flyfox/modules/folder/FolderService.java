@@ -31,6 +31,7 @@ public class FolderService extends BaseService {
 		// 目录列表
 		if (folders == null) {
 			updateCache();
+			folders = cache.get("folderList");
 		}
 		return folders;
 	}
