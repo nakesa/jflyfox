@@ -52,7 +52,7 @@ CREATE TABLE `sys_dict` (
 -- ----------------------------
 -- Records of sys_dict
 -- ----------------------------
-INSERT INTO `sys_dict` VALUES ('2', '目录类型', 'articleType', null);
+INSERT INTO `sys_dict` VALUES ('2', '文章类型', 'articleType', null);
 INSERT INTO `sys_dict` VALUES ('11', '目录类型', 'folderType', null);
 INSERT INTO `sys_dict` VALUES ('100', '系统参数', 'systemParam', null);
 

@@ -287,7 +287,7 @@ INSERT INTO `sys_department` VALUES ('2', '注册用户', '97', '无人', '15888
 -- 用户
 INSERT INTO `sys_user` VALUES ('1', 'admin', 'LHmWhtwF/dGhJxqKJ8QXRg==', '系统管理员', 1,1, 0, null, null, null, null, null, null, null, '2016-06-06 06:06:06',1);
 -- 数据字典
-INSERT INTO `sys_dict` VALUES ('2', '目录类型', 'articleType', null);
+INSERT INTO `sys_dict` VALUES ('2', '文章类型', 'articleType', null);
 INSERT INTO `sys_dict` VALUES ('11', '目录类型', 'folderType', null);
 INSERT INTO `sys_dict` VALUES ('100', '系统参数', 'systemParam', null);
 

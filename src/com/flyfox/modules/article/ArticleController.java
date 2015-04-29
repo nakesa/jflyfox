@@ -78,6 +78,10 @@ public class ArticleController extends BaseController {
 
 	public void delete() {
 		TbArticle.dao.deleteById(getParaToInt());
+		
+		// 更新缓存
+		new ArticleService().updateCache();
+		
 		list();
 	}
 
@@ -108,6 +112,10 @@ public class ArticleController extends BaseController {
 				model.put("sort", 1);
 			model.save();
 		}
+		
+		// 更新缓存
+		new ArticleService().updateCache();
+
 		renderMessage("保存成功");
 	}
 
@@ -133,6 +141,10 @@ public class ArticleController extends BaseController {
 	public void save_content() {
 		TbArticle model = getModel(TbArticle.class);
 		model.update();
+
+		// 更新缓存
+		new ArticleService().updateCache();
+
 		renderMessage("保存成功");
 	}
 }

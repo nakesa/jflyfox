@@ -5,6 +5,8 @@ import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.jfinal.component.util.Attr;
 import com.flyfox.modules.CommonController;
 import com.flyfox.modules.comment.TbComment;
+import com.flyfox.modules.web.service.CommentService;
+import com.flyfox.modules.web.service.HomeService;
 import com.flyfox.system.user.SysUser;
 import com.jfinal.plugin.activerecord.Page;
 
@@ -36,7 +38,7 @@ public class MessageController extends BaseController {
 				"select t.*,art.title,art.create_id as article_create_id " //
 				, sql, user.getUserid(), user.getUserid());
 		// 更新状态为已读
-		new HomeService().updateCommentStatusRead(user.getUserid());
+		new CommentService().updateCommentStatusRead(user.getUserid());
 
 		setAttr("page", pages);
 		renderAuto(Home.path + "show_message.html");

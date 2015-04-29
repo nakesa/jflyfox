@@ -69,15 +69,18 @@ public class CommonController extends BaseController {
 			render(loginPage);
 			return;
 		} else {
-			Map<Integer, List<SysMenu>> map = new UserSvc().getAuthMap(user);
-			if (map == null) {
-				setAttr("msg", "没有权限，请联系管理员");
-				render(loginPage);
-				return;
+			// 管理员，后台用才需要注册菜单
+			if (user.getInt("usertype") == 1 || user.getInt("usertype") == 2) {
+				Map<Integer, List<SysMenu>> map = new UserSvc().getAuthMap(user);
+				if (map == null) {
+					setAttr("msg", "没有权限，请联系管理员");
+					render(loginPage);
+					return;
+				}
+				// 注入菜单
+				setSessionAttr("menu", map);
 			}
-			// 注入菜单
-			setSessionAttr("menu", map);
-			
+
 			setSessionUser(user);
 		}
 

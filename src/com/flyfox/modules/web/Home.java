@@ -9,8 +9,10 @@ import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.modules.CommonController;
+import com.flyfox.modules.article.ArticleService;
 import com.flyfox.modules.article.TbArticle;
 import com.flyfox.modules.folder.TbFolder;
+import com.flyfox.modules.web.service.HomeService;
 import com.jfinal.plugin.activerecord.Page;
 
 @ControllerBind(controllerKey = "/web")
@@ -25,19 +27,18 @@ public class Home extends BaseController {
 		}
 		// 题目
 		setAttr("web_title", JFlyFoxUtils.getWebTitle());
-		// 目录列表
+		// 目录列表，缓存
 		new HomeService().showDirectory(this, folder_id);
 
-		// 数据列表,只查询展示的和类型为11,12的
-		Page<TbArticle> articles = TbArticle.dao.paginate(getPaginator(), "select * " //
-				, " from tb_article  where status = 1 and type in (11,12) " //
-						+ "and folder_id = ? " //
-						+ "order by sort,create_time desc", folder_id);
+		// 文章数据列表，缓存
+		Page<TbArticle> articles = new ArticleService().getArticlePage(getPaginator(),folder_id);
 		setAttr("page", articles);
 
 		renderAuto(path + "home.html");
 
 	}
+
+	
 
 	/**
 	 * 登陆

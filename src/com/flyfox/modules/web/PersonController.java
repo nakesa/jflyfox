@@ -5,6 +5,8 @@ import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.jfinal.component.util.Attr;
+import com.flyfox.modules.CommonController;
+import com.flyfox.modules.web.service.HomeService;
 import com.flyfox.system.user.SysUser;
 import com.flyfox.system.user.UserCache;
 import com.flyfox.util.StrUtils;
@@ -23,7 +25,7 @@ public class PersonController extends BaseController {
 	public void index() {
 		SysUser user = getSessionAttr(Attr.SESSION_NAME);
 		if (user == null) {
-			index();
+			redirect(CommonController.firstPage);
 		} else {
 			setAttr("model", user);
 

@@ -5,7 +5,7 @@ import com.flyfox.jfinal.component.db.SQLUtils;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
- * 联系人管理
+ * 目录管理
  * 
  * @author flyfox 2014-2-11
  */
@@ -53,6 +53,10 @@ public class FolderController extends BaseController {
 			return;
 		}
 		TbFolder.dao.deleteById(getParaToInt());
+
+		// 更新目录缓存
+		new FolderService().updateCache();
+
 		list();
 	}
 
@@ -68,7 +72,7 @@ public class FolderController extends BaseController {
 			renderMessage("数据不能修改。");
 			return;
 		}
-		
+
 		Integer pid = getParaToInt();
 		TbFolder model = getModel(TbFolder.class);
 		model.put("update_time", getNow());
@@ -80,6 +84,9 @@ public class FolderController extends BaseController {
 			model.put("create_time", getNow());
 			model.save();
 		}
+
+		// 更新目录缓存
+		new FolderService().updateCache();
 		renderMessage("保存成功");
 	}
 }

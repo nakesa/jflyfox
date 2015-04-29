@@ -8,6 +8,7 @@ import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.modules.article.TbArticle;
 import com.flyfox.modules.comment.TbComment;
 import com.flyfox.modules.folder.TbFolder;
+import com.flyfox.modules.web.service.HomeService;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
