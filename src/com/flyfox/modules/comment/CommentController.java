@@ -3,7 +3,6 @@ package com.flyfox.modules.comment;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.db.SQLUtils;
 import com.flyfox.modules.article.TbArticle;
-import com.flyfox.modules.web.service.CommentService;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
@@ -48,12 +47,8 @@ public class CommentController extends BaseController {
 	}
 
 	public void delete() {
-		int id = getParaToInt();
-		TbComment model = TbComment.dao.findById(id);
-		
-		TbComment.dao.deleteById(id);
-		new CommentService().getAndUpdateCommentUnreadCount(model.getInt("reply_userid"), true);
-		
+		TbComment.dao.deleteById(getParaToInt());
+
 		list();
 	}
 
@@ -76,9 +71,6 @@ public class CommentController extends BaseController {
 			model.put("create_time", getNow());
 			model.save();
 		}
-		
-		new CommentService().getAndUpdateCommentUnreadCount(model.getInt("reply_userid"), true);
-		
 		renderMessage("保存成功");
 	}
 }
