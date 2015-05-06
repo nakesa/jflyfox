@@ -120,6 +120,7 @@ INSERT INTO `sys_menu` VALUES ('8', '0', '目录管理', 'folder', 'folder/list'
 INSERT INTO `sys_menu` VALUES ('9', '0', '文章管理', 'article', 'article/list', '1', '1', '12', '1', '2015-04-28 22:35:24', '1');
 INSERT INTO `sys_menu` VALUES ('10', '0', '友情链接', 'friendlylink', 'friendlylink/list', '1', '1', '14', '1', '2015-04-28 22:35:56', '1');
 INSERT INTO `sys_menu` VALUES ('11', '0', '访问量统计', 'pageview', 'pageview', '1', '1', '16', '1', '2015-04-28 22:36:34', '1');
+INSERT INTO `sys_menu` VALUES ('12', '0', '回复管理', 'comment', 'comment/list', '1', '1', '13', '1', '2015-04-28 22:36:34', '1');
 
 -- ----------------------------
 -- Table structure for `sys_role`
