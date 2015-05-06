@@ -18,6 +18,15 @@ public class CommentService extends BaseService {
 	private static Cache cache = CacheManager.get(cacheName);
 
 	/**
+	 * 更新缓存,清空
+	 * 
+	 * 2015年4月29日 下午4:37:40 flyfox 330627517@qq.com
+	 */
+	public void updateCache() {
+		cache.clear();
+	}
+	
+	/**
 	 * 保存评论
 	 * 
 	 * 2015年4月29日 下午3:11:37 flyfox 330627517@qq.com

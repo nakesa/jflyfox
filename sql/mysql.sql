@@ -313,5 +313,6 @@ INSERT INTO `sys_menu` VALUES ('9', '0', '文章管理', 'article', 'article/lis
 INSERT INTO `sys_menu` VALUES ('10', '0', '友情链接', 'friendlylink', 'friendlylink/list', '1', '1', '14', '1', '2015-04-28 22:35:56', '1');
 INSERT INTO `sys_menu` VALUES ('11', '0', '访问量统计', 'pageview', 'pageview', '1', '1', '16', '1', '2015-04-28 22:36:34', '1');
 INSERT INTO `sys_menu` VALUES ('12', '0', '回复管理', 'comment', 'comment/list', '1', '1', '13', '1', '2015-04-28 22:36:34', '1');
+INSERT INTO `sys_menu` VALUES ('13', 1, '系统操作', 'operation', 'operation', '1', '1', '20', '2', '2015-05-06 11:41:33', '1');
 
 /************************ 系统表分界线 **********************************/
