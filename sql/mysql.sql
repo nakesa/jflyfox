@@ -115,6 +115,7 @@ create table tb_friendlylink
   url     varchar(256) NOT NULL COMMENT 'URL',
   sort    int(11) NOT NULL COMMENT '排序号',
   state   int(11) DEFAULT 0 COMMENT '是否显示//radio/1,显示,2,不显示',
+  type   int(11) DEFAULT 0 COMMENT '类型//select/1,见数据字典',
   remark  varchar(256)  DEFAULT NULL COMMENT '备注//textarea',
   create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
   create_id  int(11) DEFAULT 0 COMMENT '创建者',
@@ -278,6 +279,8 @@ CREATE TABLE `tb_contact` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='联系人';
 
+/************************ 系统表分界线 **********************************/
+
 /**
  * 数据
  */
@@ -291,6 +294,7 @@ INSERT INTO `sys_user` VALUES ('1', 'admin', 'LHmWhtwF/dGhJxqKJ8QXRg==', '系统
 INSERT INTO `sys_dict` VALUES ('2', '文章类型', 'articleType', null);
 INSERT INTO `sys_dict` VALUES ('11', '目录类型', 'folderType', null);
 INSERT INTO `sys_dict` VALUES ('100', '系统参数', 'systemParam', null);
+INSERT INTO `sys_dict` VALUES ('101', '友情链接类型', 'friendlyLinkType', null)
 
 INSERT INTO `sys_dict_detail` VALUES ('1', 'folderType', '目录', '1', '1', null, null, null, null, '2015-01-30', '1');
 INSERT INTO `sys_dict_detail` VALUES ('2', 'folderType', 'a标签', '2', '2', null, null, null, null, '2015-01-30', '1');
@@ -299,6 +303,8 @@ INSERT INTO `sys_dict_detail` VALUES ('4', 'folderType', 'html标签', '4', '4',
 INSERT INTO `sys_dict_detail` VALUES ('11', 'articleType', '正常', '1', '1', null, null, null, null, '2015-01-30', '1');
 INSERT INTO `sys_dict_detail` VALUES ('12', 'articleType', '预览', '2', '2', null, null, null, null, '2015-01-30', '1');
 INSERT INTO `sys_dict_detail` VALUES ('13', 'articleType', '程序', '3', '3', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('21', 'friendlyLinkType', '友情链接', null, '1', null, null, null, null, '2015-05-06 15:18:59', '1');
+INSERT INTO `sys_dict_detail` VALUES ('22', 'friendlyLinkType', '关于我们', null, '2', null, null, null, null, '2015-05-06 15:19:20', '1')
 INSERT INTO `sys_dict_detail` VALUES ('101', 'systemParam', 'FLY的狐狸', '1', '1', null, null, null, null, '2015-01-30', '1');
 -- 菜单
 INSERT INTO `sys_menu` VALUES ('1', '0', '系统管理', 'system', null, '1', '1', '99', '1', '2015-04-27 17:28:06', '1');
@@ -315,4 +321,11 @@ INSERT INTO `sys_menu` VALUES ('11', '0', '访问量统计', 'pageview', 'pagevi
 INSERT INTO `sys_menu` VALUES ('12', '0', '回复管理', 'comment', 'comment/list', '1', '1', '13', '1', '2015-04-28 22:36:34', '1');
 INSERT INTO `sys_menu` VALUES ('13', 1, '系统操作', 'operation', 'operation', '1', '1', '20', '2', '2015-05-06 11:41:33', '1');
 
-/************************ 系统表分界线 **********************************/
+-- 友情链接
+INSERT INTO `tb_friendlylink` VALUES ('1', '网站首页', 'web', '1', '1', '22', null, '2015-04-24 15:03:02', '1');
+INSERT INTO `tb_friendlylink` VALUES ('2', '捐赠我们', 'web_article/121', '2', '1', '22', null, '2015-04-24 15:27:36', '1');
+INSERT INTO `tb_friendlylink` VALUES ('3', '关于我们', 'web_article/106', '3', '1', '22', null, '2015-04-24 15:28:56', '1');
+INSERT INTO `tb_friendlylink` VALUES ('4', '给我写信', 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=_crKyc-LzszIzrmIiNealpQ', '4', '1', '22', null, '2015-04-24 15:29:12', '1');
+INSERT INTO `tb_friendlylink` VALUES ('5', 'Jfinal', 'http://www.jfinal.com/', '12', '1', '21', null, '2015-05-06 16:13:40', '1');
+INSERT INTO `tb_friendlylink` VALUES ('6', 'Beetl', 'http://www.ibeetl.com/', '14', '1', '21', null, '2015-05-06 16:14:37', '1');
+INSERT INTO `tb_friendlylink` VALUES ('7', 'OsChina', 'http://www.oschina.net/', '11', '1', '21', null, '2015-05-06 16:15:03', '1');

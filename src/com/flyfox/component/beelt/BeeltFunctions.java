@@ -104,7 +104,6 @@ public class BeeltFunctions extends TemplateFunctions {
 		return user.getStr("username");
 	}
 
-	
 	/**
 	 * 友情链接
 	 * 
@@ -112,7 +111,7 @@ public class BeeltFunctions extends TemplateFunctions {
 	 * flyfox 330627517@qq.com
 	 * @return
 	 */
-	public static List<TbFriendlylink> getFriendlylinkList() {
-		return FriendlylinkCache.getList();
+	public static List<TbFriendlylink> friendlylink(int type) {
+		return FriendlylinkCache.getList(type);
 	}
 }

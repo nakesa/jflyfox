@@ -1,11 +1,13 @@
 package com.flyfox.modules.friendlylink;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import com.flyfox.jfinal.base.BaseService;
+import com.flyfox.system.dict.SysDictDetail;
+import com.flyfox.util.cache.Cache;
+import com.flyfox.util.cache.CacheManager;
 
 /**
  * 友情链接管理
@@ -15,7 +17,17 @@ import com.flyfox.jfinal.base.BaseService;
 public class FriendlylinkCache extends BaseService {
 
 	private final static Logger log = Logger.getLogger(FriendlylinkCache.class);
-	private static final List<TbFriendlylink> cacheList = new ArrayList<TbFriendlylink>();
+	private final static String cacheName = "FriendlylinkCache";
+	private static Cache cache = CacheManager.get(cacheName);
+
+	/**
+	 * 更新缓存
+	 * 
+	 * 2015年4月29日 下午4:37:40 flyfox 330627517@qq.com
+	 */
+	public void updateCache() {
+		init();
+	}
 
 	public static void init() {
 		log.info("####FriendlylinkCache初始化......");
@@ -28,15 +40,18 @@ public class FriendlylinkCache extends BaseService {
 	 * 2015年4月24日 下午3:11:40 flyfox 330627517@qq.com
 	 */
 	public static void update() {
-		List<TbFriendlylink> list = TbFriendlylink.dao.findByWhere(" order by sort ");
-		cacheList.clear();
-		for (TbFriendlylink model : list) {
-			cacheList.add(model);
+		cache.clear();
+		List<SysDictDetail> typeList = SysDictDetail.dao.findByWhere(" where dict_type = 'friendlyLinkType'");
+		for (SysDictDetail dict : typeList) {
+			int type = dict.getInt("detail_id");
+			List<TbFriendlylink> list = TbFriendlylink.dao.findByWhere(" where type = ? order by sort ", type);
+			cache.add(type + "", list);
 		}
+
 	}
 
-	public static List<TbFriendlylink> getList() {
-		return cacheList;
+	public static List<TbFriendlylink> getList(int type) {
+		return cache.get(type + "");
 	}
 
 }

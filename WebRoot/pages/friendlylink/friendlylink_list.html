@@ -9,7 +9,7 @@ jQuery(function($) {
 	// 页面方法
 	oper = {
 		width : 400,
-		height : 400,
+		height : 420,
 		form : document.form1,
 		list : function() {
 			var url = 'friendlylink/list';
@@ -86,6 +86,7 @@ var bodyContent = {
 					<%  // 列表头部 %>
 					<th>名称</th> 
 					<th>URL</th> 
+					<th>类型</th>
 					<th>排序号</th> 
 					<th>是否显示</th> 
 					<th>备注</th> 
@@ -98,7 +99,14 @@ var bodyContent = {
 				<td>${itemLP.index }</td>
 					<%  // 列表内容 %>
 						<td>${item.name}</td> 
-					<td>${item.url}</td> 
+					<td title="${item.url}">
+					<% if (strutil.length(item.url) > 20) { %>
+						${strutil.subStringTo(item.url, 0, 20)}...
+					<% 	} else { %>
+						${item.url}
+					<%  } %>
+					</td> 
+					<td>${flyfox.dictValue(item.type!'' )  }</td>
 					<td>${item.sort}</td> 
 						<td>
  

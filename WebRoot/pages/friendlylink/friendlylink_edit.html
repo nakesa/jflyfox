@@ -41,6 +41,14 @@ var bodyContent = {
 										</td>
 			</tr>
 			<tr>
+			<td>类型</td>
+				<td>
+					<select name="model.type" class="form-control" >
+					${flyfox.dictSelect('friendlyLinkType' , model.type!'')  }
+					</select>
+				</td>
+			</tr>
+			<tr>
 				<td>排序号</td>
 				<td>
 				<input class="form-control" type="text" name="model.sort" value="${model.sort }" 
