@@ -86,12 +86,13 @@ CREATE TABLE tb_contact
  */ 
 drop table if exists tb_comment;
 
+
 CREATE TABLE tb_comment (
   id  int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   fatherId int(11) DEFAULT NULL COMMENT '父评论ID',
   article_id int(11) DEFAULT NULL COMMENT '文章ID',
   content text NOT NULL COMMENT '内容',
-  status int(11) DEFAULT 11 COMMENT '状态',
+  status int(11) DEFAULT 11 COMMENT '状态//select/11,评论未读,12,评论已读,21,回复未读,22,回复已读',
   reply_userid int(11) DEFAULT 0 COMMENT '回复者',
   create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
   create_id  int(11) DEFAULT 0 COMMENT '创建者 评论者',
