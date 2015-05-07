@@ -1,7 +1,8 @@
-package com.flyfox.component.util;
+package com.flyfox.component.interceptor;
 
 import java.util.UUID;
 
+import com.flyfox.component.util.JFlyFoxUtils;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
