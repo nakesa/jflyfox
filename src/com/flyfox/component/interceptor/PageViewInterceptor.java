@@ -25,7 +25,7 @@ public class PageViewInterceptor implements Interceptor {
 
 		String ip = getIpAddr(controller.getRequest());
 		if (StrUtils.isEmpty(ip)) {
-			log.debug("PageViewInterceptor中数据为Null");
+			log.warn("PageViewInterceptor中数据为Null");
 		} else {
 			// 添加Page View
 			PageViewCache.add(ip);
