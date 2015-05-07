@@ -41,6 +41,7 @@ public class PageViewCache {
 	 * @param ip
 	 */
 	public static synchronized void add(String ip) {
+		initNowDay();
 		if (cacheList.contains(ip))
 			return;
 
@@ -71,7 +72,7 @@ public class PageViewCache {
 	private static void initNowDay() {
 		if (nowDay == null) {
 			nowDay = DateUtils.getNow();
-		} else if (nowDay.equals(DateUtils.getNow())) { // 如果不是当天数据清除再来
+		} else if (!nowDay.equals(DateUtils.getNow())) { // 如果不是当天数据清除再来
 			nowDay = DateUtils.getNow();
 			cacheList.clear();
 		}
