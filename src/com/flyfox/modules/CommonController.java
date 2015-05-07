@@ -6,6 +6,10 @@ import java.util.Map;
 import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
+import com.flyfox.modules.article.ArticleService;
+import com.flyfox.modules.article.TbArticle;
+import com.flyfox.modules.folder.TbFolder;
+import com.flyfox.modules.web.service.HomeService;
 import com.flyfox.system.dict.DictCache;
 import com.flyfox.system.menu.SysMenu;
 import com.flyfox.system.user.SysUser;
@@ -13,6 +17,7 @@ import com.flyfox.system.user.UserCache;
 import com.flyfox.system.user.UserSvc;
 import com.flyfox.util.Config;
 import com.flyfox.util.StrUtils;
+import com.jfinal.plugin.activerecord.Page;
 
 /**
  * CommonController
@@ -25,7 +30,19 @@ public class CommonController extends BaseController {
 	public static final String firstPage = "/web";
 
 	public void index() {
-		redirect(firstPage);
+		Integer folder_id = getParaToInt();
+		if (folder_id == null || folder_id <= 0) {
+			folder_id = TbFolder.ROOT;
+		}
+		
+		// 目录列表，缓存
+		new HomeService().showDirectory(this, folder_id);
+
+		// 文章数据列表，缓存
+		Page<TbArticle> articles = new ArticleService().getArticlePage(getPaginator(),folder_id);
+		setAttr("page", articles);
+
+		renderAuto("/pages/web/home.html");
 	}
 
 	public void admin() {

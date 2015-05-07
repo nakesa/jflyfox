@@ -25,7 +25,7 @@ public class CommentService extends BaseService {
 	public void updateCache() {
 		cache.clear();
 	}
-	
+
 	/**
 	 * 保存评论
 	 * 
@@ -109,7 +109,7 @@ public class CommentService extends BaseService {
 	/**
 	 * 获取未读数量
 	 * 
-	 * TODO 由于评论数量会有大量请求，可以把count放在map进行存储，修改的地方进行更新
+	 * 由于评论数量会有大量请求，通过缓存实现
 	 * 
 	 * 2015年4月29日 下午2:53:23 flyfox 330627517@qq.com
 	 * 
@@ -123,7 +123,7 @@ public class CommentService extends BaseService {
 	/**
 	 * 获取未读数量
 	 * 
-	 * TODO 由于评论数量会有大量请求，可以把count放在map进行存储，修改的地方进行更新
+	 * 由于评论数量会有大量请求，通过缓存实现
 	 * 
 	 * 2015年4月29日 下午2:53:23 flyfox 330627517@qq.com
 	 * 

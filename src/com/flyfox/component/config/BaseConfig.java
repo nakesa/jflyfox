@@ -11,10 +11,6 @@ import com.flyfox.component.interceptor.UserKeyInterceptor;
 import com.flyfox.component.util.JFlyFoxCache;
 import com.flyfox.jfinal.config.JflyfoxConfig;
 import com.flyfox.jfinal.template.TemplateUtils;
-import com.flyfox.modules.friendlylink.FriendlylinkCache;
-import com.flyfox.modules.pageview.PageViewCache;
-import com.flyfox.system.dict.DictCache;
-import com.flyfox.system.user.UserCache;
 import com.flyfox.system.user.UserInterceptor;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -65,23 +61,10 @@ public class BaseConfig extends JflyfoxConfig {
 	 */
 	@Override
 	public void afterJFinalStart() {
-		reset();
+		JFlyFoxCache.init();
 		System.out.println("##################################");
 		System.out.println("############系统启动完成##########");
 		System.out.println("##################################");
-	}
-
-	public static void reset() {
-		// 系统常量
-		JFlyFoxCache.init();
-		// 数据字典
-		DictCache.init();
-		// 用户信息
-		UserCache.init();
-		// PV缓存绑定
-		PageViewCache.init();
-		// 友情链接缓存
-		FriendlylinkCache.init();
 	}
 
 }

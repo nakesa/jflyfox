@@ -20,15 +20,6 @@ public class FriendlylinkCache extends BaseService {
 	private final static String cacheName = "FriendlylinkCache";
 	private static Cache cache = CacheManager.get(cacheName);
 
-	/**
-	 * 更新缓存
-	 * 
-	 * 2015年4月29日 下午4:37:40 flyfox 330627517@qq.com
-	 */
-	public void updateCache() {
-		init();
-	}
-
 	public static void init() {
 		log.info("####FriendlylinkCache初始化......");
 		update();
