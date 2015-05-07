@@ -73,6 +73,12 @@ var bodyContent = {
 						</div>
 						<%  } %>
 						
+						<% if(page.list == null || page.list.~size <=0) { %>
+							<div class="comment-item" style="margin-bottom: 20px;font-size: 14px;font-weight: bold;">
+								暂无消息
+							</div>
+						<% } %>
+						
 					</div>
 					
 					<%include("/static/component/include/web_paginator.html"){} %>

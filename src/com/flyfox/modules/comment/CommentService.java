@@ -65,6 +65,8 @@ public class CommentService extends BaseService {
 	 * @param comment
 	 */
 	public void deleteComment(TbComment comment) {
+		// 获取原始数据
+		comment = TbComment.dao.findById(comment.getInt("id"));
 		// 删除
 		TbComment.dao.deleteById(comment.getInt("id"));
 		// 更新评论数
