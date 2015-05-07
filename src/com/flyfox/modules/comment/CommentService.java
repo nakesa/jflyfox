@@ -1,8 +1,6 @@
-package com.flyfox.modules.web.service;
+package com.flyfox.modules.comment;
 
 import com.flyfox.jfinal.base.BaseService;
-import com.flyfox.modules.comment.CommentContants;
-import com.flyfox.modules.comment.TbComment;
 import com.flyfox.system.user.SysUser;
 import com.flyfox.util.DateUtils;
 import com.flyfox.util.cache.Cache;

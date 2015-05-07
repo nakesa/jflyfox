@@ -7,7 +7,7 @@ import com.flyfox.jfinal.base.BaseService;
 import com.flyfox.modules.folder.FolderService;
 import com.flyfox.modules.folder.TbFolder;
 
-public class HomeService extends BaseService {
+public class WebService extends BaseService {
 
 	/**
 	 * 展示菜单

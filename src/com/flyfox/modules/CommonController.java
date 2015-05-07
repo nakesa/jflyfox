@@ -9,7 +9,7 @@ import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.modules.article.ArticleService;
 import com.flyfox.modules.article.TbArticle;
 import com.flyfox.modules.folder.TbFolder;
-import com.flyfox.modules.web.service.HomeService;
+import com.flyfox.modules.web.service.WebService;
 import com.flyfox.system.dict.DictCache;
 import com.flyfox.system.menu.SysMenu;
 import com.flyfox.system.user.SysUser;
@@ -36,7 +36,7 @@ public class CommonController extends BaseController {
 		}
 		
 		// 目录列表，缓存
-		new HomeService().showDirectory(this, folder_id);
+		new WebService().showDirectory(this, folder_id);
 
 		// 文章数据列表，缓存
 		Page<TbArticle> articles = new ArticleService().getArticlePage(getPaginator(),folder_id);

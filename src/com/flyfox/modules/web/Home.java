@@ -11,7 +11,7 @@ import com.flyfox.modules.CommonController;
 import com.flyfox.modules.article.ArticleService;
 import com.flyfox.modules.article.TbArticle;
 import com.flyfox.modules.folder.TbFolder;
-import com.flyfox.modules.web.service.HomeService;
+import com.flyfox.modules.web.service.WebService;
 import com.jfinal.plugin.activerecord.Page;
 
 @ControllerBind(controllerKey = "/web")
@@ -26,7 +26,7 @@ public class Home extends BaseController {
 		}
 		
 		// 目录列表，缓存
-		new HomeService().showDirectory(this, folder_id);
+		new WebService().showDirectory(this, folder_id);
 
 		// 文章数据列表，缓存
 		Page<TbArticle> articles = new ArticleService().getArticlePage(getPaginator(),folder_id);

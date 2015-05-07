@@ -8,7 +8,7 @@ import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.modules.article.TbArticle;
 import com.flyfox.modules.comment.TbComment;
 import com.flyfox.modules.folder.TbFolder;
-import com.flyfox.modules.web.service.HomeService;
+import com.flyfox.modules.web.service.WebService;
 import com.jfinal.plugin.activerecord.Page;
 
 /**
@@ -44,7 +44,7 @@ public class ArticleController extends BaseController {
 		}
 
 		// 目录列表
-		new HomeService().showDirectory(this, article.getInt("folder_id"));
+		new WebService().showDirectory(this, article.getInt("folder_id"));
 
 		renderAuto(Home.path + "show_article.html");
 
@@ -61,7 +61,7 @@ public class ArticleController extends BaseController {
 
 		setAttr("web_title", BeeltFunctions.getUserName(userid));
 		// 目录列表
-		new HomeService().showDirectory(this, TbFolder.ROOT);
+		new WebService().showDirectory(this, TbFolder.ROOT);
 
 		// 数据列表,只查询展示的和类型为11,12的
 		Page<TbArticle> articles = TbArticle.dao.paginate(getPaginator(), "select * ", //

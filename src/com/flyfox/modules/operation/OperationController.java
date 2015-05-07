@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.util.Attr;
 import com.flyfox.modules.article.ArticleService;
+import com.flyfox.modules.comment.CommentService;
 import com.flyfox.modules.folder.FolderService;
-import com.flyfox.modules.web.service.CommentService;
 import com.flyfox.system.user.SysUser;
 
 /**

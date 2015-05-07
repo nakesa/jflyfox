@@ -4,9 +4,9 @@ import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.jfinal.component.util.Attr;
 import com.flyfox.modules.CommonController;
+import com.flyfox.modules.comment.CommentService;
 import com.flyfox.modules.comment.TbComment;
-import com.flyfox.modules.web.service.CommentService;
-import com.flyfox.modules.web.service.HomeService;
+import com.flyfox.modules.web.service.WebService;
 import com.flyfox.system.user.SysUser;
 import com.jfinal.plugin.activerecord.Page;
 
@@ -23,7 +23,7 @@ public class MessageController extends BaseController {
 	 */
 	public void index() {
 		// 目录列表
-		new HomeService().showDirectory(this, "message");
+		new WebService().showDirectory(this, "message");
 
 		SysUser user = getSessionAttr(Attr.SESSION_NAME);
 		if (user == null) {

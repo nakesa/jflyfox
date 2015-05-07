@@ -6,7 +6,7 @@ import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.jfinal.component.util.Attr;
 import com.flyfox.modules.CommonController;
-import com.flyfox.modules.web.service.HomeService;
+import com.flyfox.modules.web.service.WebService;
 import com.flyfox.system.user.SysUser;
 import com.flyfox.system.user.UserCache;
 import com.flyfox.util.StrUtils;
@@ -29,7 +29,7 @@ public class PersonController extends BaseController {
 		} else {
 			setAttr("model", user);
 
-			new HomeService().showDirectory(this, "person");
+			new WebService().showDirectory(this, "person");
 
 			renderAuto(Home.path + "show_person.html");
 		}
