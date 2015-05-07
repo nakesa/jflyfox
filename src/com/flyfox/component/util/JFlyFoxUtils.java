@@ -1,11 +1,9 @@
 package com.flyfox.component.util;
 
-import com.flyfox.system.dict.SysDictDetail;
 import com.flyfox.util.encrypt.DESUtils;
 
 public class JFlyFoxUtils {
 
-	public static String WEB_TITLE = null;
 	/**
 	 * session唯一Key
 	 */
@@ -19,19 +17,6 @@ public class JFlyFoxUtils {
 		String tmp = passwordEncrypt(password);
 		System.out.println(tmp);
 		System.out.println(passwordDecrypt(tmp));
-	}
-
-	public static String getWebTitle() {
-		if (WEB_TITLE == null) {
-			SysDictDetail dict = SysDictDetail.dao.findFirst("select detail_name from sys_dict_detail " //
-					+ "where  dict_type = 'systemParam' and detail_code = 1");
-			if (dict != null) {
-				WEB_TITLE = dict.getStr("detail_name");
-			} else {
-				WEB_TITLE = "FLY的狐狸~！~";
-			}
-		}
-		return WEB_TITLE;
 	}
 
 	/**

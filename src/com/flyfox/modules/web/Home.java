@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 
 import com.flyfox.component.util.ImageCode;
-import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.modules.CommonController;
@@ -25,8 +24,7 @@ public class Home extends BaseController {
 		if (folder_id == null || folder_id <= 0) {
 			folder_id = TbFolder.ROOT;
 		}
-		// 题目
-		setAttr("web_title", JFlyFoxUtils.getWebTitle());
+		
 		// 目录列表，缓存
 		new HomeService().showDirectory(this, folder_id);
 

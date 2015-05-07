@@ -1,24 +1,7 @@
 <% 
 	var headContent = {
 %>
-	<base href="${BASE_PATH }">
-	<title>Jflyfox博客</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="icon" href="favicon.ico" />
-	<link rel="shortcut icon" href="favicon.ico" />
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">
-	<meta http-equiv="keywords" content="Jflyfox博客">
-	<meta http-equiv="description" content="Jflyfox博客">
-
-	<link rel="stylesheet" href="static/web/header.css" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="static/web/home.css" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="static/web/paginator.css" type="text/css" media="screen, projection">
-
-	<% include("/static/component/include/jquery.html"){} %>
-	<script type="text/javascript" src="pages/web/home.js"></script>
-	<script type="text/javascript" src="pages/web/web_common.js"></script>
+	<% include("/pages/web/web_header.html"){} %>
 	<script type="text/javascript" src="pages/web/show_message.js"></script>
 <%
 };

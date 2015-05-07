@@ -306,6 +306,7 @@ INSERT INTO `sys_dict_detail` VALUES ('13', 'articleType', '程序', '3', '3', n
 INSERT INTO `sys_dict_detail` VALUES ('21', 'friendlyLinkType', '友情链接', null, '1', null, null, null, null, '2015-05-06 15:18:59', '1');
 INSERT INTO `sys_dict_detail` VALUES ('22', 'friendlyLinkType', '关于我们', null, '2', null, null, null, null, '2015-05-06 15:19:20', '1')
 INSERT INTO `sys_dict_detail` VALUES ('101', 'systemParam', 'FLY的狐狸', '1', '1', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('102', 'systemParam', 'Jflyfox博客', '2', '1', null, null, null, null, '2015-01-30', '1');
 -- 菜单
 INSERT INTO `sys_menu` VALUES ('1', '0', '系统管理', 'system', null, '1', '1', '99', '1', '2015-04-27 17:28:06', '1');
 INSERT INTO `sys_menu` VALUES ('2', '1', '组织机构', 'department', 'department/list', '1', '1', '10', '2', '2015-04-27 17:28:25', '1');

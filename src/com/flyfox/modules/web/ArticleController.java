@@ -43,8 +43,6 @@ public class ArticleController extends BaseController {
 			setAttr("page", comments);
 		}
 
-		// 题目
-		setAttr("web_title", JFlyFoxUtils.getWebTitle());
 		// 目录列表
 		new HomeService().showDirectory(this, article.getInt("folder_id"));
 

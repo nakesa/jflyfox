@@ -2,7 +2,6 @@ package com.flyfox.component.beelt;
 
 import java.util.List;
 
-import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.template.TemplateFunctions;
 import com.flyfox.modules.friendlylink.FriendlylinkCache;
 import com.flyfox.modules.friendlylink.TbFriendlylink;
@@ -43,10 +42,6 @@ public class BeeltFunctions extends TemplateFunctions {
 	}
 
 	// //////////////////////自定义方法///////////////////////////
-	public static String webtitle() {
-		return JFlyFoxUtils.getWebTitle();
-	}
-	
 	public static String getNow() {
 		return DateUtils.getNow();
 	}

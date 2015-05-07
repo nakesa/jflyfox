@@ -5,8 +5,10 @@ import org.beetl.ext.jfinal.BeetlRenderFactory;
 
 import com.beetl.functions.BeetlStrUtils;
 import com.flyfox.component.beelt.BeeltFunctions;
+import com.flyfox.component.interceptor.CommonInterceptor;
 import com.flyfox.component.interceptor.PageViewInterceptor;
 import com.flyfox.component.interceptor.UserKeyInterceptor;
+import com.flyfox.component.util.JFlyFoxCache;
 import com.flyfox.jfinal.config.JflyfoxConfig;
 import com.flyfox.jfinal.template.TemplateUtils;
 import com.flyfox.modules.friendlylink.FriendlylinkCache;
@@ -45,6 +47,9 @@ public class BaseConfig extends JflyfoxConfig {
 	 * 配置全局拦截器
 	 */
 	public void configInterceptor(Interceptors me) {
+		// 公共属性
+		me.add(new CommonInterceptor());
+
 		// session model转换
 		super.configInterceptor(me);
 		// 用户Key设置
@@ -67,7 +72,11 @@ public class BaseConfig extends JflyfoxConfig {
 	}
 
 	public static void reset() {
+		// 系统常量
+		JFlyFoxCache.init();
+		// 数据字典
 		DictCache.init();
+		// 用户信息
 		UserCache.init();
 		// PV缓存绑定
 		PageViewCache.init();

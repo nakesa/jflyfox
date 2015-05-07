@@ -89,6 +89,7 @@ INSERT INTO `sys_dict_detail` VALUES ('13', 'articleType', '程序', '3', '3', n
 INSERT INTO `sys_dict_detail` VALUES ('21', 'friendlyLinkType', '友情链接', null, '1', null, null, null, null, '2015-05-06 15:18:59', '1');
 INSERT INTO `sys_dict_detail` VALUES ('22', 'friendlyLinkType', '关于我们', null, '2', null, null, null, null, '2015-05-06 15:19:20', '1');
 INSERT INTO `sys_dict_detail` VALUES ('101', 'systemParam', 'FLY的狐狸', '1', '1', null, null, null, null, '2015-01-30', '1');
+INSERT INTO `sys_dict_detail` VALUES ('102', 'systemParam', 'Jflyfox博客', '2', '1', null, null, null, null, '2015-01-30', '1');
 
 -- ----------------------------
 -- Table structure for `sys_menu`
