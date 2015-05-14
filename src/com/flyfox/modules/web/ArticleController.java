@@ -2,6 +2,7 @@ package com.flyfox.modules.web;
 
 import com.flyfox.component.beelt.BeeltFunctions;
 import com.flyfox.component.util.ArticleCountCache;
+import com.flyfox.component.util.JFlyFoxCache;
 import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
@@ -38,6 +39,9 @@ public class ArticleController extends BaseController {
 
 			setAttr("item", article);
 
+			// seo：title优化 
+			setAttr(JFlyFoxUtils.TITLE_ATTR, article.getStr("title") + " - " + JFlyFoxCache.getHeadTitle());
+			
 			Page<TbComment> comments = TbComment.dao.paginate(getPaginator(), "select * ", //
 					" from tb_comment where article_id = ? order by create_time desc ", articleId);
 			setAttr("page", comments);

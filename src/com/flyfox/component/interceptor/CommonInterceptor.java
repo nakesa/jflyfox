@@ -1,6 +1,7 @@
 package com.flyfox.component.interceptor;
 
 import com.flyfox.component.util.JFlyFoxCache;
+import com.flyfox.component.util.JFlyFoxUtils;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
@@ -19,7 +20,7 @@ public class CommonInterceptor implements Interceptor {
 		
 		// 设置公共属性
 		controller.setAttr("WEB_TITLE", JFlyFoxCache.getWebTitle());
-		controller.setAttr("HEAD_TITLE", JFlyFoxCache.getHeadTitle());
+		controller.setAttr(JFlyFoxUtils.TITLE_ATTR, JFlyFoxCache.getHeadTitle());
 
 		ai.invoke();
 	}

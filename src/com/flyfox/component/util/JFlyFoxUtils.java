@@ -4,6 +4,7 @@ import com.flyfox.util.encrypt.DESUtils;
 
 public class JFlyFoxUtils {
 
+	public static final String TITLE_ATTR = "HEAD_TITLE";
 	/**
 	 * session唯一Key
 	 */
