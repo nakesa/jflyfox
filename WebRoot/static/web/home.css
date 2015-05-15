@@ -336,9 +336,13 @@ html {
 .mod-footer .footer-box .copy-box {
 	margin-bottom: 20px;
 	color: #959595;
-	line-height: 12px;
-	height: 12px;
+	line-height: 25px;
+	height: 25px;
 	overflow: hidden
+}
+
+.mod-footer .footer-box .copy-box img {
+	vertical-align: middle;
 }
 /********************* footer end ***********************/
 
