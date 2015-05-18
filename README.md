@@ -1,6 +1,6 @@
 # 个人博客
 ------------------------
-#### 博客地址：[http://http://www.jflyfox.com//](http://http://www.jflyfox.com//) ####
+#### 博客地址：[http://www.jflyfox.com/](http://www.jflyfox.com/) ####
 
 #### 本网站后台基于Jfinal开发，模板基于beetl，数据库为Mysql。 ####
 #### 老版本地址如下  ####
