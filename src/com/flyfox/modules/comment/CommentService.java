@@ -5,6 +5,7 @@ import com.flyfox.system.user.SysUser;
 import com.flyfox.util.DateUtils;
 import com.flyfox.util.cache.Cache;
 import com.flyfox.util.cache.CacheManager;
+import com.flyfox.util.extend.HtmlUtils;
 import com.jfinal.plugin.activerecord.Db;
 
 public class CommentService extends BaseService {
@@ -34,6 +35,11 @@ public class CommentService extends BaseService {
 	 */
 	public void saveComment(SysUser user, TbComment comment) {
 		// 评论
+		// 删除标签
+		String content = HtmlUtils.delHTMLTag(comment.getStr("content"));
+		content = HtmlUtils.changeTag(content);
+
+		comment.put("content", content);
 		int status;
 		if (comment.getInt("reply_userid") == 0) {
 			// 评论自己文章 标记为已读

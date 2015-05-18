@@ -77,6 +77,7 @@ public class CommentController extends BaseController {
 
 		// 设置返回json
 		json.put("comment_id", comment.getInt("id"));
+		json.put("content", comment.getStr("content"));
 		json.put("title_url", user.getStr("title_url"));
 		json.put("reply_userid", comment.getInt("reply_userid"));
 		json.put("reply_username", UserCache.getUser(comment.getInt("reply_userid")).getUserName());

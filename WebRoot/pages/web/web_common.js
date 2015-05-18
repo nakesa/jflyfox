@@ -73,7 +73,8 @@ comment = {
 				var comment_id = data.comment_id;
 				var title_url = data.title_url||'';
 				var username = data.create_name;
-				var reply_username = data.reply_username; 
+				var reply_username = data.reply_username;
+				var content = data.content; 
 				title_url = (title_url=='')?'static/images/user/user.png':title_url;
 				
 				var htmlText = '<div class="comment-item" id=comment_'+ comment_id + '_' + article_id + '>';
@@ -94,7 +95,7 @@ comment = {
 				}
 				
 				htmlText += '<div style="float:none;line-height: 24px;overflow: visible;">';
-				htmlText += '<span>'+comment_content+'</span>';
+				htmlText += '<span>'+content+'</span>';
 				htmlText += '</div></div>';
 				htmlText += '<div class="item-bottom">';
 				htmlText += '<span>'+createTime+'</span>';
