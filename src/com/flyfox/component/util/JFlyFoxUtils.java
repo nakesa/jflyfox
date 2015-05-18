@@ -4,7 +4,16 @@ import com.flyfox.util.encrypt.DESUtils;
 
 public class JFlyFoxUtils {
 
+	/**
+	 * head title属性
+	 */
 	public static final String TITLE_ATTR = "HEAD_TITLE";
+	
+	/**
+	 * 注册用户部门ID
+	 */
+	public static final int DEPART_THIRD_ID = 2;
+	
 	/**
 	 * session唯一Key
 	 */
