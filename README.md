@@ -1,7 +1,9 @@
 # 个人博客
 ------------------------
+#### 博客地址：[http://http://www.jflyfox.com//](http://http://www.jflyfox.com//) ####
 
 #### 本网站后台基于Jfinal开发，模板基于beetl，数据库为Mysql。 ####
+#### 老版本地址如下  ####
 #### 演示地址：[http://jflyfox.oschina.mopaas.com/](http://jflyfox.oschina.mopaas.com/) ####
 #### 管理地址：[http://jflyfox.oschina.mopaas.com/admin](http://jflyfox.oschina.mopaas.com/admin)  ####
 #### 测试账号: admin/admin123 或 test/123456  ####
