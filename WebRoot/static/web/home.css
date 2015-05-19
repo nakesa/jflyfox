@@ -149,12 +149,12 @@ html {
 	text-decoration: none;
 }
 
-.mod-blogitem .item-right {
+.mod-blogitem .item-title .item-right {
 	float: right;
 	margin-right: 25px;
 }
 
-.mod-blogitem .item-right span {
+.mod-blogitem .item-title .item-right span {
 	color: gray;
 	font-size: 12px;
 	margin-right: 5px;
@@ -181,6 +181,26 @@ html {
 	zoom: 1;
 	font-style: italic;
 }
+
+.mod-blogitem .item-footer {
+	margin-left: 188px;
+	margin-top: 5px;
+	width: 722px;
+	line-height: 24px;
+	overflow: hidden;
+}
+
+.mod-blogitem .item-footer .item-left {
+	float: left;
+	width: 500px;
+}
+
+.mod-blogitem .item-footer .item-right {
+	float: right;
+	margin-right: 40px;
+	font-size: 12px;
+}
+
 /********************* comment start ***********************/
 .mod-blogcommentitem {
 	position: relative;
@@ -312,7 +332,6 @@ html {
 /********************* clear end ***********************/
 
 /********************* footer start ***********************/
-
 .mod-footer .hidden-box {
 	line-height: 0;
 	height: 0;
@@ -447,3 +466,42 @@ html {
 	font-size: 12px;
 	overflow: hidden;
 }
+/************分页定位**************/
+
+/***************标签**********************/
+.q-taglist {
+	overflow: hidden;
+}
+
+.q-taglist .q-icon {
+	display: block;
+	float: left;
+	height: 14px;
+	width: 14px;
+	padding: 6px 4px;
+	background: url(q-tag.png) no-repeat 4px -10px;
+}
+
+.q-taglist .q-tagitem {
+	float: left;
+	font-size: 12px;
+	line-height: 26px;
+	padding: 0 2px;
+}
+
+.q-taglist .a-tagitem {
+	color: #454545;
+	padding: 2px 4px;
+	_padding: 4px 4px 0;
+	word-break: keep-all;
+	word-wrap: normal;
+}
+
+.q-taglist .a-tagitem:hover {
+	color: #fff;
+	background-color: #3fa7cb;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+/***************标签**********************/

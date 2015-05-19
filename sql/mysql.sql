@@ -101,6 +101,20 @@ CREATE TABLE tb_comment (
 
 
 /**
+ * 标签
+ */
+drop table if exists tb_tags;
+CREATE TABLE tb_tags
+(
+  id int(11) not null auto_increment comment 'id',
+  article_id int(11) DEFAULT NULL COMMENT '文章ID',
+  tagname varchar(200) default '' comment '标签内容',
+  create_time  varchar(64) DEFAULT NULL COMMENT '创建时间',
+  create_id  int(11) DEFAULT 0 COMMENT '创建者',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='标签';
+
+/**
  * 友情链接
  */ 
 drop table if exists tb_friendlylink;

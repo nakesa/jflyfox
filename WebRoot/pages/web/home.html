@@ -2,6 +2,8 @@
 	var headContent = {
 %>
 	<% include("/pages/web/web_header.html"){} %>
+	<% // 百度联盟 %>
+	<meta name="baidu_union_verify" content="e70735959d604d6a2282fb2ce926b23d">
 <%
 };
 
@@ -42,12 +44,42 @@ var bodyContent = {
 								<span>浏览量(${item.count_view!'0'})</span>
 								</div>
 							</div>
+							<div class="item-content">
 							<% if(item.type==12) { %>
-							<div class="item-content">${item.content!'' }</div>
+							${item.content!'' }
 							<% } else { // type ==11 %>
 							<% var article_content = flyfox.showHTML(item.content!'',200,'  ......'); %>
-							<div class="item-content">${article_content!'' }<br><br><a href="web_article/${item.id}"  target="_blank">查看全部</a></div>
+							${article_content!'' }
 							<% } %>
+							
+							</div>
+							
+							<div class="item-footer">
+								<div class="item-left">
+								<% var tags = flyfox.split(item.tagsname,','); 
+									if(tags != null) {
+								%>
+									<ul class="q-taglist clearfix">
+										<li title="标签"><span class="q-icon"></span></li>
+									<%
+										for(tagitem in tags){ 
+									%>
+										<li class="q-tagitem">
+										<a class="a-tagitem" href="web_tags/${tagitem}">${tagitem}</a>
+										</li>
+									<% 
+										}
+									%>
+									</ul>
+								<%
+								} 
+								%>
+								</div>
+								
+								<div class="item-right">
+									<a href="web_article/${item.id}"  target="_blank">查看全部</a>
+								</div>
+							</div>
 						</div>
 					<% } %>
 

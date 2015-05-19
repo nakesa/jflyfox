@@ -1,5 +1,7 @@
 package com.flyfox.modules.web;
 
+import java.util.List;
+
 import com.flyfox.component.beelt.BeeltFunctions;
 import com.flyfox.component.util.ArticleCountCache;
 import com.flyfox.component.util.JFlyFoxCache;
@@ -9,6 +11,7 @@ import com.flyfox.jfinal.component.annotation.ControllerBind;
 import com.flyfox.modules.article.TbArticle;
 import com.flyfox.modules.comment.TbComment;
 import com.flyfox.modules.folder.TbFolder;
+import com.flyfox.modules.tags.TbTags;
 import com.flyfox.modules.web.service.WebService;
 import com.jfinal.plugin.activerecord.Page;
 
@@ -30,18 +33,23 @@ public class ArticleController extends BaseController {
 		// 数据列表
 		int articleId = getParaToInt();
 		TbArticle article = TbArticle.dao.findById(articleId);
+		
 		if (article != null) {
 			// 更新浏览量
 			String key = getSessionAttr(JFlyFoxUtils.USER_KEY);
 			if (key != null) {
 				ArticleCountCache.addCountView(article, key);
 			}
-
 			setAttr("item", article);
 
 			// seo：title优化 
 			setAttr(JFlyFoxUtils.TITLE_ATTR, article.getStr("title") + " - " + JFlyFoxCache.getHeadTitle());
 			
+			// 标签
+			List<TbTags> taglist = TbTags.dao.findByWhere(" where article_id = ? order by id", article.getInt("id"));
+			setAttr("taglist", taglist);
+			
+			// 评论
 			Page<TbComment> comments = TbComment.dao.paginate(getPaginator(), "select * ", //
 					" from tb_comment where article_id = ? order by create_time desc ", articleId);
 			setAttr("page", comments);
@@ -63,7 +71,7 @@ public class ArticleController extends BaseController {
 
 		Integer userid = getParaToInt();
 
-		setAttr("web_title", BeeltFunctions.getUserName(userid));
+		setAttr("WEB_TITLE", BeeltFunctions.getUserName(userid));
 		// 目录列表
 		new WebService().showDirectory(this, TbFolder.ROOT);
 

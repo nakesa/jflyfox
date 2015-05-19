@@ -46,6 +46,31 @@ var bodyContent = {
 							</div>
 						</div>
 						<div class="item-content">${item.content!'' }</div>
+						<div class="item-footer">
+								<div class="item-left">
+								<%  
+									if(taglist != null && taglist.~size > 0) {
+								%>
+									<ul class="q-taglist clearfix">
+										<li title="标签"><span class="q-icon"></span></li>
+									<%
+										for(tagitem in taglist){ 
+									%>
+										<li class="q-tagitem">
+										<a class="a-tagitem" href="web_tags/${tagitem.tagname}">${tagitem.tagname}</a>
+										</li>
+									<% 
+										}
+									%>
+									</ul>
+								<%
+								} 
+								%>
+								</div>
+								
+								<div class="item-right">
+								</div>
+							</div>
 					</div>
 				</div>
 				

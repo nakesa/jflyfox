@@ -53,6 +53,7 @@ public class BeeltFunctions extends TemplateFunctions {
 	public static String suojin(String str, int length) {
 		return StrUtils.suojin(str, length);
 	}
+
 	/**
 	 * html预览
 	 * 
@@ -66,12 +67,12 @@ public class BeeltFunctions extends TemplateFunctions {
 		tmpStr = StrUtils.suojin(tmpStr, num + endStr.length(), endStr);
 		return tmpStr;
 	}
-	
+
 	/**
 	 * 获取用户
 	 * 
-	 * 2015年2月26日 下午4:24:39
-	 * flyfox 330627517@qq.com
+	 * 2015年2月26日 下午4:24:39 flyfox 330627517@qq.com
+	 * 
 	 * @param pid
 	 * @return
 	 */
@@ -79,22 +80,22 @@ public class BeeltFunctions extends TemplateFunctions {
 		SysUser user = UserCache.getUser(pid);
 		return user;
 	}
-	
+
 	/**
 	 * 获取用户名
 	 * 
-	 * 2015年2月26日 下午4:24:39
-	 * flyfox 330627517@qq.com
+	 * 2015年2月26日 下午4:24:39 flyfox 330627517@qq.com
+	 * 
 	 * @param pid
 	 * @return
 	 */
 	public static String getUserName(Integer pid) {
 		SysUser user = UserCache.getUser(pid);
-		if (user==null) {
+		if (user == null) {
 			return "";
 		}
 		if (StrUtils.isNotEmpty(user.getStr("realname"))) {
-			return user.getStr("realname");	
+			return user.getStr("realname");
 		}
 		return user.getStr("username");
 	}
@@ -102,11 +103,27 @@ public class BeeltFunctions extends TemplateFunctions {
 	/**
 	 * 友情链接
 	 * 
-	 * 2015年2月26日 下午4:24:39
-	 * flyfox 330627517@qq.com
+	 * 2015年2月26日 下午4:24:39 flyfox 330627517@qq.com
+	 * 
 	 * @return
 	 */
 	public static List<TbFriendlylink> friendlylink(int type) {
 		return FriendlylinkCache.getList(type);
+	}
+
+	/**
+	 * split
+	 * 
+	 * 2015年5月17日 下午11:03:39 flyfox 330627517@qq.com
+	 * 
+	 * @param str
+	 * @param split
+	 * @return
+	 */
+	public static String[] split(String str, String split) {
+		if (StrUtils.isEmpty(str)) {
+			return null;
+		}
+		return str.split(split);
 	}
 }

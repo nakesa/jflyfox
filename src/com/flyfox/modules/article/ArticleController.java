@@ -5,7 +5,10 @@ import java.io.File;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.db.SQLUtils;
 import com.flyfox.modules.folder.TbFolder;
+import com.flyfox.modules.tags.TbTags;
+import com.flyfox.util.StrUtils;
 import com.jfinal.kit.PathKit;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.upload.UploadFile;
 
@@ -78,10 +81,10 @@ public class ArticleController extends BaseController {
 
 	public void delete() {
 		TbArticle.dao.deleteById(getParaToInt());
-		
+
 		// 更新缓存
 		new ArticleService().updateCache();
-		
+
 		list();
 	}
 
@@ -112,7 +115,7 @@ public class ArticleController extends BaseController {
 				model.put("sort", 1);
 			model.save();
 		}
-		
+
 		// 更新缓存
 		new ArticleService().updateCache();
 
@@ -122,6 +125,10 @@ public class ArticleController extends BaseController {
 	public void edit_content() {
 		TbArticle model = TbArticle.dao.findById(getParaToInt());
 		setAttr("model", model);
+		// 设置标签
+		String tags = Db.findFirst("select group_concat(tagname) tags " //
+				+ " from tb_tags where article_id = ? order by id", model.getInt("id")).getStr("tags");
+		setAttr("tags", tags);
 		super.render(path + "edit_content.html");
 	}
 
@@ -141,6 +148,30 @@ public class ArticleController extends BaseController {
 	public void save_content() {
 		TbArticle model = getModel(TbArticle.class);
 		model.update();
+
+		// 保存tags
+		Db.update(" delete from tb_tags where article_id = ?", model.getInt("id"));
+		String tags = getPara("tags");
+		if (StrUtils.isNotEmpty(tags)) {
+			String[] tagsArr = tags.split(",");
+			for (int i = 0; i < tagsArr.length; i++) {
+				String tagname = tagsArr[i];
+				// 最多5个
+				if (i >= 5) {
+					break;
+				}
+				if (StrUtils.isEmpty(tagname)) {
+					continue;
+				}
+				TbTags tbTags = new TbTags();
+				tbTags.put("tagname", tagname);
+				tbTags.put("article_id", model.getInt("id"));
+				tbTags.put("create_id", getSessionUser().getUserID());
+				tbTags.put("create_time", getNow());
+				tbTags.save();
+
+			}
+		}
 
 		// 更新缓存
 		new ArticleService().updateCache();
