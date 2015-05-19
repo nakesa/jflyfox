@@ -1,0 +1,65 @@
+<% var headContent = { %>
+		<% include("/pages/web/web_header.html"){} %>
+		<script type="text/javascript" src="pages/web/show_person.js"></script>
+		
+<% }; var bodyContent = { %> 
+
+<% include("/pages/web/home_header.html"){} %>
+
+	<div class="x-page-container">
+		<div class="mod-diary">
+			<div class="mod-diary-top"></div>
+			<div class="mod-diary-inner">
+				<div class="mod-diary-pen"></div>
+				<div class="mod-diary-nav"></div>
+				<div class="mod-diary-clip"></div>
+				<div class="mod-topspaceinfo">
+					<h1>
+						<a class="space-name" href="javascript:void(0);">标签</a>
+					</h1>
+				</div>
+	
+				<div class="mod-bloglist">
+					<div class="mod-blogitem">
+						<div class="box-postdate">
+						</div>
+						<div class="item-title">
+							<a href="javascript:void(0);"></a>
+						</div>
+						
+						<div class="item-content" style="margin-left: 280px;">
+							<%  
+									if(taglist != null && taglist.~size > 0) {
+								%>
+									<ul class="q-taglist clearfix">
+										<li title="标签"><span class="q-icon"></span></li>
+									<%
+										for(tagitem in taglist){ 
+									%>
+										<li class="q-tagitem">
+										<a class="a-tagitem" href="web_tags/${tagitem.tagname}">${tagitem.tagname}</a>
+										</li>
+									<% 
+										}
+									%>
+									</ul>
+								<%
+								} 
+								%>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="mod-diary-bottom"></div>
+		</div>
+	</div>
+	
+	<%  include("/pages/web/home_footer.html"){} %>
+	
+<%}; %> 
+
+<%
+layout("/pages/template/_layout.html",{head:headContent,body:bodyContent}){
+%> 
+<%} %>
