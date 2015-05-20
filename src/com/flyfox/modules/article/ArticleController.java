@@ -1,11 +1,13 @@
 package com.flyfox.modules.article;
 
 import java.io.File;
+import java.security.SecureRandom;
 
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.db.SQLUtils;
 import com.flyfox.modules.folder.TbFolder;
 import com.flyfox.modules.tags.TbTags;
+import com.flyfox.util.DateUtils;
 import com.flyfox.util.StrUtils;
 import com.jfinal.kit.PathKit;
 import com.jfinal.plugin.activerecord.Db;
@@ -100,8 +102,18 @@ public class ArticleController extends BaseController {
 		Integer pid = getParaToInt();
 		TbArticle model = getModel(TbArticle.class);
 
+		// 附件
 		if (uploadFile != null) {
-			model.set("image_url", uploadFile.getFileName());
+			String suf = "";
+			if (uploadFile.getFileName().lastIndexOf(".") >= 0) {
+				suf = uploadFile.getFileName().substring(uploadFile.getFileName().lastIndexOf("."));
+			}
+			String fileName = DateUtils.getNow("yyyyMMdd_HHmmss") + "_" + new SecureRandom().nextInt(999999) + suf;
+			// 改名,避免重复以及中文问题
+			uploadFile.getFile().renameTo(new File(upload_path + File.separator + fileName));
+
+			model.set("image_url", fileName);
+			// model.set("image_url", uploadFile.getFileName());
 		}
 
 		model.put("update_time", getNow());
