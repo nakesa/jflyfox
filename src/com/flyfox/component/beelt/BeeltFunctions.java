@@ -3,6 +3,8 @@ package com.flyfox.component.beelt;
 import java.util.List;
 
 import com.flyfox.jfinal.template.TemplateFunctions;
+import com.flyfox.modules.article.ArticleService;
+import com.flyfox.modules.article.TbArticle;
 import com.flyfox.modules.friendlylink.FriendlylinkCache;
 import com.flyfox.modules.friendlylink.TbFriendlylink;
 import com.flyfox.system.dict.DictCache;
@@ -42,6 +44,16 @@ public class BeeltFunctions extends TemplateFunctions {
 	}
 
 	// //////////////////////自定义方法///////////////////////////
+	public static int countView(int articleId) {
+		TbArticle article = new ArticleService().getArticleCount(articleId);
+		return article == null ? 0 : article.getCountView();
+	}
+
+	public static int countComment(int articleId) {
+		TbArticle article = new ArticleService().getArticleCount(articleId);
+		return article == null ? 0 : article.getCountComment();
+	}
+
 	public static String getNow() {
 		return DateUtils.getNow();
 	}

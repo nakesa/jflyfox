@@ -1,6 +1,8 @@
 package com.flyfox.modules.comment;
 
 import com.flyfox.jfinal.base.BaseService;
+import com.flyfox.modules.article.ArticleService;
+import com.flyfox.modules.article.TbArticle;
 import com.flyfox.system.user.SysUser;
 import com.flyfox.util.DateUtils;
 import com.flyfox.util.cache.Cache;
@@ -59,6 +61,8 @@ public class CommentService extends BaseService {
 
 		// 更新评论数
 		updateArticleCommentCount(comment.getInt("article_id"));
+		// 更新评论数缓存
+		new ArticleService().addArticleCount(TbArticle.dao.findById(comment.getInt("article_id")));
 		// 更新未读消息缓存
 		getAndUpdateCommentUnreadCount(comment.getInt("reply_userid"), true);
 	}
@@ -77,6 +81,8 @@ public class CommentService extends BaseService {
 		TbComment.dao.deleteById(comment.getInt("id"));
 		// 更新评论数
 		updateArticleCommentCount(comment.getInt("article_id"));
+		// 缓存访问量和评论数
+		new ArticleService().addArticleCount(TbArticle.dao.findById(comment.getInt("article_id")));
 		// 更新未读消息缓存
 		getAndUpdateCommentUnreadCount(comment.getInt("reply_userid"), true);
 	}

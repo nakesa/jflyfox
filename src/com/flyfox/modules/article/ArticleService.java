@@ -20,6 +20,43 @@ public class ArticleService extends BaseService {
 	private static Cache cache = CacheManager.get(cacheName);
 
 	/**
+	 * 加入文章访问量和评论数缓存
+	 * 
+	 * 2015年5月26日 上午8:53:27 flyfox 330627517@qq.com
+	 * 
+	 * @param article
+	 * @return
+	 */
+	public TbArticle addArticleCount(TbArticle article) {
+		String key = ("articleCount_" + article.getId());
+		TbArticle articleCount = new TbArticle().setId(article.getId()) //
+				.setCountView(article.getCountView()) //
+				.setCountComment(article.getCountComment());
+		cache.add(key, articleCount);
+		return articleCount;
+	}
+
+	/**
+	 * 获取缓存量
+	 * 
+	 * 2015年5月26日 上午8:56:26 flyfox 330627517@qq.com
+	 * 
+	 * @param articleId
+	 * @return
+	 */
+	public TbArticle getArticleCount(int articleId) {
+		String key = ("articleCount_" + articleId);
+		TbArticle articleCount = cache.get(key);
+		// 推荐文章列表
+		if (articleCount == null) {
+			articleCount = TbArticle.dao.findFirst("select id,count_view,count_comment " //
+					+ "from tb_article where id = ?", articleId);
+			cache.add(key, articleCount);
+		}
+		return articleCount;
+	}
+	
+	/**
 	 * 查询文章，展示的和类型为11,12的
 	 * 
 	 * 2015年4月29日 下午4:48:24 flyfox 330627517@qq.com

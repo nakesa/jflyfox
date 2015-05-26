@@ -38,10 +38,10 @@ var bodyContent = {
 							<div class="item-title">
 								<a href="web_article/${item.id}"  target="_blank">${item.title}</a>
 								<div class="item-right">
-								<% if(item.is_comment=='1'){ %>
-								<a href="web_article/${item.id}#article_comment"  target="_blank"><span>评论(${item.count_comment!'0'})</span></a>
-								<% } %>
-								<span>浏览量(${item.count_view!'0'})</span>
+									<% if(item.is_comment=='1'){ %>
+									<a href="web_article/${item.id}#article_comment"  target="_blank"><span>评论(${flyfox.countComment(item.id)})</span></a>
+									<% } %>
+									<span>浏览量(${flyfox.countView(item.id)})</span>
 								</div>
 							</div>
 							<div class="item-content">

@@ -8,6 +8,7 @@ import com.flyfox.component.util.JFlyFoxCache;
 import com.flyfox.component.util.JFlyFoxUtils;
 import com.flyfox.jfinal.base.BaseController;
 import com.flyfox.jfinal.component.annotation.ControllerBind;
+import com.flyfox.modules.article.ArticleService;
 import com.flyfox.modules.article.TbArticle;
 import com.flyfox.modules.comment.TbComment;
 import com.flyfox.modules.folder.TbFolder;
@@ -39,6 +40,8 @@ public class ArticleController extends BaseController {
 			String key = getSessionAttr(JFlyFoxUtils.USER_KEY);
 			if (key != null) {
 				ArticleCountCache.addCountView(article, key);
+				// 缓存访问量和评论数
+				new ArticleService().addArticleCount(article);
 			}
 			setAttr("item", article);
 
