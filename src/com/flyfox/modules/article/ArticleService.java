@@ -2,6 +2,7 @@ package com.flyfox.modules.article;
 
 import com.flyfox.jfinal.base.BaseService;
 import com.flyfox.jfinal.base.Paginator;
+import com.flyfox.modules.folder.TbFolder;
 import com.flyfox.util.cache.Cache;
 import com.flyfox.util.cache.CacheManager;
 import com.jfinal.plugin.activerecord.Page;
@@ -55,7 +56,7 @@ public class ArticleService extends BaseService {
 		}
 		return articleCount;
 	}
-	
+
 	/**
 	 * 查询文章，展示的和类型为11,12的
 	 * 
@@ -70,16 +71,26 @@ public class ArticleService extends BaseService {
 		Page<TbArticle> articles = cache.get(key);
 		// 目录列表
 		if (articles == null) {
-			articles = TbArticle.dao.paginate(paginator, "select t.*,tag.tagsname " //
-					, " from tb_article t "
-							// 拼接标签
-							+ "left join (SELECT article_id,group_concat(tagname) tagsname "
-							+ " FROM tb_tags GROUP BY article_id order by id ) tag on t.id = tag.article_id"
-							// 拼接标签
-							+ " where status = 1 and type in (11,12) " //
-
-							+ "and folder_id = ? " //
-							+ "order by sort,create_time desc", folder_id);
+			if (folder_id == TbFolder.ROOT) { // 首页
+				articles = TbArticle.dao.paginate(paginator, "select t.*,tag.tagsname " //
+						, " from tb_article t "
+								// 拼接标签
+								+ "left join (SELECT article_id,group_concat(tagname) tagsname "
+								+ " FROM tb_tags GROUP BY article_id order by id ) tag on t.id = tag.article_id"
+								// 拼接标签
+								+ " where status = 1 and type in (11,12) " //
+								+ "order by sort,create_time desc");
+			} else {
+				articles = TbArticle.dao.paginate(paginator, "select t.*,tag.tagsname " //
+						, " from tb_article t "
+								// 拼接标签
+								+ "left join (SELECT article_id,group_concat(tagname) tagsname "
+								+ " FROM tb_tags GROUP BY article_id order by id ) tag on t.id = tag.article_id"
+								// 拼接标签
+								+ " where status = 1 and type in (11,12) " //
+								+ "and folder_id = ? " //
+								+ "order by sort,create_time desc", folder_id);
+			}
 			cache.add(key, articles);
 		}
 		return articles;
