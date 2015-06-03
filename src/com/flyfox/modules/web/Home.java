@@ -39,7 +39,7 @@ public class Home extends BaseController {
 	
 
 	/**
-	 * 登陆
+	 * 登录
 	 */
 	public void login() {
 		setAttr("pre_page", getPrePage());
