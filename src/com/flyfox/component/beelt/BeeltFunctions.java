@@ -54,32 +54,6 @@ public class BeeltFunctions extends TemplateFunctions {
 		return article == null ? 0 : article.getCountComment();
 	}
 
-	public static String getNow() {
-		return DateUtils.getNow();
-	}
-
-	public static String getNow(String regex) {
-		return DateUtils.getNow(regex);
-	}
-
-	public static String suojin(String str, int length) {
-		return StrUtils.suojin(str, length);
-	}
-
-	/**
-	 * html预览
-	 * 
-	 * 2015年2月2日 下午3:40:34 flyfox 330627517@qq.com
-	 * 
-	 * @param htmlStr
-	 * @return
-	 */
-	public static String showHTML(String htmlStr, int num, String endStr) {
-		String tmpStr = HtmlUtils.delHTMLTag(htmlStr);
-		tmpStr = StrUtils.suojin(tmpStr, num + endStr.length(), endStr);
-		return tmpStr;
-	}
-
 	/**
 	 * 获取用户
 	 * 
@@ -121,6 +95,32 @@ public class BeeltFunctions extends TemplateFunctions {
 	 */
 	public static List<TbFriendlylink> friendlylink(int type) {
 		return FriendlylinkCache.getList(type);
+	}
+
+	public static String getNow() {
+		return DateUtils.getNow();
+	}
+
+	public static String getNow(String regex) {
+		return DateUtils.getNow(regex);
+	}
+
+	public static String suojin(String str, int length) {
+		return StrUtils.suojin(str, length);
+	}
+
+	/**
+	 * html预览
+	 * 
+	 * 2015年2月2日 下午3:40:34 flyfox 330627517@qq.com
+	 * 
+	 * @param htmlStr
+	 * @return
+	 */
+	public static String showHTML(String htmlStr, int num, String endStr) {
+		String tmpStr = HtmlUtils.delHTMLTag(htmlStr);
+		tmpStr = StrUtils.suojin(tmpStr, num + endStr.length(), endStr);
+		return tmpStr;
 	}
 
 	/**

@@ -10,7 +10,6 @@ import com.flyfox.component.interceptor.PageViewInterceptor;
 import com.flyfox.component.interceptor.UserKeyInterceptor;
 import com.flyfox.component.util.JFlyFoxCache;
 import com.flyfox.jfinal.config.JflyfoxConfig;
-import com.flyfox.jfinal.template.TemplateUtils;
 import com.flyfox.system.user.UserInterceptor;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -28,8 +27,6 @@ public class BaseConfig extends JflyfoxConfig {
 		groupTemplate.registerFunctionPackage("strutil", BeetlStrUtils.class);
 		groupTemplate.registerFunctionPackage("flyfox", BeeltFunctions.class);
 
-		TemplateUtils.groupTemplate.registerFunctionPackage("strutil", BeetlStrUtils.class);
-		TemplateUtils.groupTemplate.registerFunctionPackage("flyfox", BeeltFunctions.class);
 	};
 
 	@Override
