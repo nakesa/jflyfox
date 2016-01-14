@@ -25,6 +25,9 @@
  3. [oschina](http://www.oschina.net/)
 
 # 更新说明
+>## jflyfox 2.7.0 2016-01-14
+> 1. jfinal升级为2.0，升级为2.7.0
+
 >## jflyfox 2.6 2015-06-04
 > 1. 升级为2.6
 
