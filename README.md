@@ -24,6 +24,9 @@
  2. [beetl](http://ibeetl.com/community/)
  3. [oschina](http://www.oschina.net/)
 
+# 开源赞助
+![OSC@GIT](http://static.oschina.net/uploads/space/2015/0213/104940_ZKNb_166354.png "开源赞助我(支付宝)")
+
 # 更新说明
 >## 2016-01-16
 > 1. jfinal升级为2.1，升级为2.8.0
@@ -151,5 +154,3 @@
 >## jflyfox1.0
 > 1. 初始化版本
 
-# 开源赞助
-![OSC@GIT](http://static.oschina.net/uploads/space/2015/0213/104940_ZKNb_166354.png "开源赞助我(支付宝)")
