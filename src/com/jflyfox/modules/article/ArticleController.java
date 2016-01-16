@@ -23,10 +23,11 @@ import com.jflyfox.util.StrUtils;
 public class ArticleController extends BaseController {
 
 	private static final String path = "/pages/article/article_";
+	private static final String UPLOAD_TMP_PATH = "tmp";
 	/**
 	 * 图片目录
 	 */
-	private static final String upload_path = PathKit.getWebRootPath() + File.separator //
+	private static final String UPLOAD_PATH = PathKit.getWebRootPath() + File.separator //
 			+ "download" + File.separator + "image_url";
 
 	public void index() {
@@ -93,7 +94,7 @@ public class ArticleController extends BaseController {
 	}
 
 	public void save() {
-		UploadFile uploadFile = getFile("model.image_url", upload_path, 10 * 1024 * 1024);
+		UploadFile uploadFile = getFile("model.image_url", UPLOAD_TMP_PATH, 10 * 1024 * 1024);
 
 		Integer pid = getParaToInt();
 		TbArticle model = getModel(TbArticle.class);
@@ -106,7 +107,7 @@ public class ArticleController extends BaseController {
 			}
 			String fileName = DateUtils.getNow("yyyyMMdd_HHmmss") + "_" + new SecureRandom().nextInt(999999) + suf;
 			// 改名,避免重复以及中文问题
-			uploadFile.getFile().renameTo(new File(upload_path + File.separator + fileName));
+			uploadFile.getFile().renameTo(new File(UPLOAD_PATH + File.separator + fileName));
 
 			model.set("image_url", fileName);
 			// model.set("image_url", uploadFile.getFileName());
@@ -186,7 +187,7 @@ public class ArticleController extends BaseController {
 
 		renderMessage("保存成功");
 	}
-	
+
 	/**
 	 * 目录复选框
 	 * 
