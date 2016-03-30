@@ -308,7 +308,7 @@ INSERT INTO `sys_user` VALUES ('1', 'admin', 'LHmWhtwF/dGhJxqKJ8QXRg==', '系统
 INSERT INTO `sys_dict` VALUES ('2', '文章类型', 'articleType', null);
 INSERT INTO `sys_dict` VALUES ('11', '目录类型', 'folderType', null);
 INSERT INTO `sys_dict` VALUES ('100', '系统参数', 'systemParam', null);
-INSERT INTO `sys_dict` VALUES ('101', '友情链接类型', 'friendlyLinkType', null)
+INSERT INTO `sys_dict` VALUES ('101', '友情链接类型', 'friendlyLinkType', null);
 
 INSERT INTO `sys_dict_detail` VALUES ('1', 'folderType', '目录', '1', '1', null, null, null, null, '2015-01-30', '1');
 INSERT INTO `sys_dict_detail` VALUES ('2', 'folderType', 'a标签', '2', '2', null, null, null, null, '2015-01-30', '1');
